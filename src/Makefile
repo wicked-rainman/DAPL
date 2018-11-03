@@ -3,7 +3,7 @@ CFLAGS = -Ofast -Wall
 .PHONY: all
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip ip2country ip2asn install
 libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
-	add_country.o add_field.o add_label.o add_quotes.o \
+	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
@@ -18,7 +18,7 @@ libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	strpos.o urldecode.o write_csv_fields.o
 
 	ar -rcs libeml.a add_asn.o add_attributes.o add_composite.o add_concatenation.o \
-	add_country.o add_field.o add_label.o add_quotes.o \
+	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
@@ -33,7 +33,7 @@ libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	strpos.o urldecode.o write_csv_fields.o
 
 libdapl.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
-	add_country.o add_field.o add_label.o add_quotes.o \
+	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
@@ -47,7 +47,7 @@ libdapl.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	strpos.o table.o urldecode.o write_csv_fields.o
 
 	ar -rcs libdapl.a add_asn.o add_attributes.o add_composite.o add_concatenation.o \
-	add_country.o add_field.o add_label.o add_quotes.o \
+	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
@@ -78,6 +78,8 @@ add_label.o : add_label.c externs.h defaults.h build_target_list.o remchars.o \
 	$(CC) $(CFLAGS) add_label.c -c -o add_label.o
 add_quotes.o : add_quotes.c externs.h defaults.h find_fieldname.o
 	$(CC) $(CFLAGS)  add_quotes.c -c -o add_quotes.o
+add_reverse_dns.o : add_reverse_dns.c externs.h build_target_list.o insert_new_field.o
+	$(CC) $(CFLAGS) add_reverse_dns.c -c -o add_reverse_dns.o
 array_from_string.o : array_from_string.c defaults.h externs.h
 	$(CC) $(CFLAGS) array_from_string.c -c -o array_from_string.o
 asn : gasn_client.c defaults.h funcs.h hostname_to_ip.c
