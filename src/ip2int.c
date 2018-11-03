@@ -1,14 +1,24 @@
+#include <errno.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+// *******************************************************
+// Simple program to convert and IP address into an int
+// One or more IP addresses can be specified on invocation.
+// Results written to stdout.
+// Intended for use while updating geipcountry and asn
+// csv files. 
+// ********************************************************
 int main(int argc, char**argv) {
-unsigned int ip_octet[4]={0,0,0,0};
-int count=1,c;
-long int ip_int=0;
+struct in_addr ip;
+int count;
 	for(count=1;count<argc;count++) {
-       		c=sscanf(argv[count], "%3u.%3u.%3u.%3u", &ip_octet[0],&ip_octet[1],&ip_octet[2],&ip_octet[3]);
-                ip_int=(ip_octet[0] << 24)+(ip_octet[1] << 16)+(ip_octet[2] << 8)+ip_octet[3];
-		fprintf(stdout,"\"%lu\" ",ip_int);
+		if(inet_aton(argv[count],&ip)) {
+			fprintf(stdout,"\"%u\" ",htonl(ip.s_addr));
+		}
 	}
 	fprintf(stdout,"\n");
 }
