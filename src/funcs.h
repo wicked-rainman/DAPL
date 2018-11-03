@@ -19,6 +19,7 @@ int match_substring(char*, char*);
 int remchars(char*, char*);
 int set_input_fieldnames();
 int strpos(char*, char*);
+int whitelist_ip(char*);
 void add_asn(char *);
 void add_attributes(char*, char*);
 void add_composite(char*, char*);

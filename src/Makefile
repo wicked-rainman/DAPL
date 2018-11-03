@@ -15,7 +15,7 @@ libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o urldecode.o write_csv_fields.o
+	strpos.o urldecode.o whitelist_ip.o write_csv_fields.o
 
 	ar -rcs libeml.a add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
@@ -30,7 +30,7 @@ libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o urldecode.o write_csv_fields.o
+	strpos.o urldecode.o whitelist_ip.o write_csv_fields.o
 
 libdapl.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
@@ -44,7 +44,7 @@ libdapl.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o table.o urldecode.o write_csv_fields.o
+	strpos.o table.o urldecode.o whitelist_ip.o write_csv_fields.o
 
 	ar -rcs libdapl.a add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
@@ -58,7 +58,7 @@ libdapl.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o table.o urldecode.o write_csv_fields.o
+	strpos.o table.o urldecode.o whitelist_ip.o write_csv_fields.o
 
 add_asn.o : add_asn.c externs.h defaults.h remchars.o insert_new_field.o build_target_list.o
 	$(CC) $(CFLAGS)  add_asn.c -c -o add_asn.o
@@ -197,6 +197,8 @@ table.o : table.c externs.h
 	$(CC) $(CFLAGS) table.c -c -o table.o
 urldecode.o : urldecode.c externs.h find_fieldname.o
 	$(CC) $(CFLAGS)  urldecode.c -c -o urldecode.o
+whitelist_ip.o : whitelist_ip.c build_target_list.o externs.h
+	$(CC) $(CFLAGS) whitelist_ip.c -c -o whitelist_ip.o 
 write_csv_fields.o : write_csv_fields.c externs.h defaults.h find_fieldname.o array_from_string.o
 	$(CC) $(CFLAGS)  write_csv_fields.c -c -o write_csv_fields.o
 install : 

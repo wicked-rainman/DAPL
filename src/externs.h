@@ -59,6 +59,7 @@ extern FILE *_ofile;
 extern FILE *_dfile;
 extern FILE *_asnfile;
 extern FILE *_countryfile;
+extern FILE *_whitefile;
 extern size_t _input_line_length;
 extern int _asn_sockfd;
 extern int _country_sockfd;

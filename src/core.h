@@ -45,7 +45,7 @@ char *_input_line=NULL;
 char _field_delimiter;
 char error_message[500];
 char _csv_definition_start[CSV_MAX_TAG_LENGTH];
-FILE *_ifile=NULL, *_ofile=NULL, *_dfile=NULL, *_asnfile=NULL,*_countryfile=NULL;
+FILE *_ifile=NULL, *_ofile=NULL, *_dfile=NULL, *_asnfile=NULL,*_countryfile=NULL, *_whitefile=NULL;
 int _asn_sockfd=0;
 int _country_sockfd;
 size_t _input_line_length=0;
