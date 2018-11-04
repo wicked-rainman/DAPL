@@ -25,6 +25,7 @@ char *country_file;
 			fprintf(stderr,"add_country : No COUNTRY_FILE environmental variable found\n");
 			exit(EXIT_FAILURE);
 		}
+		fprintf(stdout,"add_country : Using file %s\n",country_file);
 		_countryfile = fopen(country_file,"r");
         	if(_countryfile==NULL) {
         		fprintf(stderr,"Could not open Country file \"%s\"\n",country_file);

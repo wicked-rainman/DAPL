@@ -26,6 +26,7 @@ uint32_t ip_int=0;
 	if(_drop==1) return;
         if(_asnfile==NULL) {
         	asn_file=getenv("ASN_FILE");
+		fprintf(stdout,"add_asn : Using file %s\n",asn_file);
                 if(asn_file==NULL) {
                 	fprintf(stderr,"add_asn : No ASN_FILE environment variable found\n");
                 	exit(EXIT_FAILURE);

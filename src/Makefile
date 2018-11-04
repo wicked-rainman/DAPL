@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -Ofast -Wall  
 .PHONY: all
-all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip ip2country ip2asn install
+all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip ip2country ip2asn cidr2ip install
 libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
@@ -82,10 +82,10 @@ add_reverse_dns.o : add_reverse_dns.c externs.h build_target_list.o insert_new_f
 	$(CC) $(CFLAGS) add_reverse_dns.c -c -o add_reverse_dns.o
 array_from_string.o : array_from_string.c defaults.h externs.h
 	$(CC) $(CFLAGS) array_from_string.c -c -o array_from_string.o
-asn : gasn_client.c defaults.h funcs.h hostname_to_ip.c
-	$(CC) $(CFLAGS)  gasn_client.c hostname_to_ip.c  -o gasn
 build_target_list.o : build_target_list.c defaults.h find_fieldname.o
 	$(CC) $(CFLAGS) build_target_list.c -c -o build_target_list.o
+cidr2ip : cidr2ip.c
+	$(CC) $(CFLAGS) -lm cidr2ip.c -o cidr2ip
 cleanup.o : cleanup.c defaults.h externs.h
 	$(CC) $(CFLAGS)  cleanup.c -c -o cleanup.o
 dedupe.o : dedupe.c
@@ -211,4 +211,5 @@ install :
 	mv gcountry_server /usr/local/galvanise/bin
 	mv gasn /usr/local/galvanise/bin
 	mv gasn_server /usr/local/galvanise/bin
+	mv cidr2ip /usr/local/galvanise/bin
 clean : rm *.o

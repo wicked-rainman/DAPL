@@ -17,7 +17,7 @@ struct in_addr ip;
 int count;
 	for(count=1;count<argc;count++) {
 		if(inet_aton(argv[count],&ip)) {
-			fprintf(stdout,"\"%u\" ",htonl(ip.s_addr));
+			fprintf(stdout,"%u ",htonl(ip.s_addr));
 		}
 	}
 	fprintf(stdout,"\n");
