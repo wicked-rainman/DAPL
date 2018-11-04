@@ -54,14 +54,14 @@ uint32_t ip_int=0;
                         		start_str[n] = line[k++];
 					n++;
                 		}
-                		start_str[n] = (char) 0x00;
+                		start_str[n] = '\0';
                 		k++;
                 		n = 0;
                 		while(line[k] !=',') {
                         		end_str[n] = line[k++];
                         		n++;
                 		}
-                		end_str[n] = (char) 0x00;
+                		end_str[n] = '\0';
                 		stored_start = atol(start_str);
                 		stored_end = atol(end_str);
                 		if((ip_int >= stored_start) && (ip_int <= stored_end)) return 1; 
