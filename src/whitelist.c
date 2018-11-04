@@ -1,7 +1,7 @@
 #include "externs.h"
-int whitelist_ip(char *tgt) {
+int whitelist(char *tgt) {
 struct in_addr ip;
-int c,n,m,k,buflen,target_count,found;
+int n,k,buflen,target_count;
 char line[500];
 char start_str[50];
 char end_str[50];

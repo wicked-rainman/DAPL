@@ -1,60 +1,43 @@
 #include "externs.h"
 void add_country(char *tgt) {
 ssize_t n;
+struct in_addr ip;
 char buffer[MAX_FIELDVALUE_LENGTH];
-char tail[MAX_FIELDVALUE_LENGTH-7];
-char ip[50];
 char line[500];
 char newname[MAX_FIELDNAME_LENGTH];
   
-int nogo,c,found;
+int found;
 int target_count,line_count;
-unsigned int ip_octet[4]={0,0,0,0};
-//uint32_t ip_int=0;
-//uint32_t stored_start=0;
-//uint32_t stored_end=0;
 size_t k;
 size_t buflen;
 long int stored_start=0;
 long int stored_end=0;
-long int ip_int=0;
+uint32_t ip_int=0;
 char start_str[50];
 char end_str[50];
 char country_str[100];
-bzero(ip,50);
+char *country_file;
 
 	if(_drop==1) return;
-        if(_countryfile==NULL) _countryfile = fopen(COUNTRY_FILE_NAME,"r");
         if(_countryfile==NULL) {
-        	fprintf(stderr,"Could not open Country file \"%s\"\n",COUNTRY_FILE_NAME);
-                exit(EXIT_SUCCESS);
-        }
-
+		country_file=getenv("COUNTRY_FILE");
+		if(country_file==NULL) {
+			fprintf(stderr,"add_country : No COUNTRY_FILE environmental variable found\n");
+			exit(EXIT_FAILURE);
+		}
+		_countryfile = fopen(country_file,"r");
+        	if(_countryfile==NULL) {
+        		fprintf(stderr,"Could not open Country file \"%s\"\n",country_file);
+                	exit(EXIT_SUCCESS);
+        	}
+	}
 	target_count=0;
 	build_target_list(tgt);
 	while(target_count<tlist.count) {
-                nogo=0; ;ip_octet[0]=0;ip_octet[1]=0;ip_octet[2]=0;ip_octet[3]=0,tail[0]='\0';
 		strcpy(buffer, _fieldvalues_array[tlist.position[target_count]]);
 		(void) remchars("\"",buffer);
-		k=strlen(buffer);
-		if((k> 15) || (k<7)) nogo=1;
-		else {
-			c=sscanf(buffer, "%3u.%3u.%3u.%3u%s", &ip_octet[0],&ip_octet[1],&ip_octet[2],&ip_octet[3],tail);
-			if(c !=4 || tail[0] !='\0') nogo=1;
-			for(k=0;k<4;k++) {
-				if (ip_octet[k] > 255) nogo=1;
-			}
-   			ip_int=(ip_octet[0] << 24)+(ip_octet[1] << 16)+(ip_octet[2] << 8)+ip_octet[3];
-			if(ip_int==0) nogo=1;
-		}
-		if(nogo==1) {
-                        strcpy(newname,tlist.name[target_count]);
-                        strcat(newname,".country");
-                        country_str[0]='\0';
-                        //fprintf(stdout,"add_country: Invalid IP, inserting [%s] %s for %s \n",newname,country_str,buffer);
-                        insert_new_field(newname,country_str);
-                }
-		else {
+		if(inet_aton(buffer,&ip)) {
+			ip_int=htonl(ip.s_addr);
 			found=0;
         		rewind(_countryfile);
 			line_count=0;
@@ -101,6 +84,13 @@ bzero(ip,50);
 				//fprintf(stdout,"add_country: %d NOT FOUND [%s] %s for %s \n",line_count,newname,country_str,buffer);
                         	insert_new_field(newname,country_str);
         		}
+		}
+		else {
+                        strcpy(newname,tlist.name[target_count]);
+                        strcat(newname,".country");
+                        country_str[0]='\0';
+                        //fprintf(stdout,"add_country: Invalid IP, inserting [%s] %s for %s \n",newname,country_str,buffer);
+                        insert_new_field(newname,country_str);
 		}
 		target_count++;
 	}
