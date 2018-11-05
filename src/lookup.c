@@ -5,8 +5,9 @@ size_t t,u,w;
 int target_count,found,chars_found;
 char new_field[MAX_FIELDNAME_LENGTH];
 char new_value[MAX_FIELDVALUE_LENGTH];
-char search_str[MAX_FIELDVALUE_LENGTH];
+char needle[MAX_FIELDVALUE_LENGTH];
 char line[500];
+char *sptr;
 	if(_drop==1) return 0;
 	if(table==NULL) {
 		fprintf(stderr,"lookup : Cannot lookup %s to add %s as the table file has not been defined\n",fieldname,newfield);
@@ -14,19 +15,9 @@ char line[500];
 	}
 	build_target_list(fieldname);
 	target_count=0;
-	//
-	// While targets are left to process
-	//
 	while(target_count < tlist.count) {
-		rewind(table);
-		//
-		//  Extract the field value that we are going to look for
-		//
-		strcpy(search_str,_fieldvalues_array[tlist.position[target_count]]);
-		(void)remchars("\"",search_str);
-		w=strlen(search_str);
 		found=0;
-		if(w>0) {
+		if(strlen(_fieldvalues_array[tlist.position[target_count]])>0) {
 			rewind(table);
 			chars_found=0;
 			new_field[0]='\0';
@@ -35,24 +26,29 @@ char line[500];
 			// While lines in the file are left to compare
 			//
 			while(fgets(line,500,table)) {
-				v=strncmp(line,search_str,w);
+				w=strlen(line);
+				t=0;
+				while((t<w) && (line[t]!=' ') && (line[t]!='\t')) {
+					needle[t]=line[t];
+					t++;
+				}
+				needle[t]='\0';
+				while((t<w) && (line[t]==' ' || line[t]=='\t')) t++;
+				v=0;
+				while(t<w) {
+					new_value[v]=line[t];
+					v++;
+					t++;
+				}
+				new_value[v-1]='\0';
+				sptr=strstr(_fieldvalues_array[tlist.position[target_count]],needle);
 				//
-				// Match found, starting in column 1
+				// Match found
 				//
-				if(v==0) {
+				if(sptr!=NULL) {
 					found=1;
 					match=1;
 					u=strlen(line);
-					//
-					// pass over the match, and extract what follows spaces or tabs
-					//
-					for(t=w;t<u;t++) {
-						if(line[t]!=' ' && line[t]!='\t') {
-							strcpy(new_value, &line[t]);
-							new_value[strlen(new_value)-1]='\0';
-							break;
-						}
-					}
                                         if(newfield[0]!='*') {
                                         	strcpy(new_field,newfield);
                                         }

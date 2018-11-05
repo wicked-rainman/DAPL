@@ -1,11 +1,11 @@
 #include "externs.h"
-int match_pattern(char* fieldname, char* expression) {
+int pattern(char* fieldname, char* expression) {
 int rc,target_count;
 regex_t regex;
         if(_drop==1) return 0;
         rc=regcomp(&regex,expression,REG_EXTENDED);
         if(rc!=0) {
-                fprintf(stdout,"match_pattern : Invalid expression \"%s\". Quitting\n",expression);
+                fprintf(stdout,"pattern : Invalid expression \"%s\". Quitting\n",expression);
                 exit(EXIT_FAILURE);
         }
         target_count=0;

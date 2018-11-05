@@ -1,7 +1,8 @@
 CC = clang
 CFLAGS = -Ofast -Wall  
 .PHONY: all
-all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip ip2country ip2asn cidr2ip install
+all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
+	ip2country ip2asn cidr2ip whitelist_convert install
 libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_field.o add_label.o add_quotes.o add_reverse_dns.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
@@ -11,7 +12,7 @@ libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	global_clean.o hostname_to_ip.o import_eml.o init_storage.o \
 	input_clean.o insert_new_field.o  ipfind.o keep_rec.o \
 	last_fieldname.o last_value.o lookup.o match.o \
-	match_pattern.o match_substring.o processor_email.o received_ip.o \
+	pattern.o substring.o processor_email.o received_ip.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
@@ -26,7 +27,7 @@ libeml.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	global_clean.o hostname_to_ip.o import_eml.o init_storage.o \
 	input_clean.o insert_new_field.o  ipfind.o keep_rec.o \
 	last_fieldname.o last_value.o lookup.o match.o \
-	match_pattern.o match_substring.o processor_email.o received_ip.o \
+	pattern.o substring.o processor_email.o received_ip.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
@@ -40,7 +41,7 @@ libdapl.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	find_field_defs.o find_fieldname.o get_input_lines.o global_clean.o \
 	hostname_to_ip.o init_storage.o input_clean.o insert_new_field.o \
 	ipfind.o keep_rec.o last_value.o lookup.o \
-	main.o match.o match_pattern.o match_substring.o \
+	main.o match.o pattern.o substring.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
@@ -54,7 +55,7 @@ libdapl.a : add_asn.o add_attributes.o add_composite.o add_concatenation.o \
 	find_field_defs.o find_fieldname.o get_input_lines.o global_clean.o \
 	hostname_to_ip.o init_storage.o input_clean.o insert_new_field.o \
 	ipfind.o keep_rec.o last_value.o lookup.o \
-	main.o match.o match_pattern.o match_substring.o \
+	main.o match.o pattern.o substring.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
@@ -158,10 +159,10 @@ main.o : main.c core.h defaults.h funcs.h get_input_lines.o find_field_defs.o in
 	$(CC) $(CFLAGS)  main.c -c -o main.o
 match.o : match.c externs.h
 	$(CC) $(CFLAGS)  match.c -c -o match.o
-match_pattern.o : match_pattern.c externs.h defaults.h build_target_list.o
-	$(CC) $(CFLAGS)  match_pattern.c -c -o match_pattern.o
-match_substring.o : match_substring.c externs.h build_target_list.o
-	$(CC) $(CFLAGS)  match_substring.c -c -o match_substring.o
+pattern.o : pattern.c externs.h defaults.h build_target_list.o
+	$(CC) $(CFLAGS)  pattern.c -c -o pattern.o
+substring.o : substring.c externs.h build_target_list.o
+	$(CC) $(CFLAGS)  substring.c -c -o substring.o
 processor_email.o : processor_email.c core.h init_storage.o import_eml.o cleanup.o
 	$(CC) $(CFLAGS)  processor_email.c -c -o processor_email.o
 received_ip.o : received_ip.c externs.h defaults.h build_target_list.o remchars.o strpos.o \
@@ -198,7 +199,9 @@ table.o : table.c externs.h
 urldecode.o : urldecode.c externs.h find_fieldname.o
 	$(CC) $(CFLAGS)  urldecode.c -c -o urldecode.o
 whitelist.o : whitelist.c build_target_list.o externs.h
-	$(CC) $(CFLAGS) whitelist.c -c -o whitelist.o 
+	$(CC) $(CFLAGS) whitelist.c -c -o whitelist.o
+whitelist_convert : whitelist_convert.c
+	$(CC) $(CFLAGS) -lm whitelist_convert.c -o whitelist_convert 
 write_csv_fields.o : write_csv_fields.c externs.h defaults.h find_fieldname.o array_from_string.o
 	$(CC) $(CFLAGS)  write_csv_fields.c -c -o write_csv_fields.o
 install : 
@@ -212,4 +215,5 @@ install :
 	mv gasn /usr/local/galvanise/bin
 	mv gasn_server /usr/local/galvanise/bin
 	mv cidr2ip /usr/local/galvanise/bin
+	mv whitelist_convert /usr/local/galvanise/bin
 clean : rm *.o

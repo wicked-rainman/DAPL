@@ -20,7 +20,6 @@ void add_asn(char *buffer) {
 ssize_t n;
 struct in_addr ip;
 static char line[500];
-int c;
 size_t k;
 size_t buflen;
 long int stored_start=0;
