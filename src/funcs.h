@@ -43,6 +43,7 @@ void global_clean(char*);
 void init_storage();
 void input_clean(char*);
 void insert_new_field(char*, char*);
+FILE* intip_lookup(char*, char*, FILE*, char*);
 void keep_rec();
 void loop();
 void received_ip();

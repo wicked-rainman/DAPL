@@ -1,42 +1,34 @@
 #include "externs.h"
 // ***********************************************************************
-// Function add_asn                                                    
-// Single parameter is a fieldname string, stored in _fieldnames_array[]
-// Call made to function find_fieldname which returns the int position 
-// at which the fieldname is located.
-// Value for fieldname (stored in _fieldvalues_array[] with the same int
-// position) is then extracted. This is expected to be an IP address.
-// The IP address value is converted to an INT, which is used to locate
-// the ASN number from within the ASN lookup file.
 // ***********************************************************************
-void add_asn(char *tgt) {
+FILE* intip_lookup(char *tgt, char *extension, FILE *infile, char *env_name) {
 struct in_addr ip;
 int n,target_count,found;
 size_t buflen,k;
 char line[500];
 char start_str[50];
 char end_str[50];
-char asn_str[100];
-char *asn_file;
+char out_str[100];
+char *file_str;
 char buffer[MAX_FIELDVALUE_LENGTH];
 char newname[MAX_FIELDNAME_LENGTH];
 long int stored_start=0;
 long int stored_end=0;
 uint32_t ip_int=0;
-	if(_drop==1) return;
-        if(_asnfile==NULL) {
-        	asn_file=getenv("ASN_FILE");
-		fprintf(stdout,"add_asn : Using file %s\n",asn_file);
-                if(asn_file==NULL) {
-                	fprintf(stderr,"add_asn : No ASN_FILE environment variable found\n");
+	if(_drop==1) return infile;
+        if(infile==NULL) {
+        	file_str=getenv(env_name);
+                if(file_str==NULL) {
+                	fprintf(stderr,"%s : No environment variable set\n",env_name);
                 	exit(EXIT_FAILURE);
         	}
-                _asnfile = fopen(asn_file,"r");
+		fprintf(stdout,"%s : Using %s\n",env_name, file_str );
+                infile = fopen(file_str,"r");
                 // ********************************************
                 // Can't open the file, then just bomb out
                 // ********************************************
-                if(_asnfile==NULL)  {
-                	fprintf(stderr,"Could not open ASN file \"%s\"\n",ASN_FILE_NAME);
+                if(infile==NULL)  {
+                	fprintf(stderr,"%s : Could not open file \"%s\"\n",env_name, file_str);
                 	exit(EXIT_FAILURE);
                 }
         }
@@ -74,14 +66,14 @@ uint32_t ip_int=0;
 			// Rewind the ASN file and start reading lines from it
 			// *******************************************************
 			found=0;
-			rewind(_asnfile);
-        		while(fgets(line, 500, _asnfile)) {
+			rewind(infile);
+        		while(fgets(line, 500, infile)) {
                 		buflen = strlen(line);
                			k=0;
 				n=0;
 				// *****************************************************
-				// ASN file has the format :
-				// INT,INT,ASN_STRING
+				// File has the format :
+				// INT,INT,SOME_STRING
 				// Extract the start and end int values
 				// ******************************************************
                 		while(line[k]!=',') {
@@ -97,33 +89,33 @@ uint32_t ip_int=0;
                 		}
                 		end_str[n] = (char) 0x00;
                 		k++;
-                		asn_str[n] = '\0';
                 		stored_start = atol(start_str);
                 		stored_end = atol(end_str);
+				out_str[0]='\0';
 				// ************************************************
 				// If the IP address we've converted into an
 				// int is greater than or equal to the start int
 				// and is less than or equal to the end int, then
-				// we have an ASN range that matches
+				// we have an range that matches
 				// *************************************************
                 		if((ip_int >= stored_start) && (ip_int <= stored_end)) {
                                		n = 0;
-                                	while((k<buflen) && (line[k]!=' ') && (line[k]!='\n')){
-                                        	asn_str[n] = line[k++];
+                                	while((k<buflen) && (line[k]!=',') && (line[k]!=' ')){
+                                        	out_str[n] = line[k++];
                                         	n++;
                                 	}
-                                	asn_str[n] = '\0';
-                        		(void)remchars("\"",asn_str);
+                                	out_str[n] = '\0';
+                        		(void)remchars("\"",out_str);
 					strcpy(newname,tlist.name[target_count]);
-					strcat(newname,".asn");
+					strcat(newname,extension);
 					// *****************************************
-					// Add the asn into the global structure.
+					// Add the new string into the global structure.
 					// It will have a fieldname of:
-					// xxxxx.asn
+					// xxxxx.extension
 					// where xxxxx = the original target field
 					// specified when the function was called
 					// ******************************************
-					insert_new_field(newname,asn_str);
+					insert_new_field(newname,out_str);
 					found=1;
                         		break;
                 		}
@@ -135,25 +127,25 @@ uint32_t ip_int=0;
 			// *************************************************
                		if(found==0) {
                         	strcpy(newname,tlist.name[target_count]);
-                        	strcat(newname,".asn");
-				asn_str[0]='\0';
-                        	insert_new_field(newname,asn_str);
+                        	strcat(newname,extension);
+				out_str[0]='\0';
+                        	insert_new_field(newname,out_str);
                 	}
 		}
                 else {
 			// ****************************************************
 			// The string didn't seem to be a valid IP address,
-			// so just insert an empty asn value
+			// so just insert an empty value
 			// ****************************************************
                         strcpy(newname,tlist.name[target_count]);
-                        strcat(newname,".asn");
-			asn_str[0]='\0';
-                        insert_new_field(newname,asn_str);
+                        strcat(newname,extension);
+			out_str[0]='\0';
+                        insert_new_field(newname,out_str);
                 }
 		// **************************************************
 		// Deal with the next fieldname in the target list
 		// **************************************************
 		target_count++;
 	}
-	return;
+	return infile;
 }
