@@ -64,7 +64,7 @@ FILE *asnfile;
                 	stored_end = atol(end_str);
                 	if((ip_int >= stored_start) && (ip_int <= stored_end)) {
 				n=0;
-                             	while(k<buflen)  {                      //asn data
+                             	while(k<buflen)  {                      
                                         asn_str[n] = line[k++];
                                         n++;
                                 }

@@ -6,8 +6,8 @@ char *gasn_port;
 char *gcountry_port;
 
         if(_ofile !=NULL) (void) fclose(_ofile);
-        if(_asnfile !=NULL) (void) fclose(_asnfile);
-        if(_countryfile !=NULL) (void) fclose(_countryfile);
+        //if(_asnfile !=NULL) (void) fclose(_asnfile);
+        //if(_countryfile !=NULL) (void) fclose(_countryfile);
 	if(_dfile !=NULL) {
 		fprintf(_dfile,"}\n");
 		(void) fclose(_dfile);

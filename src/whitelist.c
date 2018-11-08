@@ -1,6 +1,7 @@
 #include "externs.h"
 int whitelist(char *tgt) {
 struct in_addr ip;
+static FILE *_whitefile;
 int n,k,buflen,target_count;
 char line[500];
 char start_str[50];
@@ -31,7 +32,7 @@ uint32_t ip_int=0;
         		if(_whitefile==NULL) {
 				white_file=getenv("WHITE_FILE");
 				if(white_file==NULL) {
-					fprintf(stderr,"whitelist_ip : No WHITE_FILE environment variable found\n");
+					fprintf(stderr,"whitelist : No WHITE_FILE environment variable found\n");
 					exit(EXIT_FAILURE); 
 				}
 				 _whitefile = fopen(white_file,"r");
@@ -39,6 +40,7 @@ uint32_t ip_int=0;
 					fprintf(stderr,"Could not open WHITE_FILE file \"%s\"\n",white_file);
 					exit(EXIT_FAILURE);
 				}
+				fprintf(stdout,"whitelist_ip : Using file %s\n",white_file);
 			}
 			rewind(_whitefile);
         		while(fgets(line, 500, _whitefile)) {
@@ -64,7 +66,10 @@ uint32_t ip_int=0;
                 		end_str[n] = '\0';
                 		stored_start = atol(start_str);
                 		stored_end = atol(end_str);
-                		if((ip_int >= stored_start) && (ip_int <= stored_end)) return 1; 
+                		if((ip_int >= stored_start) && (ip_int <= stored_end)) {
+					//fprintf(stdout,"whitelist : Matched %s\n",buffer);
+					return 1;
+				} 
 			}
 		}
 		target_count++;

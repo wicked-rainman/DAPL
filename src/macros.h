@@ -9,5 +9,3 @@
 #define drop_if_substring(a,b) if(substring(a,b)) drop_rec()
 #define keep_if_pattern(a,b) if(pattern(a,b)) keep_rec(); else drop_rec()
 #define drop_if_pattern(a,b) if(pattern(a,b)) drop_rec()
-#define add_asn(a) _asnfile=intip_lookup(a,".asn",_asnfile,"ASN_FILE")
-#define add_country(a) _countryfile=intip_lookup(a,".country",_countryfile,"COUNTRY_FILE")

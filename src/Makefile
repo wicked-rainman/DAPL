@@ -4,13 +4,14 @@ CFLAGS = -Ofast -Wall
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
 	ip2country ip2asn cidr2ip whitelist_convert install
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
+	add_country.o add_asn.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
 	extract_hrefs.o find_field_defs.o find_fieldname.o get_input_lines.o \
 	global_clean.o hostname_to_ip.o import_eml.o init_storage.o \
-	input_clean.o insert_new_field.o intip_lookup.o ipfind.o keep_rec.o \
+	input_clean.o insert_new_field.o ipfind.o keep_rec.o \
 	last_fieldname.o last_value.o lookup.o match.o \
 	pattern.o substring.o processor_email.o received_ip.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
@@ -20,12 +21,13 @@ libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 
 	ar -rcs libeml.a add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
+	add_country.o add_asn.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
 	extract_hrefs.o find_field_defs.o find_fieldname.o get_input_lines.o \
 	global_clean.o hostname_to_ip.o import_eml.o init_storage.o \
-	input_clean.o insert_new_field.o intip_lookup.o ipfind.o keep_rec.o \
+	input_clean.o insert_new_field.o ipfind.o keep_rec.o \
 	last_fieldname.o last_value.o lookup.o match.o \
 	pattern.o substring.o processor_email.o received_ip.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
@@ -35,11 +37,12 @@ libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 
 libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
+	add_country.o add_asn.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
 	find_field_defs.o find_fieldname.o get_input_lines.o global_clean.o \
-	hostname_to_ip.o init_storage.o intip_lookup.o input_clean.o insert_new_field.o \
+	hostname_to_ip.o init_storage.o input_clean.o insert_new_field.o \
 	ipfind.o keep_rec.o last_value.o lookup.o \
 	main.o match.o pattern.o substring.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
@@ -49,11 +52,12 @@ libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 
 	ar -rcs libdapl.a add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
+	add_country.o add_asn.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
 	find_field_defs.o find_fieldname.o get_input_lines.o global_clean.o \
-	hostname_to_ip.o init_storage.o input_clean.o insert_new_field.o intip_lookup.o \
+	hostname_to_ip.o init_storage.o input_clean.o insert_new_field.o \
 	ipfind.o keep_rec.o last_value.o lookup.o \
 	main.o match.o pattern.o substring.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
@@ -61,8 +65,12 @@ libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
 	strpos.o table.o urldecode.o whitelist.o write_csv_fields.o
 
+add_asn.o : add_asn.c build_target_list.o add_field.o remchars.o externs.h 
+	$(CC) $(CFLAGS) add_asn.c -c -o add_asn.o
 add_attributes.o : add_attributes.c externs.h defaults.h build_target_list.o
 	$(CC) $(CFLAGS)  add_attributes.c -c -o add_attributes.o
+add_country.o : add_country.c build_target_list.o add_field.o remchars.o externs.h 
+	$(CC) $(CFLAGS) add_country.c -c -o add_country.o
 add_composite.o : add_composite.c externs.h defaults.h build_target_list.o \
 	array_from_string.o find_fieldname.o remchars.o
 	$(CC) $(CFLAGS) add_composite.c -c -o add_composite.o
@@ -134,8 +142,6 @@ insert_new_field.o : insert_new_field.c externs.h defaults.h find_fieldname.o
 	$(CC) $(CFLAGS)  insert_new_field.c -c -o insert_new_field.o
 int2ip : int2ip.c
 	$(CC) $(CFLAGS) int2ip.c -o int2ip
-intip_lookup.o : intip_lookup.c build_target_list.o remchars.o insert_new_field.o externs.h
-	$(CC) $(CFLAGS) intip_lookup.c -c -o intip_lookup.o
 ip2asn : ip2asn.c
 	$(CC) $(CFLAGS) ip2asn.c -o ip2asn
 ip2country : ip2country.c

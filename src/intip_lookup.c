@@ -1,5 +1,32 @@
 #include "externs.h"
 // ***********************************************************************
+// Function intip_lookup
+//
+// Parameters:
+// tgt - A string. The target field in the global _fieldnames_array[]
+// extension - A string. String get's appended to the target fieldname
+//	when the new field is created.
+// infile - A global file pointer to the file that will be searched through
+// env_name - The environmental string that indicates what the search file
+//	name is.
+//
+// This function replaces add_country() and add_asn(). They both performed
+// the same actions, but against different search input files. Nobody
+// likes to have to maintain two very similar functions when one slightly 
+// larger one can do the same thing..........
+//
+// The target fieldname should have a fieldvalue that is an IP address.
+// The function takes the IP address and converts it to an int.
+// The search input file has three fields:
+// Start_int,End_int,Some_string_value
+// The ip INT is compared to the start_int on each line. If the ip INT
+// is greater than this, a comparison is made to the end_int. If the end_int
+// is smaller, then the IP address fits inside the range. The string value
+// is then copied into the new target field, and the global _fieldnames_array
+// and _fieldvalues_ array updated.
+// The infile FILE * is returned by this function to be stored by the calling
+// routine. This saves re-opening infile each time this function is called.
+// 
 // ***********************************************************************
 FILE* intip_lookup(char *tgt, char *extension, FILE *infile, char *env_name) {
 struct in_addr ip;
