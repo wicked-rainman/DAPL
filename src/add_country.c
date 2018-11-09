@@ -4,9 +4,9 @@ static FILE *_countryfile;
 ssize_t n;
 struct in_addr ip;
 char buffer[MAX_FIELDVALUE_LENGTH];
+static char previous_buffer[MAX_FIELDVALUE_LENGTH];
 char line[500];
 char newname[MAX_FIELDNAME_LENGTH];
-  
 int found;
 int target_count,line_count;
 size_t k;
@@ -17,6 +17,7 @@ uint32_t ip_int=0;
 char start_str[50];
 char end_str[50];
 char country_str[100];
+static char previous_country_str[100];
 char *country_file;
 
 	if(_drop==1) return;
@@ -38,61 +39,66 @@ char *country_file;
 	while(target_count<tlist.count) {
 		strcpy(buffer, _fieldvalues_array[tlist.position[target_count]]);
 		(void) remchars("\"",buffer);
-		if(inet_aton(buffer,&ip)) {
-			ip_int=htonl(ip.s_addr);
-			found=0;
-        		rewind(_countryfile);
-			line_count=0;
-        		while(fgets(line, 500, _countryfile)) {
-				line_count++;
-                		(void) remchars("\"",line);
-                		buflen = strlen(line);
-                		k=0;
-				n=0;
-                		while((line[k]!=',') && (k<buflen)) {    //Numeric IP start
-                        		start_str[n] = line[k++];
-					n++;
-                		}
-                		start_str[n]='\0';
-                		k++;
-                		n = 0;
-                		while((line[k] !=',') && (k<buflen)) {  //Numeric IP end
-                        		end_str[n] = line[k++];
-                        		n++;
-                		}
-                		end_str[n]='\0';
-                		k++;
-                		stored_start = atol(start_str);
-                		stored_end = atol(end_str);
-                		if((ip_int >= stored_start) && (ip_int <= stored_end)) {
-					n=0;
-                             		while((k<buflen) && (line[k]!=',')) {                      //Country data
-                                        	country_str[n] = line[k++];
-                                        	n++;
-                                	}
-                			country_str[n]='\0';
-					strcpy(newname,tlist.name[target_count]);
-					strcat(newname,".country");
-					//fprintf(stdout,"add_country: %d Inserting [%s] %s for %s \n",line_count,newname,country_str,buffer);
-					insert_new_field(newname,country_str);
-					found=1;
-                        		break;
-                		}
-			}
-			if(found==0) {
-                       		strcpy(newname,tlist.name[target_count]);
-                        	strcat(newname,".country");
-				country_str[0]='\0';
-				//fprintf(stdout,"add_country: %d NOT FOUND [%s] %s for %s \n",line_count,newname,country_str,buffer);
-                        	insert_new_field(newname,country_str);
-        		}
+		strcpy(newname,tlist.name[target_count]);
+		strcat(newname,".country");
+		if(strcmp(previous_buffer,buffer)==0) {
+			insert_new_field(newname,previous_country_str);
 		}
 		else {
-                        strcpy(newname,tlist.name[target_count]);
-                        strcat(newname,".country");
-                        country_str[0]='\0';
-                        //fprintf(stdout,"add_country: Invalid IP, inserting [%s] %s for %s \n",newname,country_str,buffer);
-                        insert_new_field(newname,country_str);
+			strcpy(previous_buffer,buffer);
+			if(inet_aton(buffer,&ip)) {
+				ip_int=htonl(ip.s_addr);
+				found=0;
+        			rewind(_countryfile);
+				line_count=0;
+        			while(fgets(line, 500, _countryfile)) {
+					line_count++;
+                			(void) remchars("\"",line);
+                			buflen = strlen(line);
+                			k=0;
+					n=0;
+                			while((line[k]!=',') && (k<buflen)) {    //Numeric IP start
+                        			start_str[n] = line[k++];
+						n++;
+                			}
+                			start_str[n]='\0';
+                			k++;
+                			n = 0;
+                			while((line[k] !=',') && (k<buflen)) {  //Numeric IP end
+                        			end_str[n] = line[k++];
+                        			n++;
+                			}
+                			end_str[n]='\0';
+                			k++;
+                			stored_start = atol(start_str);
+                			stored_end = atol(end_str);
+                			if((ip_int >= stored_start) && (ip_int <= stored_end)) {
+						n=0;
+                             			while((k<buflen) && (line[k]!=',')) {                      //Country data
+                                        		country_str[n] = line[k++];
+                                        		n++;
+                                		}
+                				country_str[n]='\0';
+						strcpy(previous_country_str,country_str);
+						//fprintf(stdout,"add_country: %d Inserting [%s] %s for %s \n",line_count,newname,country_str,buffer);
+						insert_new_field(newname,country_str);
+						found=1;
+                        			break;
+                			}
+				}
+				if(found==0) {
+					country_str[0]='\0';
+					previous_country_str[0]='\0';
+					//fprintf(stdout,"add_country: %d NOT FOUND [%s] %s for %s \n",line_count,newname,country_str,buffer);
+                        		insert_new_field(newname,country_str);
+        			}
+			}
+			else {
+                        	country_str[0]='\0';
+				previous_country_str[0]='\0';
+                        	//fprintf(stdout,"add_country: Invalid IP, inserting [%s] %s for %s \n",newname,country_str,buffer);
+                        	insert_new_field(newname,country_str);
+			}
 		}
 		target_count++;
 	}

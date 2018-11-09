@@ -5,7 +5,7 @@ all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip 
 	ip2country ip2asn cidr2ip whitelist_convert install
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_asn.o \
-	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
+	add_field.o add_label.o add_quotes.o add_reverse_dns.o add_substring.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
@@ -17,11 +17,11 @@ libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o urldecode.o whitelist.o write_csv_fields.o
+	strpos.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 	ar -rcs libeml.a add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
-	add_country.o add_asn.o \
+	add_country.o add_asn.o add_substring.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
@@ -33,11 +33,11 @@ libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o urldecode.o whitelist.o write_csv_fields.o
+	strpos.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
-	add_country.o add_asn.o \
+	add_country.o add_asn.o add_substring.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
@@ -48,11 +48,11 @@ libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o table.o urldecode.o whitelist.o write_csv_fields.o
+	strpos.o table.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 	ar -rcs libdapl.a add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
-	add_country.o add_asn.o \
+	add_country.o add_asn.o add_substring.o \
 	array_from_string.o build_target_list.o cleanup.o dedupe.o \
 	define_csv_tag.o define_input_fieldnames.o draw_chain.o draw_node.o \
 	draw_path.o drop_rec.o empty.o extract_field_values.o \
@@ -63,7 +63,7 @@ libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o table.o urldecode.o whitelist.o write_csv_fields.o
+	strpos.o table.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 add_asn.o : add_asn.c build_target_list.o add_field.o remchars.o externs.h 
 	$(CC) $(CFLAGS) add_asn.c -c -o add_asn.o
@@ -85,6 +85,8 @@ add_quotes.o : add_quotes.c externs.h defaults.h find_fieldname.o
 	$(CC) $(CFLAGS)  add_quotes.c -c -o add_quotes.o
 add_reverse_dns.o : add_reverse_dns.c externs.h build_target_list.o insert_new_field.o
 	$(CC) $(CFLAGS) add_reverse_dns.c -c -o add_reverse_dns.o
+add_substring.o : add_substring.c build_target_list.o insert_new_field.o externs.h
+	$(CC) $(CFLAGS) add_substring.c -c -o add_substring.o
 array_from_string.o : array_from_string.c defaults.h externs.h
 	$(CC) $(CFLAGS) array_from_string.c -c -o array_from_string.o
 build_target_list.o : build_target_list.c defaults.h find_fieldname.o
@@ -200,6 +202,8 @@ strpos.o : strpos.c
 	$(CC) $(CFLAGS)  strpos.c -c -o strpos.o
 table.o : table.c externs.h
 	$(CC) $(CFLAGS) table.c -c -o table.o
+unix_time.o : unix_time.c build_target_list.o insert_new_field.o externs.h remchars.o
+	$(CC) $(CFLAGS) unix_time.c -c -o unix_time.o
 urldecode.o : urldecode.c externs.h find_fieldname.o
 	$(CC) $(CFLAGS)  urldecode.c -c -o urldecode.o
 whitelist.o : whitelist.c build_target_list.o externs.h

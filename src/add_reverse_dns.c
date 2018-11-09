@@ -2,7 +2,9 @@
 void add_reverse_dns(char *tgt) {
 char newname[MAX_FIELDNAME_LENGTH];
 char newval[MAX_FIELDVALUE_LENGTH];
+static char previous_newval[MAX_FIELDVALUE_LENGTH];
 char stored_val[MAX_FIELDVALUE_LENGTH];
+static char previous_stored_val[MAX_FIELDVALUE_LENGTH];
 int target_count;
 struct in_addr ip;
 struct hostent *hp;
@@ -32,12 +34,18 @@ struct hostent *hp;
 		}
 		strcpy(stored_val,_fieldvalues_array[tlist.position[target_count]]);
 		remchars("\"",stored_val);
+		if(strcmp(stored_val,previous_stored_val)==0) {
+                	insert_new_field(newname,previous_newval);
+		}
+		else {
+		strcpy(previous_stored_val,stored_val);
 		// **************************************
 		// If the field value can't be converted
 		// (Not a valid IP address)
 		// *************************************
 		if (!inet_aton(stored_val, &ip)) {
 			newval[0]='\0';
+			previous_newval[0]='\0';
 			insert_new_field(newname,newval);
 		}
 		else {
@@ -51,6 +59,7 @@ struct hostent *hp;
 				// empty value
 				// ************************************
 				newval[0]='\0';
+				previous_newval[0]='\0';
 				insert_new_field(newname,newval);
     			}
 			else {
@@ -58,8 +67,10 @@ struct hostent *hp;
 				// Got there in the end. Stick the rdns value in
 				// ***********************************************
 				strcpy(newval,hp->h_name);
+				strcpy(previous_newval, newval);
 				insert_new_field(newname,newval);
 			}
+		}
 		}
 		target_count++;
 	}

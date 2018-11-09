@@ -16,6 +16,7 @@
 #include <dirent.h>
 #include <ctype.h>
 #include <arpa/inet.h>
+#include <time.h>
 #include "defaults.h"
 typedef struct  {
         char name[MAX_FIELD_COUNT][MAX_FIELDNAME_LENGTH];
