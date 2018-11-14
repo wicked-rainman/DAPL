@@ -1,7 +1,7 @@
 #include "externs.h"
 int lookup(FILE *table,char* fieldname,char* newfield) {
 int v,match=0;
-size_t t,u,w;
+size_t t,w;
 int target_count,found,chars_found;
 char new_field[MAX_FIELDNAME_LENGTH];
 char new_value[MAX_FIELDVALUE_LENGTH];
@@ -33,22 +33,21 @@ char *sptr;
 					t++;
 				}
 				needle[t]='\0';
-				while((t<w) && (line[t]==' ' || line[t]=='\t')) t++;
-				v=0;
-				while(t<w) {
-					new_value[v]=line[t];
-					v++;
-					t++;
-				}
-				new_value[v-1]='\0';
 				sptr=strstr(_fieldvalues_array[tlist.position[target_count]],needle);
 				//
 				// Match found
 				//
 				if(sptr!=NULL) {
+                               		while((t<w) && (line[t]==' ' || line[t]=='\t')) t++;
+                                	v=0;
+                                	while(t<w) {
+                                        	new_value[v]=line[t];
+                                        	v++;
+                                        	t++;
+                                	}
+                                	new_value[v-1]='\0';
 					found=1;
 					match=1;
-					u=strlen(line);
                                         if(newfield[0]!='*') {
                                         	strcpy(new_field,newfield);
                                         }
