@@ -2,7 +2,7 @@ CC = clang
 CFLAGS = -Ofast -Wall  
 .PHONY: all
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
-	ip2country ip2asn cidr2ip whitelist_convert install
+	ip2country ip2asn cidr2ip whitelist_convert
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_asn.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o add_substring.o \
@@ -212,16 +212,16 @@ whitelist_convert : whitelist_convert.c
 	$(CC) $(CFLAGS) -lm whitelist_convert.c -o whitelist_convert 
 write_csv_fields.o : write_csv_fields.c externs.h defaults.h find_fieldname.o array_from_string.o
 	$(CC) $(CFLAGS)  write_csv_fields.c -c -o write_csv_fields.o
-install : 
+Install : 
 	cp *.a ../lib
-	mv ip2asn /usr/local/galvanise/bin
-	mv ip2country /usr/local/galvanise/bin
-	mv ip2int /usr/local/galvanise/bin
-	mv int2ip /usr/local/galvanise/bin
-	mv gcountry /usr/local/galvanise/bin
-	mv gcountry_server /usr/local/galvanise/bin
-	mv gasn /usr/local/galvanise/bin
-	mv gasn_server /usr/local/galvanise/bin
-	mv cidr2ip /usr/local/galvanise/bin
-	mv whitelist_convert /usr/local/galvanise/bin
-clean : rm *.o
+	mv ip2asn /usr/local/bin
+	mv ip2country /usr/local/bin
+	mv ip2int /usr/local/bin
+	mv int2ip /usr/local/bin
+	mv gcountry /usr/local/bin
+	mv gcountry_server /usr/local/bin
+	mv gasn /usr/local/bin
+	mv gasn_server /usr/local/bin
+	mv cidr2ip /usr/local/bin
+	mv whitelist_convert /usr/local/bin
+	rm *.o
