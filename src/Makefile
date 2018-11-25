@@ -218,6 +218,7 @@ write_csv_fields.o : write_csv_fields.c externs.h defaults.h find_fieldname.o ar
 	$(CC) $(CFLAGS)  write_csv_fields.c -c -o write_csv_fields.o
 Install : 
 	cp *.a ../lib
+	cp abuseipdb /usr/local/sbin
 	mv ip2asn /usr/local/bin
 	mv ip2country /usr/local/bin
 	mv ip2int /usr/local/bin
