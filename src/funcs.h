@@ -58,6 +58,7 @@ void set_output(char *);
 void setup();
 void socketadd_asn(char *);
 void socketadd_country(char *);
+void unescape(char *);
 void unix_time(char *, char *);
 void urldecode(char *);
 void write_csv_fields(char *);

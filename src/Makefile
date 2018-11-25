@@ -2,7 +2,7 @@ CC = clang
 CFLAGS = -Ofast -Wall  
 .PHONY: all
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
-	ip2country ip2asn cidr2ip whitelist_convert
+	ip2country ip2asn cidr2ip whitelist_convert sslcat
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_asn.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o add_substring.o \
@@ -17,7 +17,7 @@ libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
+	strpos.o unescape.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 	ar -rcs libeml.a add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
@@ -33,7 +33,7 @@ libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
+	strpos.o unescape.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
@@ -48,7 +48,7 @@ libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o table.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
+	strpos.o table.o unescape.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 	ar -rcs libdapl.a add_attributes.o add_composite.o add_concatenation.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o \
@@ -63,7 +63,7 @@ libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
 	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
-	strpos.o table.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
+	strpos.o table.o unescape.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 add_asn.o : add_asn.c build_target_list.o add_field.o remchars.o externs.h 
 	$(CC) $(CFLAGS) add_asn.c -c -o add_asn.o
@@ -198,10 +198,14 @@ socketadd_asn.o : socketadd_asn.c externs.h defaults.h insert_new_field.o find_f
 	$(CC) $(CFLAGS)  socketadd_asn.c -c -o socketadd_asn.o
 socketadd_country.o : socketadd_country.c externs.h defaults.h insert_new_field.o find_fieldname.o
 	$(CC) $(CFLAGS)  socketadd_country.c -c -o socketadd_country.o
+sslcat : sslcat.c
+	$(CC) $(CFLAGS) sslcat.c -lssl -lcrypto -o sslcat
 strpos.o : strpos.c
 	$(CC) $(CFLAGS)  strpos.c -c -o strpos.o
 table.o : table.c externs.h
 	$(CC) $(CFLAGS) table.c -c -o table.o
+unescape.o : unescape.c
+	$(CC) $(CFLAGS) -c unescape.c -o unescape.o
 unix_time.o : unix_time.c build_target_list.o insert_new_field.o externs.h remchars.o
 	$(CC) $(CFLAGS) unix_time.c -c -o unix_time.o
 urldecode.o : urldecode.c externs.h find_fieldname.o
@@ -224,4 +228,5 @@ Install :
 	mv gasn_server /usr/local/bin
 	mv cidr2ip /usr/local/bin
 	mv whitelist_convert /usr/local/bin
+	mv sslcat /usr/local/bin
 	rm *.o
