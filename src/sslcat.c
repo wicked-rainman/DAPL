@@ -1,4 +1,3 @@
-//  https://developer.ibm.com/tutorials/l-openssl/#get-started
 #include <stdio.h>
 #include <unistd.h>
 #include <malloc.h>
@@ -9,7 +8,6 @@
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 #define PEM "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
-#define FAIL    -1
 void unescape(char *);
 int main(int argc, char **argv) { 
 	int retcode,c;  
@@ -22,8 +20,6 @@ int main(int argc, char **argv) {
 	char server_name[4096];
 	char svr_name[4096];
 	char *perm_path=PEM;
-	//char * server_name="www.abuseipdb.com:https";
-	//char * server_request="GET /check/5.188.10.76/json?key=hsYGL7ivACWKhwNuXHUgVSdRoQlfzfnAX6rcoO4E&days=30 HTTP/1.0\r\nHost: www.abuseipdb.com\r\n\r\n";
 	port[0]='\0';
 	svr_name[0]='\0';
 	server_name[0]='\0';
