@@ -1,0 +1,20 @@
+#!/bin/bash
+if [ "$(id -u)" != 0 ]; then
+	echo "This script must be run as root"
+	exit 0
+fi
+	if ! rpm -qa | grep -qw openssl-devel; then
+ 		echo Package Openssl-dev - Not installed
+    		dnf install openssl-devel
+	else echo Package Openssl-devel Ok
+	fi
+	if ! rpm -qa | grep -qw clang; then
+		echo Package clang - Not installed
+		dnf install clang
+	else echo Package clang - Ok 
+	fi
+	if ! rpm -qa | grep -qw graphviz; then
+		echo Packasge graphviz - Not installed
+		dnf install graphviz
+	else echo Package graphviz - Ok
+	fi
