@@ -3,13 +3,13 @@
 This should create a directory named "DAPL".
        $HOME/DAPL/
        
-       --------->Reference/
+                    --------->Reference/
        
-       --------->src/
+                    --------->src/
        
-       --------->lib/
+                    --------->lib/
        
-       --------->progs
+                    --------->progs
        
 3. As root, run ./Configure to make sure system dependancies are present
 4. cd into $HOME/DAPL/src and run "make".
@@ -17,16 +17,18 @@ This should create a directory named "DAPL".
 any libraries into $HOME/DAPL/lib.
 6. Edit $HOME/.bashrc, and add the three following variables:
 
-  WHITE_FILE= (home directory)/DAPL/Reference/whitelist.csv; export WHITE_FILE
+                   WHITE_FILE= (home directory)/DAPL/Reference/whitelist.csv; export WHITE_FILE
   
-  ASN_FILE= (home directory)/DAPL/Reference/asn.csv; export ASN_FILE
+                   ASN_FILE= (home directory)/DAPL/Reference/asn.csv; export ASN_FILE
   
-  COUNTRY_FILE= (home directory)/DAPL/Reference/country.csv; export COUNTRY_FILE
+                   COUNTRY_FILE= (home directory)/DAPL/Reference/country.csv; export COUNTRY_FILE
   
   These three variables point to the corresponding files in $HOME/DAPL/Reference
 
 7. Create any programs in $HOME/DAPL/progs
+
 8.To compile each program, use the command:
 
        "clang -Ofast prog.c ../lib/libdapl.a -o progname"
+
 9. Any additional reference files you make use of should reside in $HOME/DAPL/Reference
