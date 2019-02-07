@@ -1,0 +1,6 @@
+#!/bin/bash
+GREFERENCE=/fast1/Reference
+export GREFERENCE
+GASN_PORT=32482
+export GASN_PORT
+/usr/local/bin/gasn_server

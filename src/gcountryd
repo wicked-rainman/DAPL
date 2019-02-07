@@ -1,0 +1,6 @@
+#!/bin/bash
+GREFERENCE=/fast1/Reference
+export GREFERENCE
+GCOUNTRY_PORT=32483
+export GCOUNTRY_PORT
+/usr/local/bin/gcountry_server

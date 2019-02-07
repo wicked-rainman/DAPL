@@ -1,0 +1,6 @@
+#!/bin/bash
+GREFERENCE=/fast1/Reference
+export GREFERENCE
+GDNS_PORT=32481
+export GDNS_PORT
+/usr/local/bin/gdns_server
