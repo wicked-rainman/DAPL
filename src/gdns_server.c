@@ -109,7 +109,7 @@ void doprocessing (int sock, char* clip) {
   
    bzero(buffer,256);
    bzero(ip,50);
-   int k,l,m,buflen,nm_length;
+   int k,buflen;
    int ip_octet[4]={0,0,0,0};
    char *p, *saveptr;
    FILE *dns;
