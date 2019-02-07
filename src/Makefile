@@ -220,6 +220,7 @@ Install :
 	mkdir -p ../lib
 	cp *.a ../lib
 	cp abuseipdb /usr/local/sbin
+	cp convert_emails /usr/local/sbin
 	mv ip2asn /usr/local/bin
 	mv ip2country /usr/local/bin
 	mv ip2int /usr/local/bin
