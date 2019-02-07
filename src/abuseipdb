@@ -4,10 +4,10 @@ filter () {
 COUNTER=0
 while read LINE; do
 	COUNTER=$[$COUNTER +1]
-	if [ $COUNTER -eq 24 ]; then 
+	if [ $COUNTER -eq 21 ]; then 
 		STR1=$(echo $LINE | sed 's/<title>//g; s/<\/title>//g; s/|//g; s/AbuseIPDB//g')
 	fi
-	if [ $COUNTER -eq 25 ]; then
+	if [ $COUNTER -eq 22 ]; then
 		COUNTER1=0;
 		for WORD in $LINE; do 
 			COUNTER1=$[$COUNTER1 +1]
