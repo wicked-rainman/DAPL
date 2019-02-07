@@ -1,0 +1,6 @@
+[Unit]
+After=sshd.service
+[Service]
+ExecStart=/usr/local/sbin/gasnd
+[Install]
+WantedBy=multi-user.target
