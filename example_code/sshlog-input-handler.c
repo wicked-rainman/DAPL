@@ -1,3 +1,10 @@
+// ----------------------------------------------------------------------------
+// Simple input handler for processing SSH logs.
+// ASN, Country code, reverse dns and history are added to each input record.
+// DTG field is created out of the month,day and time fields.
+// Only records that relate to a successful login are kept. 
+// -----------------------------------------------------------------------------
+
 #include "../src/externs.h"
 FILE *history;
 void setup() {
