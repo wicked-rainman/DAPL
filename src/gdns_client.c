@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         printf("\n Usage: %s dns_query \n",argv[0]);
         return 1;
     } 
-    if(hostname = getenv("GSERVER")) {;
+    if((hostname = getenv("GSERVER"))) {;
     	if(hostname_to_ip(hostname,ip)) {
         	printf("No IP address found for %s\n",hostname);
         	return 1;
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 	printf("No GSERVER environment variable set\n");
 	return 1;
     }
-    if(gdns_port = getenv("GDNS_PORT")) {;
+    if((gdns_port = getenv("GDNS_PORT"))) {;
     	gdns_port_int = atoi(gdns_port);
     }
     
