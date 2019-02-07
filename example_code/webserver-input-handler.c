@@ -1,3 +1,13 @@
+// --------------------------------------------------------------------------
+// Web server log processing:
+// Purpose: This code will read web server logs held in an input directory.
+// Unwanted fields are droped, and only records that relate to:
+// A. A successful request and
+// B. Source IP adddresses that have been seen before, or
+// C. Requests being made that indicate an attempted hack.
+// are kept. 
+// --------------------------------------------------------------------------
+
 #include "../src/externs.h"
 FILE *history;
 FILE *urls;
