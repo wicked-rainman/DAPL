@@ -17,7 +17,7 @@ This should create a directory named "DAPL".
 4. cd into $HOME/DAPL/src and run "make".
 5. When that has completed, run "sudo make Install". This should copy any binaries into /usr/local/bin, and move 
 any libraries into $HOME/DAPL/lib.
-6. Edit $HOME/.bashrc, and add the three following variables:
+6. Edit $HOME/.bashrc, and add the three following variables if this is a standalone installation:
 
                    WHITE_FILE= (home directory)/DAPL/Reference/whitelist.csv; export WHITE_FILE
   
@@ -26,11 +26,26 @@ any libraries into $HOME/DAPL/lib.
                    COUNTRY_FILE= (home directory)/DAPL/Reference/country.csv; export COUNTRY_FILE
   
   These three variables point to the corresponding files in $HOME/DAPL/Reference
+  
+7. If the install is using the server functionality, add these variables to $HOME/.bashrc:
 
-7. Create any programs in $HOME/DAPL/progs
+       GREFERENCE=/usr/local/Reference
+       export GREFERENCE
+       GDNS_PORT=32481
+       export GDNS_PORT
+       GASN_PORT=32482
+       export GASN_PORT
+       GCOUNTRY_PORT=32483
+       export GCOUNTRY_PORT
+       GHISTORY_PORT=32485
+       GSERVER= IP address for the server
+       
+8. If this is a server install, use systemctl to install gasnd.service, gdnsd.service, grdnsd.service and 
 
-8.To compile each program, use the command:
+8. Create any programs in $HOME/DAPL/progs
+
+9.To compile each program, use the command:
 
        "clang -Ofast prog.c ../lib/libdapl.a -o progname"
 
-9. Any additional reference files you make use of should reside in $HOME/DAPL/Reference
+10. Any additional reference files you make use of should reside in $HOME/DAPL/Reference
