@@ -1,0 +1,6 @@
+#!/bin/bash
+GHISTORY=/fast2/history
+export GHISTORY
+GHISTORY_PORT=32485
+export GHISTORY_PORT
+/usr/local/bin/ghistory_server

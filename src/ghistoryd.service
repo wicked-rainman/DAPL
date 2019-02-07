@@ -1,0 +1,6 @@
+[Unit]
+After=sshd.service
+[Service]
+ExecStart=/usr/local/sbin/ghistoryd
+[Install]
+WantedBy=multi-user.target
