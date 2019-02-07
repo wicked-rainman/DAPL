@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         printf("\n Usage: %s dns_query \n",argv[0]);
         return 1;
     } 
-    if(hostname = getenv("GSERVER")) {;
+    if((hostname = getenv("GSERVER"))) {;
         if(hostname_to_ip(hostname,ip)) {
                 printf("No IP address found for %s\n",hostname);
                 return 1;
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
         printf("No GSERVER environment variable set\n");
         return 1;
     }
-    if(gdns_port = getenv("GRDNS_PORT")) {;
+    if((gdns_port = getenv("GRDNS_PORT"))) {;
         gdns_port_int = atoi(gdns_port);
     }
     
@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-int hostname_to_ip(char * hostname , char* ip)
-{
+    
+int hostname_to_ip(char * hostname , char* ip) {
     struct hostent *he;
     struct in_addr **addr_list;
     int i;
