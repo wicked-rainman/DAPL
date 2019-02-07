@@ -1,0 +1,6 @@
+[Unit]
+After=sshd.service
+[Service]
+ExecStart=/usr/local/sbin/grdnsd
+[Install]
+WantedBy=multi-user.target
