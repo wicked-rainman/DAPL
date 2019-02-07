@@ -221,6 +221,10 @@ Install :
 	cp *.a ../lib
 	cp abuseipdb /usr/local/sbin
 	cp convert_emails /usr/local/sbin
+	cp dns_auth_update /usr/local/sbin
+	cp rdns_update /usr/local/sbin
+	cp class_a_update /usr/local/sbin
+	cp reverse_class_a_update /usr/local/sbin
 	mv ip2asn /usr/local/bin
 	mv ip2country /usr/local/bin
 	mv ip2int /usr/local/bin
