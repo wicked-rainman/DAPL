@@ -10,7 +10,7 @@ This should create a directory named "DAPL".
 4. cd into $HOME/DAPL/src and run "make".
 5. When that has completed, run "sudo make Install". This should copy any binaries into /usr/local/bin, and move 
 any libraries into $HOME/DAPL/lib.
-6 edit $HOME/.bashrc, and add the three following variables:
+6. Edit $HOME/.bashrc, and add the three following variables:
   WHITE_FILE= (home directory)/DAPL/Reference/whitelist.csv; export WHITE_FILE
   ASN_FILE= (home directory)/DAPL/Reference/asn.csv; export ASN_FILE
   COUNTRY_FILE= (home directory)/DAPL/Reference/country.csv; export COUNTRY_FILE
