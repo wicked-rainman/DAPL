@@ -2,7 +2,8 @@ CC = clang
 CFLAGS = -Ofast -Wall  
 .PHONY: all
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
-	ip2country ip2asn cidr2ip whitelist_convert sslcat
+	ip2country ip2asn cidr2ip whitelist_convert sslcat gdns_server grdns_server \
+	ghistory_server gdns grdns ghistory
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_asn.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o add_substring.o \
@@ -119,6 +120,14 @@ find_field_defs.o : find_field_defs.c externs.h
 	$(CC) $(CFLAGS)  find_field_defs.c -c -o find_field_defs.o
 find_fieldname.o : find_fieldname.c externs.h
 	$(CC) $(CFLAGS)  find_fieldname.c -c -o find_fieldname.o
+gdns : gdns_client.c 
+	$(CC) $(CFLAGS) gdns_client.c -o gdns
+gdns_server : gdns_server.c
+	$(CC) $(CFLAGS) gdns_server.c -o gdns_server
+grdns : grdns_client.c
+	$(CC) $(CFLAGS) grdns_client.c -o grdns
+grdns_server : grdns_server.c
+	$(CC) $(CFLAGS) grdns_server.c -o grdns_server
 ghistory : ghistory_client.c 
 	$(CC) $(CFLAGS) ghistory_client.c -o ghistory
 ghistory_server : ghistory_server.c
@@ -244,6 +253,8 @@ Install :
 	mv gcountry_server /usr/local/bin
 	mv gasn /usr/local/bin
 	mv gasn_server /usr/local/bin
+	mv grdns /usr/local/bin
+	mv grdns_server /usr/local/bin
 	mv cidr2ip /usr/local/bin
 	mv whitelist_convert /usr/local/bin
 	mv sslcat /usr/local/bin
