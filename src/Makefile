@@ -225,6 +225,10 @@ Install :
 	cp rdns_update /usr/local/sbin
 	cp class_a_update /usr/local/sbin
 	cp reverse_class_a_update /usr/local/sbin
+	cp gdnsd /usr/local/sbin
+	cp grdnsd /usr/local/sbin
+	cp gcountryd /usr/local/sbin
+	cp gasnd /usr/local/sbin
 	mv ip2asn /usr/local/bin
 	mv ip2country /usr/local/bin
 	mv ip2int /usr/local/bin
