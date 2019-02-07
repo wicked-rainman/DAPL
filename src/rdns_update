@@ -1,0 +1,72 @@
+#!/bin/bash
+##############################################################################################
+# Script: rdns_update                                                                        #
+# Version: 1.0                                                                               #
+# Inital author: WR.                                                                         #
+# Purpose:                                                                                   #
+# This script takes a copy of the Rapid7 reverse DNS logs, and populates or                  #
+# updates a local directory structure with all the Auth records found within the log         #
+# This is all pretty much a clone of dns_auth_update but with a few minor tweaks             #
+##############################################################################################
+
+export CLASS_A=0
+mkdir -p $DNS_HISTORY
+mkdir -p $DNS_TEMP
+
+export OUTNAME=$(echo $1 | sed 's/-//g' | cut -b 1-8)
+echo DTG for this pull is $OUTNAME
+if [  -e $DNS_HISTORY/$1 ]; then
+        echo A version of $1 is already held in the $DNS_HISTORY directory
+else 
+	cd $DNS_HISTORY
+        echo Fetching $1 and storing in $DNS_HISTORY.
+	wget -q https://opendata.rapid7.com/sonar.rdns_v2/$1
+	if [[ $? -ne 0 ]]; then 
+		echo Failed to retrieve https://opendata.rapid7.com/sonar.rdns_v2/$1
+		exit 1;
+	fi
+fi
+
+echo Filtering auth records from $1 into class A files in $DNS_TEMP
+cd $DNS_TEMP
+zcat $DNS_HISTORY/$1 | grep -F ",\"name\":" | grep -F "\"value\":" | sed 's/\"//g; s/:/,/g; s/}//g' | 
+	awk -v DTG=$OUTNAME -F "," '{print $4","$6","DTG}' | awk -F "." '{print | "gzip > r"$1".gz"}'
+cpu_count=$(grep -c ^processor /proc/cpuinfo)
+let count=0
+pid_array=()
+while [ $count -lt $cpu_count ]; do 
+	pid_array[$count]=0
+	let count=count+1
+done
+while [ $CLASS_A -lt 256 ]; do
+	if [ -e r$CLASS_A.gz ]; then
+		let spawn=0
+        	while [ $spawn -eq 0 ]; do
+			let count=0
+                	while [ $count -lt $cpu_count ]; do
+                        	if [ ${pid_array[$count]} -eq 0 ]; then
+                                	taskset -c $count reverse_class_a_update $DNS_TEMP/r$CLASS_A.gz $CLASS_A &
+                                	pid_array[$count]=$!
+					echo Invoked PID ${pid_array[$count]} on Core $count to update dns entries for $CLASS_A.0.0/8
+                                	let spawn=1
+                                	break
+                        	else 
+					kill -0 ${pid_array[$count]} 2> /dev/null
+					if [ $? -ne 0 ]; then
+                                        	taskset -c $count reverse_class_a_update $DNS_TEMP/r$CLASS_A.gz $CLASS_A &
+                                		pid_array[$count]=$!
+					        echo Invoked PID ${pid_array[$count]} on Core $count to update dns entries for $CLASS_A.0.0/8
+                                		let spawn=1
+                                		break
+					fi
+				fi
+                       	 	let count=count+1
+               		done
+			sleep .1
+		done
+	fi
+	let CLASS_A=CLASS_A+1
+done
+wait
+rm -f $DNS_TEMP/r*
+echo Finished

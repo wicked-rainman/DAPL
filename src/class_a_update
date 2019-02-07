@@ -1,0 +1,27 @@
+##############################################################################
+# This routine is called from dns_auth_update and should not be run directly #
+##############################################################################
+#!/bin/bash
+export LC_ALL=C
+	let CLASS_A=$2
+        let CLASS_B=0
+	cd $DNS_TEMP
+	zcat $1 | awk -F "." '{print > "f"$1"."$2".tmp"}' 
+        while [ $CLASS_B -lt 256 ]; do
+		if [ -e  f$CLASS_A.$CLASS_B.tmp ]; then
+			mkdir -p $DNS_INODES/$CLASS_A/$CLASS_B
+			let CLASS_C=0
+			while [ $CLASS_C -lt 256 ];do
+                		grep  '^'"$CLASS_A"'\.'"$CLASS_B"'\.'"$CLASS_C"'\.' f$CLASS_A.$CLASS_B.tmp >> $DNS_INODES/$CLASS_A/$CLASS_B/f$CLASS_C
+                		sort -Vr $DNS_INODES/$CLASS_A/$CLASS_B/f$CLASS_C > f$CLASS_A.$CLASS_B.$CLASS_C.tmp
+                		awk -F "," '{print $3" "$1" "$2}' f$CLASS_A.$CLASS_B.$CLASS_C.tmp > f$CLASS_A.$CLASS_B.$CLASS_C.awk
+                		rm -f f$CLASS_A.$CLASS_B.$CLASS_C.tmp
+                		uniq -i -f1 f$CLASS_A.$CLASS_B.$CLASS_C.awk | awk -F " " '{print $2","$3","$1}' > $DNS_INODES/$CLASS_A/$CLASS_B/f$CLASS_C
+                		rm -f f$CLASS_A.$CLASS_B.$CLASS_C.awk
+				let CLASS_C=CLASS_C+1
+			done
+			rm -f f$CLASS_A.$CLASS_B.tmp
+		fi
+                let CLASS_B=CLASS_B+1
+        done
+rm -f f$CLASS_A.gz

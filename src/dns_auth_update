@@ -1,0 +1,103 @@
+#!/bin/bash
+##############################################################################################
+# Script: dns_auth_update                                                                    #
+# Version: 3.2                                                                               #
+# Inital author: WR.                                                                         #
+# Purpose:                                                                                   #
+# This script takes a copy of the Rapid7 forward DNS logs, and populates or                  #
+# updates a local directory structure with all the Auth records found within the log         #
+#                                                                                            #
+# 1. The Rapid7 logs are retrieved using wget, and stored in the DNS_HISTORY directory       #
+# 2. All the Auth records are extracted, and the results written to files in DNS_TMP         #
+# 3. The number of available processor cores is extracted from the /proc filesystem          #
+# 4. An array of size "core count" is created to hold the PID value for each spawned process #
+# 5. A loop is invoked to spawn upto "core_count" class_a_update for each /8 IPV4 network.   #
+# It is this sub-process that updates all the DNS Inode directories.                         #
+#                                                                                            #
+# Notes:                                                                                     #
+# 1. The Rapid7 file is in gz json format. The initial filtered output is csv gz to reduce   #
+# disc IO times. It will spawn up to 256 pipes to gzip, plus a bunch for any mal-formatted   #
+# input lines.                                                                               #
+# 2. Average Rapid7 input file is 24Gb, and new releases are issued 4-5 times per month.     #
+# 3. The DNS_TEMP and  DNS_HISTORY directories must be on fast non-spinning storage.         #
+# 4. Script class_a_update writes to directory DNS_INODES. This must be mounted on VNAND.    # 
+# 5. For safety, DNS_TEMP must be capable of holding at least twice the size of the input    #
+# file.                                                                                      #
+# 6. In theory, this script could be replaced with something like:                           #
+#                                                                                            #
+#     zcat $1 |                                                                              #
+#		grep -F ",\"type\":\"a\"," |                                                 #
+#		sed 's/\"//g; s/:/,/g; s/}//g' |                                             #
+#        	awk -v DTG=$OUTNAME -F "," '{print $8","$4","DTG}' |                         #
+#		awk -F "." '{print >> $1"/"$2"/"$3"/"f"$4}'                                  #
+#                                                                                            #
+#     But although good in theory, randomly writing to 16 odd million files stored on the    #
+#     same physical device is such an overhead it becomes just too slow (I've never let this #
+#     process complete as an experiment). Regardless, a second pass of the files must be     #
+#     made to sort and de-dupe them.                                                         #
+#                                                                                            #
+# Version 3.1 Input file name format changed, so altered way date field extracted for        #
+# $OUTNAME                                                                                   #
+##############################################################################################
+
+export CLASS_A=0
+mkdir -p $DNS_HISTORY
+mkdir -p $DNS_TEMP
+
+export OUTNAME=$(echo $1 | sed 's/-//g' | cut -b 1-8)
+echo DTG for this pull is $OUTNAME
+if [  -e $DNS_HISTORY/$1 ]; then
+        echo A version of $1 is already held in the $DNS_HISTORY directory
+else 
+	cd $DNS_HISTORY
+        echo Fetching $1 and storing in $DNS_HISTORY.
+	wget -q https://opendata.rapid7.com/sonar.fdns_v2/$1
+	if [[ $? -ne 0 ]]; then 
+		echo Failed to retrieve https://opendata.rapid7.com/sonar.fdns_v2/$1
+		exit 1;
+	fi
+fi
+
+echo Filtering auth records from $1 into class A files in $DNS_TEMP
+cd $DNS_TEMP
+zcat $DNS_HISTORY/$1 | grep -F ",\"type\":\"a\"," | sed 's/\"//g; s/:/,/g; s/}//g' | 
+	awk -v DTG=$OUTNAME -F "," '{print $8","$4","DTG}' | awk -F "." '{print | "gzip > f"$1".gz"}'
+cpu_count=$(grep -c ^processor /proc/cpuinfo)
+let count=0
+pid_array=()
+while [ $count -lt $cpu_count ]; do 
+	pid_array[$count]=0
+	let count=count+1
+done
+while [ $CLASS_A -lt 256 ]; do
+	if [ -e f$CLASS_A.gz ]; then
+		let spawn=0
+        	while [ $spawn -eq 0 ]; do
+			let count=0
+                	while [ $count -lt $cpu_count ]; do
+                        	if [ ${pid_array[$count]} -eq 0 ]; then
+                                	taskset -c $count  class_a_update $DNS_TEMP/f$CLASS_A.gz $CLASS_A &
+                                	pid_array[$count]=$!
+					echo Invoked PID ${pid_array[$count]} on Core $count to update dns entries for $CLASS_A.0.0/8
+                                	let spawn=1
+                                	break
+                        	else 
+					kill -0 ${pid_array[$count]} 2> /dev/null
+					if [ $? -ne 0 ]; then
+                                        	taskset -c $count  class_a_update $DNS_TEMP/f$CLASS_A.gz $CLASS_A &
+                                		pid_array[$count]=$!
+					        echo Invoked PID ${pid_array[$count]} on Core $count to update dns entries for $CLASS_A.0.0/8
+                                		let spawn=1
+                                		break
+					fi
+				fi
+                       	 	let count=count+1
+               		done
+			sleep .1
+		done
+	fi
+	let CLASS_A=CLASS_A+1
+done
+wait
+rm -f $DNS_TEMP/f*
+echo Finished
