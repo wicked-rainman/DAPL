@@ -18,3 +18,17 @@ fi
 		dnf install graphviz
 	else echo Package graphviz - Ok
 	fi
+file="/usr/local/bin/msgconvert"
+if [ ! -f "$file" ]; then
+	mkdir -p /usr/local/bin
+ 	rm -rf MSG-Convert
+ 	perl -MCPAN -e 'install("Email::Outlook::Message")'
+ 	perl -MCPAN -e 'install("Email::LocalDelivery")'
+ 	perl -MCPAN -e 'install("Getopt::Long")'
+ 	perl -MCPAN -e 'install("Pod::Usage")'
+ 	perl -MCPAN -e 'install("File::Basename")'
+ 	git clone https://github.com/craig552uk/MSG-Convert.git
+ 	mv MSG-Convert/msgconvert.pl /usr/local/bin/msgconvert
+ 	rm -rf MSG-Convert
+fi
+
