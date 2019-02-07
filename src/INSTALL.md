@@ -37,10 +37,12 @@ any libraries into $HOME/DAPL/lib.
        export GASN_PORT
        GCOUNTRY_PORT=32483
        export GCOUNTRY_PORT
-       GHISTORY_PORT=32485
+       GRDNS_PORT=32485
+       export GRDNS_PORT
        GSERVER= IP address for the server
+       export GSERVER
        
-8. If this is a server install, use systemctl to install gasnd.service, gdnsd.service, grdnsd.service and 
+8. If this is a server install, use systemctl to install gasnd.service, gdnsd.service, grdnsd.service and gcountryd.service
 
 8. Create any programs in $HOME/DAPL/progs
 
