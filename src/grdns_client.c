@@ -36,9 +36,14 @@ int main(int argc, char *argv[]) {
     }
     
     else {   
-        printf("No GDNS_PORT environment variable set\n");
+          printf("No GRDNS_PORT environment variable set\n");
         return 1;
     }
+    memset(recvBuff, '0',sizeof(recvBuff));
+    if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+        printf("\n Error : Could not create socket for connection to %s (%s):%d\n",hostname,ip,gdns_port_int);
+        return 1;
+    } 
         memset(&serv_addr, '0', sizeof(serv_addr)); 
 
         serv_addr.sin_family = AF_INET;
@@ -86,12 +91,3 @@ int hostname_to_ip(char * hostname , char* ip) {
      
     return 1;
 }
-
-        printf("No GRDNS_PORT environment variable set\n");
-        return 1;
-    }
-    memset(recvBuff, '0',sizeof(recvBuff));
-    if((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-        printf("\n Error : Could not create socket for connection to %s (%s):%d\n",hostname,ip,gdns_port_int);
-        return 1;
-} 
