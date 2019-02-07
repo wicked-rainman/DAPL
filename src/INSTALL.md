@@ -1,6 +1,7 @@
 1. cd into your $HOME directory
 2. Clone the repository using "git clone https://github.com/wicked-rainman/DAPL.git"
 This should create a directory named "DAPL".
+
        $HOME/DAPL/
        
                     --------->Reference/
