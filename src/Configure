@@ -3,6 +3,11 @@ if [ "$(id -u)" != 0 ]; then
 	echo "This script must be run as root"
 	exit 0
 fi
+# Ensure local bin and sbin directories are present - If not then make them
+mkdir -p /usr/local/bin
+mkdir -p /usr/local/sbin
+# Check standard distribution packages are installed
+
 	if ! rpm -qa | grep -qw openssl-devel; then
  		echo Package Openssl-dev - Not installed
     		dnf install openssl-devel
@@ -18,9 +23,20 @@ fi
 		dnf install graphviz
 	else echo Package graphviz - Ok
 	fi
+	if ! rpm -qa | grep -qw detox; then 
+		echo Package detox - Not installed
+		dnf install detox
+	else echo Package detox - Ok
+	fi
+	if ! rpm -qa | grep -qw dos2unix; then
+		echo Package dos2unix - Not installed
+		dnf install dos2unix
+	else echo Package dos2unix - Ok
+	fi
+# Check non-standard packages are installed
 file="/usr/local/bin/msgconvert"
 if [ ! -f "$file" ]; then
-	mkdir -p /usr/local/bin
+	echo Perl script msgconvert - Not installed
  	rm -rf MSG-Convert
  	perl -MCPAN -e 'install("Email::Outlook::Message")'
  	perl -MCPAN -e 'install("Email::LocalDelivery")'
@@ -30,5 +46,6 @@ if [ ! -f "$file" ]; then
  	git clone https://github.com/craig552uk/MSG-Convert.git
  	mv MSG-Convert/msgconvert.pl /usr/local/bin/msgconvert
  	rm -rf MSG-Convert
+else echo Perl script msgconvert - Ok	
 fi
 
