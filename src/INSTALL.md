@@ -9,7 +9,7 @@ This should create a directory named "DAPL".
        
                     --------->lib/
        
-                    --------->progs
+                    --------->example_code
        
 3. As root, run ./Configure to make sure system dependancies are present
 4. cd into $HOME/DAPL/src and run "make".
