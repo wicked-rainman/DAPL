@@ -48,10 +48,10 @@ any libraries into $HOME/DAPL/lib.
 8. If this is a server install, use systemctl to install gasnd.service, gdnsd.service, grdnsd.service
 gcountryd.service and ghistoryd.service.
 
-8. Create any programs in $HOME/DAPL/progs
+9. Create any programs in $HOME/DAPL/progs
 
-9.To compile each program, use the command:
+10. To compile each program, use the command:
 
        "clang -Ofast prog.c ../lib/libdapl.a -o progname"
 
-10. Any additional reference files you make use of should reside in $HOME/DAPL/Reference
+11. Any additional reference files you make use of should reside in $HOME/DAPL/Reference
