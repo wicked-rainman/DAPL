@@ -217,6 +217,7 @@ whitelist_convert : whitelist_convert.c
 write_csv_fields.o : write_csv_fields.c externs.h defaults.h find_fieldname.o array_from_string.o
 	$(CC) $(CFLAGS)  write_csv_fields.c -c -o write_csv_fields.o
 Install : 
+	mkdir -p ../lib
 	cp *.a ../lib
 	cp abuseipdb /usr/local/sbin
 	mv ip2asn /usr/local/bin
