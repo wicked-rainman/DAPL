@@ -119,6 +119,10 @@ find_field_defs.o : find_field_defs.c externs.h
 	$(CC) $(CFLAGS)  find_field_defs.c -c -o find_field_defs.o
 find_fieldname.o : find_fieldname.c externs.h
 	$(CC) $(CFLAGS)  find_fieldname.c -c -o find_fieldname.o
+ghistory : ghistory_client.c 
+	$(CC) $(CFLAGS) ghistory_client.c -o ghistory
+ghistory_server : ghistory_server.c
+	$(CC) $(CFLAGS) ghistory_server.c -o ghistory_server
 gasn : gasn_client.c defaults.h funcs.h hostname_to_ip.c
 	$(CC) $(CFLAGS)  gasn_client.c hostname_to_ip.c  -o gasn
 gasn_server: gasn_server.c remchars.o
@@ -229,10 +233,13 @@ Install :
 	cp grdnsd /usr/local/sbin
 	cp gcountryd /usr/local/sbin
 	cp gasnd /usr/local/sbin
+	cp ghistoryd /usr/local/sbin
 	mv ip2asn /usr/local/bin
 	mv ip2country /usr/local/bin
 	mv ip2int /usr/local/bin
 	mv int2ip /usr/local/bin
+	mv ghistory /usr/local/bin
+	mv ghistory_server /usr/local/bin
 	mv gcountry /usr/local/bin
 	mv gcountry_server /usr/local/bin
 	mv gasn /usr/local/bin
