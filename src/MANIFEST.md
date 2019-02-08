@@ -17,6 +17,9 @@ An overview of the utilities and functions provided by this package:
         convert_emails - Converts saved outlook messages into plain text
         dns_auth_update - Updates the DNS_INODES database for historic DNS resolution
         rdns_update - Updates the RDNS_INODES database for historic reverse DNS resolution
+        dns_prune - Utility to remove rogue IP addresses or entries from the DNS_INODES database
+        class_a_update - Internal routine used by dns_auth_update
+        reverse_class_a_update - Internal routine used by rdns_update
   
 2. Services
   
@@ -25,6 +28,16 @@ An overview of the utilities and functions provided by this package:
         ghistory_server - A service running on $GSERVER port $GHISTORY_PORT. Answers IP seen before queries.
         gcountry_server - A service running on $GSERVER port $GCOUNTRY_PORT. Answers IP country code lookups.
         gdns_server - A service running on $GSERVER port $GDNS_PORT. Answers historic DNS queries.
+        gasnd - systemd shell for gasn_server
+        gcountryd - systemd shell for gcountry_server
+        gdnsd - systemd shell for gdns_server
+        ghistoryd - systemd shell for ghistory_server
+        grdnsd - systemd shell for grdns_server
+        gasnd.service - systemd service file for gasn_server
+        gcountryd.service - systemd service file for gcountry_server
+        gdnsd.service - systemd service file for gdns_server
+        grdnsd.service - systemd service file for grdns_server
+        ghistoryd.service - systemd service file for ghistory_server
   
 3. DAPL wrapper
   
