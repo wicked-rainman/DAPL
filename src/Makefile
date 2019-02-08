@@ -10,9 +10,6 @@ all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip 
 	mkdir -p ../input_data
 	mkdir -p ../output_data
 	mkdir -p ../graphics
-	mkdir -p ../docs
-	mv MANIFEST.md ../docs
-	mv INSTALL.md ../docs
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_asn.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o add_substring.o \
