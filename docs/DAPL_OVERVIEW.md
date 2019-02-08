@@ -60,13 +60,27 @@ related data have been included, albeit they are separate (but replicated) from 
 
 3. Loop functions
 
-      add_asn
+      add_asn("fieldname")
       
-      add_attributes
+            Parameter is the name of a field that should contain a dotted decimal notation IP address
+            IP address is looked up in file $ASN_FILE, and the ASN added as fieldname.asn
+            This is a local lookup and depends on an up to date ASN_FILE.
       
-      add_composite
+      add_attributes("fieldname","attributes")
       
-      add_concatenation
+            A graphics function. First parameter is the fieldname that attributes will be added for.
+            Second parameter is a string containing the (.dot compatible) attributes to be used.
+      
+      add_composite("fieldname","composite_fieldname(s)")
+      
+            A graphics function. First parameter is the fieldname that composites will be added to.
+            Second parameter is a list of one or more fieldnames whoes value will be used to create 
+            the composite. When using graphics, adding composite values makes a node unique. 
+      
+      add_concatenation("new fieldname","fieldname(s)")
+      
+            Creates a new fieldname that contains the field values specified by one or more existing
+            fieldname(s). 
       
       add_country
       
