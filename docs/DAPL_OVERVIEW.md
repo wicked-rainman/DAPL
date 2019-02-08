@@ -25,6 +25,10 @@ related data have been included, albeit they are separate (but replicated) from 
 
       define_input_fieldnames('dlm',"Fieldname1, Fieldname2, FieldnameN")
       
-            Defines the separator that is present in the input record to delimit each field ('dlm')
-            Defines the name for each field present in the input records ("Fieldname1......Etc")
+            First parameter Defines the field separator present in each input record
+            Second parameter Defines the name for each field in the input records.
             
+      set_input_directory('dlm',"directory name")
+
+            First parameter defines the field separater present in each input record
+            Second parameter defines the input directory name (including trailing '/')
