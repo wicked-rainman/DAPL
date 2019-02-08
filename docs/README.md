@@ -14,19 +14,19 @@
 
 8.  In a standalone environment, Edit $HOME/.bashrc, and add the three following variables:
 
-    WHITE_FILE= $HOME/DAPL/Reference/whitelist.csv; export WHITE_FILE
-    ASN_FILE= $HOME/DAPL/Reference/asn.csv; export ASN_FILE
-    COUNTRY_FILE= $HOME/DAPL/Reference/country.csv; export COUNTRY_FILE
+        WHITE_FILE= $HOME/DAPL/Reference/whitelist.csv; export WHITE_FILE
+        ASN_FILE= $HOME/DAPL/Reference/asn.csv; export ASN_FILE
+        COUNTRY_FILE= $HOME/DAPL/Reference/country.csv; export COUNTRY_FILE
 
 9.  If the install is using the server functionality, add these variables to $HOME/.bashrc:
 
-    GREFERENCE=/usr/local/Reference; export GREFERENCE
-    GDNS_PORT=32481; export GDNS_PORT
-    GASN_PORT=32482; export GASN_PORT
-    GCOUNTRY_PORT=32483; export GCOUNTRY_PORT
-    GRDNS_PORT=32484; export GRDNS_PORT
-    GHISTORY_PORT=32485; export GHISTORY_PORT
-    GSERVER= (IP address of the server); export GSERVER
+        GREFERENCE=/usr/local/Reference; export GREFERENCE
+        GDNS_PORT=32481; export GDNS_PORT
+        GASN_PORT=32482; export GASN_PORT
+        GCOUNTRY_PORT=32483; export GCOUNTRY_PORT
+        GRDNS_PORT=32484; export GRDNS_PORT
+        GHISTORY_PORT=32485; export GHISTORY_PORT
+        GSERVER= (IP address of the server); export GSERVER
 
 10. If this is a server install, use systemctl to install edited versions of the provided control files gasnd.service, gdnsd.service, grdnsd.service, gcountryd.service and ghistoryd.service as required.
 
