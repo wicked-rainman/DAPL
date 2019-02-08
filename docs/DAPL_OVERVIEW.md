@@ -27,6 +27,12 @@ related data have been included, albeit they are separate (but replicated) from 
       
             First parameter Defines the field separator present in each input record
             Second parameter Defines the name for each field in the input records.
+ 
+      define_csv_tag("tag_string")
+      
+            Where input files have a tage line that defines fields within each record
+            fieldnames will not need defining. The single parameter to this function
+            indicates the start string that defines a tag line (eg, "#Fields:")
             
       set_input_directory('dlm',"directory name")
 
@@ -53,3 +59,23 @@ related data have been included, albeit they are separate (but replicated) from 
             Result from the call is stored in a global FILE variable.
 
 3. Loop functions
+
+      add_asn
+      
+      add_attributes
+      
+      add_composite
+      
+      add_concatenation
+      
+      add_country
+      
+      add_field
+      
+      add_label
+      
+      add_reverse_dns
+      
+      add_substring
+      
+      
