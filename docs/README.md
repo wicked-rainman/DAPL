@@ -14,7 +14,7 @@ TO INSTALL:
 
 7.  DAPL can be run in a standalone mode, with backend server support, or as a server. It requires environmental variables to be set, based on the installation use case. These variables are often placed in $HOME/.bashrc, or in the case of a server install, included in the systemd control files.
 
-8.  In a standalone environment, Edit $HOME/.bashrc, and add the three following variables:
+8.  In a standalone environment, Edit $HOME/.bashrc, and add the three minimum BASH variables:
 
         WHITE_FILE= $HOME/DAPL/Reference/whitelist.csv; export WHITE_FILE
         ASN_FILE= $HOME/DAPL/Reference/asn.csv; export ASN_FILE
@@ -34,7 +34,8 @@ TO INSTALL:
 
 11. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 
-        "clang -Ofast prog.c ../lib/libdapl.a -o progname"
+        "clang -Ofast prog.c ../lib/libdapl.a -o progname" for files conaining single line "CSV" type records, or
+        "clang -Ofast prog.c ../lib/libeml.a -o progname" to utilise (for example) the E-mail conversion handler
 
 12. Any additional reference files you make should reside in $HOME/DAPL/Reference. The DNS related files are too big to be stored in a GIT repository, and must all be built from scratch using the DNS related scripts in /usr/local/sbin.
 
