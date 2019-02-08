@@ -21,11 +21,10 @@
        GHISTORY_PORT=32485; export GHISTORY_PORT
        GSERVER= (IP address of the server); export GSERVER
        
-10. If this is a server install, use systemctl to install the provided control files gasnd.service, gdnsd.service, grdnsd.service
-gcountryd.service and ghistoryd.service.
+10. If this is a server install, use systemctl to install edited versions of the provided control files gasnd.service, gdnsd.service, grdnsd.service, gcountryd.service and ghistoryd.service as required.
 
-11. Create any programs in $HOME/DAPL/progs (You will have to make the directory)
+11. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command: 
 
-12. To compile each program, use the command: "clang -Ofast prog.c ../lib/libdapl.a -o progname"
+       "clang -Ofast prog.c ../lib/libdapl.a -o progname"
 
 13. Any additional reference files you make should reside in $HOME/DAPL/Reference
