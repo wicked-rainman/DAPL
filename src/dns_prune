@@ -1,0 +1,21 @@
+#!/bin/bash
+mkdir -p $DNS_TEMP
+
+if [  -e $TABLE_DIR/$1 ]; then
+        echo "Using prune table $TABLE_DIR/$1"
+else
+	echo "File $TABLE_DIR/$1 does not exist"
+	exit
+fi
+while IFS= read -r line ; do
+	file=$(echo $line | cut -d' ' -f1)
+	ip=$(echo $line | cut -d'"' -f2)
+        grep -v $ip $file > $DNS_TEMP/wanted
+        grep $ip $file >> $DNS_TEMP/not_wanted
+	kept=$(wc -l $DNS_TEMP/wanted | cut -d' ' -f1)
+	total=$(wc -l $file | cut -d' ' -f1)
+	rm -f $file
+	mv $DNS_TEMP/wanted $file
+	echo Pruned $ip from $file - Input:$total Output:$kept 
+
+done < $TABLE_DIR/$1 
