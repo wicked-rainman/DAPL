@@ -63,7 +63,7 @@ related data have been included, albeit they are separate (but replicated) from 
       add_asn("fieldname")
       
             Parameter is the name of a field that should contain a dotted decimal notation IP address
-            IP address is looked up in file $ASN_FILE, and the ASN added as fieldname.asn
+            IP address is looked up in file $ASN_FILE, and the ASN added as "fieldname.asn"
             This is a local lookup and depends on an up to date ASN_FILE.
       
       add_attributes("fieldname","attributes")
@@ -82,7 +82,11 @@ related data have been included, albeit they are separate (but replicated) from 
             Creates a new fieldname that contains the field values specified by one or more existing
             fieldname(s). 
       
-      add_country
+      add_country("fieldname")
+      
+            Parameter is the name of a field that should contain a dotted decimal notated IP address
+            IP address is looked up in file $COUNTRY_FILE, and the country diagraph added as 
+            "fieldname.country". This is a local lookup and depends on an up to date COUNTRY_FILE.
       
       add_field
       
