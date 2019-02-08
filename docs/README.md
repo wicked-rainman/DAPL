@@ -39,3 +39,5 @@ TO INSTALL:
 12. Any additional reference files you make should reside in $HOME/DAPL/Reference. The DNS related files are too big to be stored in a GIT repository, and must all be built from scratch using the DNS related scripts in /usr/local/sbin.
 
 12a.  For a list and brief description of the utilities/files produced by the Makefile, see Manifest.md
+
+14.  Sample code can be found in the code_examples directory
