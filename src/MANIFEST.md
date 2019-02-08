@@ -26,7 +26,7 @@ An overview of the utilities and functions provided by this package:
         gcountry_server - A service running on $GSERVER port $GCOUNTRY_PORT. Answers IP country code lookups.
         gdns_server - A service running on $GSERVER port $GDNS_PORT. Answers historic DNS queries.
   
-  3. Language functions
+3. DAPL wrapper
   
          Library libdapl.a - DAPL Main routine wrapper and all associated function calls
          Library libeml.a - E-Mail handler as Main routine wrapper and all associated DAPL function calls
