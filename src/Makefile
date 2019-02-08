@@ -231,18 +231,24 @@ write_csv_fields.o : write_csv_fields.c externs.h defaults.h find_fieldname.o ar
 	$(CC) $(CFLAGS)  write_csv_fields.c -c -o write_csv_fields.o
 Install : 
 	mkdir -p ../lib
-	cp *.a ../lib
-	cp abuseipdb /usr/local/sbin
-	cp convert_emails /usr/local/sbin
-	cp dns_auth_update /usr/local/sbin
-	cp rdns_update /usr/local/sbin
-	cp class_a_update /usr/local/sbin
-	cp reverse_class_a_update /usr/local/sbin
-	cp gdnsd /usr/local/sbin
-	cp grdnsd /usr/local/sbin
-	cp gcountryd /usr/local/sbin
-	cp gasnd /usr/local/sbin
-	cp ghistoryd /usr/local/sbin
+	mkdir -p ../progs
+	mkdir -p ../tables
+	mkdir -p ../input_data
+	mkdir -p ../output_data
+	mkdir -p ../graphics
+	mv *.a ../lib
+	mv abuseipdb /usr/local/sbin
+	mv convert_emails /usr/local/sbin
+	mv dns_auth_update /usr/local/sbin
+	mv rdns_update /usr/local/sbin
+	mv class_a_update /usr/local/sbin
+	mv reverse_class_a_update /usr/local/sbin
+	mv dns_prune /usr/local/sbin
+	mv gdnsd /usr/local/sbin
+	mv grdnsd /usr/local/sbin
+	mv gcountryd /usr/local/sbin
+	mv gasnd /usr/local/sbin
+	mv ghistoryd /usr/local/sbin
 	mv ip2asn /usr/local/bin
 	mv ip2country /usr/local/bin
 	mv ip2int /usr/local/bin
