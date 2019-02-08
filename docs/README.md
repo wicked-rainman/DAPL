@@ -4,7 +4,7 @@
 
 3.  cd into $HOME/DAPL/src
 
-4.  As root, run ./Configure to make sure system dependancies are present (Openssl-dev, clang, graphviz, detox, dos2unix and the perl script msgconvert). Clang and graphviz are critical, all the other dependancies are needed for any E-mail processing.
+4.  As root, run ./Configure to make sure system dependancies are present (Openssl-dev, clang, graphviz, detox, dos2unix and the perl script msgconvert). Clang and graphviz are critical, all the other dependancies are only needed for any E-mail processing.
 
 5.  exit root and as a user run make.
 
@@ -32,7 +32,7 @@
 
 11. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 
-    "clang -Ofast prog.c ../lib/libdapl.a -o progname"
+        "clang -Ofast prog.c ../lib/libdapl.a -o progname"
 
 12. Any additional reference files you make should reside in $HOME/DAPL/Reference. The DNS related files are too big to be stored in a GIT repository, and must all be built from scratch using the DNS related scripts in /usr/local/sbin.
 
