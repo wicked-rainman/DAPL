@@ -236,7 +236,10 @@ Install :
 	mkdir -p ../input_data
 	mkdir -p ../output_data
 	mkdir -p ../graphics
+	mkdir -p ../docs
 	mv *.a ../lib
+	mv INSTALL.md ../docs
+	mv MANIFEST.md ../docs
 	mv abuseipdb /usr/local/sbin
 	mv convert_emails /usr/local/sbin
 	mv dns_auth_update /usr/local/sbin
