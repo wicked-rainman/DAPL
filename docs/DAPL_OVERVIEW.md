@@ -5,16 +5,20 @@ related data have been included, albeit they are separate (but replicated) from 
 
 1. The wrapper.
 
-  A. Provision is made for two code blocks within any main routine - setup() and loop(). 
+  Provision is made for two code blocks within any main routine - setup() and loop(). 
   
-    setup():
+      setup():
     
       Code within the setup block is executed once after program initialisation. It's purpose 
       is to allow the user to perform startup functions like opening input and output files, 
-      defining fields, identifying reference files Etc. Any failures within the setup block 
-      stop the whole process running.
+      defining input fields, identifying reference files Etc. Any failures within the setup 
+      block stops the whole process running.
       
-    loop()
+      loop()
   
-      Code within the loop block is executed for each record contained in each input file
-      identified in setup()
+      Code within the loop block is executed once for each record contained in each input file
+      identified in setup(). A data structure is created for each record, populated with each 
+      fieldname and field value found. All functions within the loop block reference this global
+      structure. Once the record has been processed, the structure is removed.
+      
+2. Setup functions.
