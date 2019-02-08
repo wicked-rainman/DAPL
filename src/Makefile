@@ -4,6 +4,15 @@ CFLAGS = -Ofast -Wall
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
 	ip2country ip2asn cidr2ip whitelist_convert sslcat gdns_server grdns_server \
 	ghistory_server gdns grdns ghistory
+	mkdir -p ../lib
+	mkdir -p ../progs
+	mkdir -p ../tables
+	mkdir -p ../input_data
+	mkdir -p ../output_data
+	mkdir -p ../graphics
+	mkdir -p ../docs
+	mv MANIFEST.md ../docs
+	mv INSTALL.md ../docs
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_asn.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o add_substring.o \
@@ -230,16 +239,7 @@ whitelist_convert : whitelist_convert.c
 write_csv_fields.o : write_csv_fields.c externs.h defaults.h find_fieldname.o array_from_string.o
 	$(CC) $(CFLAGS)  write_csv_fields.c -c -o write_csv_fields.o
 Install : 
-	mkdir -p ../lib
-	mkdir -p ../progs
-	mkdir -p ../tables
-	mkdir -p ../input_data
-	mkdir -p ../output_data
-	mkdir -p ../graphics
-	mkdir -p ../docs
 	mv *.a ../lib
-	mv INSTALL.md ../docs
-	mv MANIFEST.md ../docs
 	mv abuseipdb /usr/local/sbin
 	mv convert_emails /usr/local/sbin
 	mv dns_auth_update /usr/local/sbin
