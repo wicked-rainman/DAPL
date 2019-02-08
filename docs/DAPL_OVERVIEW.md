@@ -46,4 +46,10 @@ related data have been included, albeit they are separate (but replicated) from 
       
             First parameter defines a full path to the graphics output filename
             Second parameter defines the graphics render engine that will be used
-            
+
+      table("table_name")
+      
+            Parameter is the full path filename for a memory-stored lookup table.
+            Result from the call is stored in a global FILE variable.
+
+3. Loop functions
