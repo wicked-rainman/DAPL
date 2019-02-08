@@ -12,6 +12,7 @@
        COUNTRY_FILE= $HOME/DAPL/Reference/country.csv; export COUNTRY_FILE
   
 9. If the install is using the server functionality, add these variables to $HOME/.bashrc:
+
        GREFERENCE=/usr/local/Reference; export GREFERENCE
        GDNS_PORT=32481; export GDNS_PORT
        GASN_PORT=32482; export GASN_PORT
