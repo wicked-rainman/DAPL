@@ -22,3 +22,9 @@ related data have been included, albeit they are separate (but replicated) from 
       structure. Once the record has been processed, the structure is removed.
       
 2. Setup functions.
+
+      define_input_fieldnames('dlm',"Fieldname1, Fieldname2, FieldnameN")
+      
+            Defines the separator that is present in the input record to delimit each field ('dlm')
+            Defines the name for each field present in the input records ("Fieldname1......Etc")
+            
