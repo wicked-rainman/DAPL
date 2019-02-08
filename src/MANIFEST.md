@@ -7,8 +7,9 @@ An overview of the utilities and functions provided by this package:
         ip2country - Resolves country code associated with the specified IP address(s). Dependant on $COUNTRY_FILE.
         int2ip - Converts an Int to an IP address.
         cidr2ip - Converts a CIDR to an IP address range. 
-        gasn - Client that resolves the ASN associated with an IP address via a call to $GSERVER 
-        grdns - Client that resolves revers DNS entries for an IP address via a call to $GSERVER
+        gasn - Client that resolves the ASN associated with an IP address via a call to $GSERVER
+        gdns - Client that resolves historic DNS entries for an IP address via a call to $GSERVER
+        grdns - Client that resolves historic reverse DNS entries for an IP address via a call to $GSERVER
         ghistory - Client that queries a $GSERVER for historic records relating to an IP address
         whitelist_convert - Converts opensource whitelists into a DAPL compatible reference table
         sslcat - A simplistic version of netcat for SSL.
@@ -19,10 +20,10 @@ An overview of the utilities and functions provided by this package:
   
   2. Services
   
-        grdns_server - 
-        gasn_server - 
-        ghistory_server - 
-        gcountry_server - 
-        gdns_server
+        grdns_server - A service running on $GSERVER port $GRDNS_PORT. Answers historic RDNS queries
+        gasn_server -  A service running on $GSERVER port $GASN_PORT. Answers ASN queries
+        ghistory_server - A service running on $GSERVER port $GHISTORY_PORT. Answers IP seen before queries
+        gcountry_server - A service running on $GSERVER port $GCOUNTRY_PORT. Answers IP country code lookups
+        gdns_server - A service running on $GSERVER port $GDNS_PORT. Answers historic DNS queries
   
   3. Language functions
