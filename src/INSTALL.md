@@ -1,7 +1,7 @@
 1. cd into your $HOME directory
 2. Clone the repository using "git clone https://github.com/wicked-rainman/DAPL.git". This should create a directory named "DAPL".
 3. cd into $HOME/DAPL/src
-4. As root, run ./Configure to make sure system dependancies are present (Openssl-dev, clang, graphviz, detox, dos2unix and the perl script msgconvert).
+4. As root, run ./Configure to make sure system dependancies are present (Openssl-dev, clang, graphviz, detox, dos2unix and the perl script msgconvert). Clang and graphviz are critical, all the other dependancies are needed for any E-mail processing. 
 5. exit root and as a user run make.
 6. When that has completed, run "sudo make Install". This should copy any binaries into /usr/local/bin, scripts into /usr/local/sbin and create archive libraries in $HOME/DAPL/Lib
 7. DAPL can be run in a standalone mode, with backend server support, or as a server. It requires environmental variables to be set, based on the installation use case. These variables are often placed in $HOME/.bashrc, or in the case of a server install, included in the systemd control files. 
@@ -27,4 +27,6 @@
 
        "clang -Ofast prog.c ../lib/libdapl.a -o progname"
 
-13. Any additional reference files you make should reside in $HOME/DAPL/Reference
+12. Any additional reference files you make should reside in $HOME/DAPL/Reference. The DNS related files are too big to be stored in a GIT repository, and must all be built from scratch using the DNS related scripts in /usr/local/sbin.
+
+12a. For a list and brief description of the utilities produced by this Makefile, see Manifest.md
