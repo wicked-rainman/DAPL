@@ -30,7 +30,7 @@ related data have been included, albeit they are separate (but replicated) from 
  
       define_csv_tag("tag_string")
       
-            Where input files have a tage line that defines fields within each record
+            Where input files have a tag line that defines fields within each record
             fieldnames will not need defining. The single parameter to this function
             indicates the start string that defines a tag line (eg, "#Fields:")
             
@@ -78,4 +78,48 @@ related data have been included, albeit they are separate (but replicated) from 
       
       add_substring
       
+      draw_attached
       
+      draw_chain
+      
+      draw_node
+      
+      draw_path
+      
+      drop_rec
+      
+      insert_new_field
+      
+      keep_rec
+      
+      last_fieldname
+      
+      last_value
+      
+      lookup
+      
+      match
+      
+      pattern
+      
+      remove_chars
+      
+      remove_string
+      
+      rename_field
+      
+      replace_char
+      
+      socketadd_asn
+      
+      socketadd_country
+      
+      substring
+      
+      unescape
+      
+      unix_time
+      
+      urldecode
+      
+      write_csv_fields
