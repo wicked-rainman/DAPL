@@ -264,6 +264,8 @@ Install :
 	mv gasn_server /usr/local/bin
 	mv grdns /usr/local/bin
 	mv grdns_server /usr/local/bin
+	mv gdns /usr/local/bin
+	mv gdns_server /usr/local/bin
 	mv cidr2ip /usr/local/bin
 	mv whitelist_convert /usr/local/bin
 	mv sslcat /usr/local/bin
