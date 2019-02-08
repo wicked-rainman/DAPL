@@ -32,3 +32,18 @@ related data have been included, albeit they are separate (but replicated) from 
 
             First parameter defines the field separater present in each input record
             Second parameter defines the input directory name (including trailing '/')
+
+      set_input('dlm',"input filename(s)")
+
+            First parameter defines the field separater present in each input record
+            Second parameter defines one or more input filenames.
+
+      set_output("outfile_name")
+      
+            Defines the full path name for any record output file.
+
+      set_graphics("outfile_name","render_engine")
+      
+            First parameter defines a full path to the graphics output filename
+            Second parameter defines the graphics render engine that will be used
+            
