@@ -19,11 +19,10 @@ An overview of the utilities and functions provided by this package:
         rdns_update - Updates the RDNS_INODES database for historic reverse DNS resolution
   
   2. Services
-  
-        grdns_server - A service running on $GSERVER port $GRDNS_PORT. Answers historic RDNS queries
-        gasn_server -  A service running on $GSERVER port $GASN_PORT. Answers ASN queries
-        ghistory_server - A service running on $GSERVER port $GHISTORY_PORT. Answers IP seen before queries
-        gcountry_server - A service running on $GSERVER port $GCOUNTRY_PORT. Answers IP country code lookups
-        gdns_server - A service running on $GSERVER port $GDNS_PORT. Answers historic DNS queries
+        grdns_server - A service running on $GSERVER port $GRDNS_PORT. Answers historic RDNS queries.
+        gasn_server -  A service running on $GSERVER port $GASN_PORT. Answers ASN queries.
+        ghistory_server - A service running on $GSERVER port $GHISTORY_PORT. Answers IP seen before queries.
+        gcountry_server - A service running on $GSERVER port $GCOUNTRY_PORT. Answers IP country code lookups.
+        gdns_server - A service running on $GSERVER port $GDNS_PORT. Answers historic DNS queries.
   
   3. Language functions
