@@ -1,57 +1,29 @@
 1. cd into your $HOME directory
-2. Clone the repository using "git clone https://github.com/wicked-rainman/DAPL.git"
-This should create a directory named "DAPL".
-
-       $HOME/DAPL/
-       
-                    --------->Reference/
-       
-                    --------->src/
-       
-                    --------->lib/
-       
-                    --------->example_code
-                    
-                    --------->scripts
-       
-3. As root, run ./Configure to make sure system dependancies are present
-4. cd into $HOME/DAPL/src and run "make".
-5. When that has completed, run "sudo make Install". This should copy any binaries into /usr/local/bin, and move 
-any libraries into $HOME/DAPL/lib.
-6. Edit $HOME/.bashrc, and add the three following variables if this is a standalone installation:
-
-                   WHITE_FILE= (home directory)/DAPL/Reference/whitelist.csv; export WHITE_FILE
+2. Clone the repository using "git clone https://github.com/wicked-rainman/DAPL.git". This should create a directory named "DAPL".
+3. cd into $HOME/DAPL/src
+4. As root, run ./Configure to make sure system dependancies are present (Openssl-dev, clang, graphviz, detox, dos2unix and the perl script msgconvert).
+5. exit root and as a user run make.
+6. When that has completed, run "sudo make Install". This should copy any binaries into /usr/local/bin, scripts into /usr/local/sbin and create archive libraries in $HOME/DAPL/Lib
+7. DAPL can be run in a standalone mode, with backend server support, or as a server. It requires environmental variables to be set, based on the installation use case. These variables are often placed in $HOME/.bashrc, or in the case of a server install, included in the systemd control files. 
+8. In a standalone environment, Edit $HOME/.bashrc, and add the three following variables if this is a standalone installation:
+       WHITE_FILE= $HOME/DAPL/Reference/whitelist.csv; export WHITE_FILE
+       ASN_FILE= $HOME/DAPL/Reference/asn.csv; export ASN_FILE
+       COUNTRY_FILE= $HOME/DAPL/Reference/country.csv; export COUNTRY_FILE
   
-                   ASN_FILE= (home directory)/DAPL/Reference/asn.csv; export ASN_FILE
-  
-                   COUNTRY_FILE= (home directory)/DAPL/Reference/country.csv; export COUNTRY_FILE
-  
-  These three variables point to the corresponding files in $HOME/DAPL/Reference
-  
-7. If the install is using the server functionality, add these variables to $HOME/.bashrc:
-
-       GREFERENCE=/usr/local/Reference
-       export GREFERENCE
-       GDNS_PORT=32481
-       export GDNS_PORT
-       GASN_PORT=32482
-       export GASN_PORT
-       GCOUNTRY_PORT=32483
-       export GCOUNTRY_PORT
-       GRDNS_PORT=32484
-       export GRDNS_PORT
-       GHISTORY_PORT=32485
-       export GHISTORY_PORT
-       GSERVER= IP address for the server
-       export GSERVER
+9. If the install is using the server functionality, add these variables to $HOME/.bashrc:
+       GREFERENCE=/usr/local/Reference; export GREFERENCE
+       GDNS_PORT=32481; export GDNS_PORT
+       GASN_PORT=32482; export GASN_PORT
+       GCOUNTRY_PORT=32483; export GCOUNTRY_PORT
+       GRDNS_PORT=32484; export GRDNS_PORT
+       GHISTORY_PORT=32485; export GHISTORY_PORT
+       GSERVER= (IP address of the server); export GSERVER
        
-8. If this is a server install, use systemctl to install gasnd.service, gdnsd.service, grdnsd.service
+10. If this is a server install, use systemctl to install the provided control files gasnd.service, gdnsd.service, grdnsd.service
 gcountryd.service and ghistoryd.service.
 
-9. Create any programs in $HOME/DAPL/progs
+11. Create any programs in $HOME/DAPL/progs (You will have to make the directory)
 
-10. To compile each program, use the command:
+12. To compile each program, use the command: "clang -Ofast prog.c ../lib/libdapl.a -o progname"
 
-       "clang -Ofast prog.c ../lib/libdapl.a -o progname"
-
-11. Any additional reference files you make use of should reside in $HOME/DAPL/Reference
+13. Any additional reference files you make should reside in $HOME/DAPL/Reference
