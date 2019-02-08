@@ -40,4 +40,4 @@ TO INSTALL:
 
 12a.  For a list and brief description of the utilities/files produced by the Makefile, see Manifest.md
 
-14.  Sample code can be found in the code_examples directory
+14.  Sample code can be found in the example_code directory
