@@ -66,11 +66,39 @@ the core DAPL system.
             
             Defines a file that contains records that are used as a  lookup table
       
-
+      Examples demonstrating the use of these setup functions can be found in the ./example_code directory
+      
 3. Loop functions
 
+      Loop functions tend to fall into one of three categories:
       
-
+            1. Those that Enable the selection or rejection of individual records, based on
+            string matching, substring matching or through regular expression pattern matching. 
+            Rejected records are internally assigned a "drop" flag. If a drop flag is 
+            present, all sequentially following loop functions will exit without performing their 
+            intended actions (I.E, the record is ignored). Early rejection of unwanted records 
+            can obviously dramatically improve processing times.
+            
+            2. Value editing functions that can replace, sanitse, substring or add to the underlying
+            data in some way. Field values can be looked up in locally held tables, or from external
+            sources via socket calls with suitable APIs. Field values can be combined or added to in order
+            to make them unique (such as adding DTGs Etc). 
+            
+            3. Graphical data modeling. Relationships between data fields can be defined and visualised
+            by generating .dot output that can be rendered in various ways (such as SVG, PDF JPEG Etc).
+            Duplicate relationships are set to be effectively de-duped by the .dot processor, making
+            large volumes of data easier to analyse. 
       
-    
-
+      Most loop functions have the same startup logic:
+      
+            1. Check to see if the drop flag has been set. If it has, return.
+            2. Make a call to "find_fieldname" to see if the target field is present. If it's not, return.
+  
+      The function then performs whatever logic is intended, which invariably ends up with a new 
+      fielname/fieldvalue pair being inserted into the global data structure via a call to "insert_new_field"
+      If a modified field value (rather than new field) is to be replaced, all functions check that the
+      new field value does not exceed MAX_FIELDVALUE_LENGTH. 
+      
+      Most loop functions are small and can be found in the ./src directory. Using these as examples should
+      make adding any new functionality simple. 
+      
