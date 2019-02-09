@@ -6,7 +6,7 @@ TO INSTALL:
 
 3.  cd into $HOME/DAPL/src
 
-4.  As root, run ./Configure to make sure system dependancies are present (Openssl-dev, clang, graphviz, detox, dos2unix and the perl script msgconvert). Clang and graphviz are critical, all the other dependancies are only needed for any E-mail processing.
+4.  As root, run ./Configure to make sure system dependancies are present (Openssl-dev, clang, graphviz, detox, dos2unix and the perl script msgconvert). Clang and graphviz are critical, the other dependancies are only needed for any E-mail processing.
 
 5.  exit root and as a user run make.
 
