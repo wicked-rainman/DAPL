@@ -1,9 +1,10 @@
 DAPL is intended to simplify the process of analysing large volumes of single-line records (HTTP, 
 SSH, Audit logs Etc). Provisions are made for dealing with other data forms through a conversion 
-process known as imput handling. A small range of standalone utilities that aid dealing with IP 
-related data have been included, albeit they are separate (but replicated) from the core DAPL system.
+process known as imput handling (Currently only E-mail). A small range of standalone utilities that 
+aid dealing with IP related data have been included, albeit they are separate (but replicated) from 
+the core DAPL system.
 
-1. The wrapper.
+1. The core DAPL wrapper.
 
       Provision is made for two code blocks within any main routine - setup() and loop(). 
   
@@ -19,7 +20,10 @@ related data have been included, albeit they are separate (but replicated) from 
       Code within the loop block is executed once for each record contained in each input file
       identified in setup(). A data structure is created for each record, populated with each 
       fieldname and field value found. All functions within the loop block reference this global
-      structure. Once the record has been processed, the structure is removed.
+      structure. Once the record has been processed, the structure is removed, ready to be populated 
+      with the fields in the next record. Other than maintaining a count of input and output records
+      and maintaining file or memory pointers for any reference files, there is no state within the
+      code block. This allows for processing of undefinably large volumes of input.
       
 2. Setup functions.
 
