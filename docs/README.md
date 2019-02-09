@@ -6,8 +6,8 @@ TO INSTALL:
 
 3.  cd into $HOME/DAPL/src
 
-4.  As root, run ./Configure to make sure system dependancies are present. clang is required by Make, graphviz for DAPL 
-graphics rendering, Openssl-dev for sslcat and abuseipdb, detox, dos2unix and the perl script msgconvert are needed for any E-mail processing. Clang and graphviz are critical components for DAPL.
+4.  As root, run ./Configure to make sure system dependancies are present. Clang and Graphviz are critical for DAPL. 
+Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox, dos2unix and the perl script msgconvert are needed for any E-mail processing.
 
 5.  exit root and as a user run make.
 
