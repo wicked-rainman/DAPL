@@ -36,10 +36,9 @@ the core DAPL system.
       that results in iterative calls to "set_input". Current setup functions are:
       
             define_input_fieldnames -----------------------------------
- 
-                  When an input file does not have a field descriptor tag line, define the 
-                  input fieldnames in a file, and how they are deliminate.
- 
+            
+            When an input file does not have a field descriptor tag line, define the 
+            input fieldnames in a file, and how they are deliminate.
  
             define_csv_tag("tag_string") ------------------------------
  
