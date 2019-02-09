@@ -36,10 +36,10 @@ Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox,
 11. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 
         "clang -Ofast prog.c ../lib/libdapl.a -o progname" for files conaining single line "CSV" type records, or
-        "clang -Ofast prog.c ../lib/libeml.a -o progname" to utilise (for example) the E-mail conversion handler
+        "clang -Ofast prog.c ../lib/libeml.a -o progname" to utilise the E-mail conversion handler
 
 12. Any additional reference files you make should reside in $HOME/DAPL/Reference. The DNS related files are too big to be stored in a GIT repository, and must all be built from scratch using the DNS related scripts in /usr/local/sbin.
 
 12a.  For a list and brief description of the utilities/files produced by the Makefile, see Manifest.md
 
-14.  Sample code can be found in the example_code directory
+14.  Sample code can be found in the example_code directory, with sample data in ./input
