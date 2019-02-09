@@ -2,7 +2,7 @@
 
 An overview of the utilities and functions provided by this package:
 
-    Utilities
+Utilities
 
      ip2int -  A simple C program that converts a IP address or range of addresses to their respective Integer value.
      ip2asn -  Resolves the ASN associated with the specified IP address(s). Dependant on $ASN_FILE.
@@ -22,8 +22,8 @@ An overview of the utilities and functions provided by this package:
      dns_prune - Utility to remove rogue IP addresses or entries from the DNS_INODES database
      class_a_update - Internal routine used by dns_auth_update
      reverse_class_a_update - Internal routine used by rdns_update
-
-    Services
+     
+Services
 
      grdns_server - A service running on $GSERVER port $GRDNS_PORT. Answers historic RDNS queries.
      gasn_server -  A service running on $GSERVER port $GASN_PORT. Answers ASN queries.
@@ -41,12 +41,12 @@ An overview of the utilities and functions provided by this package:
      grdnsd.service - systemd service file for grdns_server
      ghistoryd.service - systemd service file for ghistory_server
 
-    DAPL wrapper
+DAPL wrapper
 
       Library libdapl.a - DAPL Main routine wrapper and all associated function calls
       Library libeml.a - E-Mail handler as Main routine wrapper and all associated DAPL function calls
 
-    Reference files
+Reference files
 
      asn.csv - An updatable file where each record represents an IP address range (as Ints) that relate to an ASN
      country.csv - An updatable file where each record represents an IP address range (as Ints) that relate to country codes
