@@ -35,21 +35,21 @@ the core DAPL system.
       that is read to provide input data. "set_input_directory" populates an array of input filenames
       that results in iterative calls to "set_input". Current setup functions are:
       
-            define_input_fieldnames -
+            define_input_fieldnames -----------------------------------
             
             When an input file does not have a field descriptor tag line, define the 
             input fieldnames in a file, and how they are deliminate.
-            
-            define_csv_tag("tag_string") -
+ 
+            define_csv_tag("tag_string") ------------------------------
             
             Define the start string that indicates a field descriptor line in an
             input file.
-            
-            set_input_directory -
+ 
+            set_input_directory ---------------------------------------
             
             Specify a directory name where the input files reside. All files in
             this directory will be processed. 
-            
+ 
             put directory name (including trailing '/')
             set_input('dlm',"input filename(s)")
             set_output("outfile_name")
