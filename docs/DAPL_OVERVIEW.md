@@ -40,6 +40,7 @@ the core DAPL system.
             When an input file does not have a field descriptor tag line, define the 
             input fieldnames in a file, and how they are deliminate.
  
+ 
             define_csv_tag("tag_string") ------------------------------
             
             Define the start string that indicates a field descriptor line in an
@@ -50,14 +51,26 @@ the core DAPL system.
             Specify a directory name where the input files reside. All files in
             this directory will be processed. 
  
-            put directory name (including trailing '/')
-            set_input('dlm',"input filename(s)")
-            set_output("outfile_name")
-            set_graphics("outfile_name","render_engine")
-            table("table_name")
+            set_input -------------------------------------------------
+            
+            Defines the field delimiter, and a list of one or more input files
+            
+            set_output ------------------------------------------------
+            
+            Defines the output file for any saved records
+            
+            set_graphics ----------------------------------------------
+            
+            Defines the output file for any generated .dot graphics.
+            
+            table -----------------------------------------------------
+            
+            Defines a file that contains records that are used as a  lookup table
       
 
 3. Loop functions
+
+      
 
       
     
