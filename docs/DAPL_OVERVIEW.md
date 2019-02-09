@@ -24,6 +24,10 @@ the core DAPL system.
       with the fields in the next record. Other than maintaining a count of input and output records
       and maintaining file or memory pointers for any reference files, there is no state within the
       code block. This allows for processing of undefinably large volumes of input.
+      Code within the loop block is generally fault tollerant. For example, function references to 
+      field names that are non-existant result in the calling function failing gracefully. This 
+      allows for the successful processing of input files that have different fieldnames where not
+      all fields are present in each file. 
       
 2. Setup functions.
 
