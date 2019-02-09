@@ -95,9 +95,9 @@ the core DAPL system.
             2. Make a call to "find_fieldname" to see if the target field is present. If it's not, return.
   
       The function then performs whatever logic is intended, which invariably ends up with a new 
-      fielname/fieldvalue pair being inserted into the global data structure via a call to 
-      "insert_new_field". If a modified field value (rather than new field) is to be replaced, all functions 
-      check that the new field value does not exceed MAX_FIELDVALUE_LENGTH and that MAX_FIELD_COUNT is not
+      fielname/fieldvalue pair being inserted via a call to "insert_new_field". 
+      If a modified field value (rather than new field) is to be replaced, all functions check that 
+      the new field value does not exceed MAX_FIELDVALUE_LENGTH and that MAX_FIELD_COUNT is not
       exceeded. Both these values have been arbitrarily set. 
       
       Most loop functions are small and source code can be found in the ./src directory. Using these as a
