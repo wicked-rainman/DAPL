@@ -74,59 +74,47 @@ DAPL functions
      draw_node                - Draw the relationship between two field values
      draw_path                - Draw the relationship between a list of field values
      drop_rec                 - Set the drop record flag to halt any processing of the current record.
-     email_tester.c
-     empty.c
-     extract_field_values.c
-     extract_hrefs.c
-     find_field_defs.c
-     find_fieldname.c
-     gasn_client.c
-     gasn_server.c
-     gcountry_client.c
-     gcountry_server.c
-     gdns_client.c
-     gdns_server.c
-     get_input_lines.c
-     ghistory_client.c
-     ghistory_server.c
-     global_clean.c
-     grdns_client.c
-     grdns_server.c
-     hostname_to_ip.c
-     import_eml.c
-     init_storage.c
-     input_clean.c
-     insert_new_field.c
-     ipfind.c
-     keep_rec.c
-     last_fieldname.c
-     last_value.c
-     lookup.c
-     main.c
-     match.c
-     pattern.c
-     processor_email.c
+     empty                    - Test for fieldname with an empty value.
+     extract_field_values     - INTERNAL, extract field values from an input record based on defined field names
+     extract_hrefs            - Extract href values out of an existing field. Creates field chain text.url
+     find_field_defs          - INTERNAL, detects new CSV field definition lines in an input file based on CSV tag string
+     find_fieldname           - INTERNAL, returns the index int to a fieldname value pair in the global data structure.
+     get_input_lines          - INTERNAL. Line reader for input file(s).
+     global_clean             - INTERNAL. Sets a global remove string that is applied to input files.
+     hostname_to_ip.c         - INTERNAL. Go figure.
+     import_eml               - INTERNAL. Converts a .eml input file to a CSV.
+     init_storage             - INTERNAL. Main startup routine to init storage.
+     input_clean              - INTERNAL. Removes a substring from an input file record. 
+     insert_new_field         - Insert a new fieldname/value pair into the global struct for the current record
+     ipfind                   - INTERNAL. Regexp to match and extract an IP address from a string
+     keep_rec                 - Dummy function 
+     last_fieldname           - Returns the last fieldname from a field chain
+     last_value.c             - Returns the last field value from a field chain
+     lookup                   - Looks up a field value in a table, and adds a new field and value if match is found
+     main                     - INTERNAL Main routine wrapper for DAPL
+     match                    - Conditional field value test. See ./src/macro.h
+     pattern                  - Conditional field value test. See ./src/macro.h
+     processor_email          - INTERNAL Main routine wrapper in ../lib/libeml.a for email processing
      received_ip.c
      remchars.c
      remove_chars.c
      remove_string.c
-     rename_field.c
+     rename_field             - Rename an existing field.
      replace_char.c
      set_delimiter.c
      set_graphics.c
-     set_input.c
-     set_input_directory.c
-     set_input_fieldnames.c
-     set_output.c
-     socketadd_asn.c
-     socketadd_country.c
+     set_input                - Defines the input file(s) to be processed
+     set_input_directory      - Defines the input directory where input files reside for processing.
+     set_input_fieldnames     - Defines input fieldnames where no CSV tag line is present.
+     set_output               - Defines the output file where CSV records will be written
+     socketadd_asn            - Use a remote server to look up an IP address to resolve ASN 
+     socketadd_country        - Use a remote server to look up an IP address to resolve country diagraph 
      strpos.c
      substring.c
-     table.c
+     table                    - Defines the input file that contains lookup values - See function lookup.
      unescape.c
      unix_time.c
      urldecode.c
-     whitelist.c
-     whitelist_convert.c
-     write_csv_fields.c
+     whitelist                - Allows for the conditional testing of an IP address to see if it is whitelisted.
+     write_csv_fields         - Routine to write CSV output fields to a file. 
      
