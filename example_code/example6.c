@@ -2,6 +2,7 @@
 // example6.c
 //
 // Same data as processed by example5, but flows shown grapically by date and time
+// in order to demonstrate a different way of viewing the underlying data
 //
 // --------------------------------------------------------------------------------
 
