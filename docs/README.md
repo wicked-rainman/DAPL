@@ -15,23 +15,24 @@ setup():
     Code within the setup block is executed once after program initialisation. It's purpose is to 
     allow the user to perform startup functions like opening input and output files, defining input 
     fields, identifying reference files Etc. Any failures within the setup block stops the whole process 
-    running.
+    running. The user is shielded from the complexities of performing these operations through the use
+    of high level function calls. 
 
 loop()
 
     Code within the loop block is executed once for each record contained in each input file identified 
-    in setup(). A data structure is created for each record, populated with the fieldname and field value 
-    pairs found. All functions within the loop block reference this global structure. Once the record has been 
-    processed, the structure is removed, ready to be populated with the fields from the next record. 
+    in setup(). An obscured global data structure is created for each record, populated with the fieldname and field 
+    value pairs found. All functions within the loop block reference this structure. Once the record has been 
+    processed, it is reset to empty, ready to be populated with the fields from the next record. 
     
     Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
     reference files, there is no state within the code block. This allows for processing of undefinably 
-    large volumes of input. 
+    large volumes of input, restricted only by the memory requirements for hold one single record at a time. 
     
     Code within the loop block is generally fault tollerant. For example, function 
-    references to field names that are non-existant result in the calling function failing gracefully. 
-    This allows for the successful processing of input files that have different fieldnames where not all 
-    fields are present in each file. 
+    references to field names that are non-existant result in the calling function failing gracefully 
+    (This allows for the successful processing of input files that have different fieldnames where not all 
+    fields are present in each file). 
     
     Loop functions tend to fall into one of three categories:
 
@@ -39,8 +40,8 @@ loop()
          string matching, substring matching or through regular expression pattern matching. 
          Rejected records are internally assigned a "drop" flag. If a drop flag is 
          present, all sequentially following loop functions will exit without performing their 
-         intended actions (I.E, the record is ignored). Early rejection of unwanted records 
-         can obviously dramatically improve processing times.
+         intended actions (I.E, the record is ignored). Early rejection of unwanted records can 
+         obviously dramatically improve processing times.
          
          2. Value editing functions that can replace, sanitse, substring or add to the underlying
          data in some way. Field values can be looked up in locally held tables, or from external
@@ -48,8 +49,8 @@ loop()
          to make them unique (such as adding DTGs Etc). 
          
          3. Graphical data modeling. Relationships between data fields can be defined and visualised
-         by generating .dot output that can be rendered in various ways (such as SVG, PDF JPEG Etc).
-         Duplicate relationships are set to be effectively de-duped by the .dot processor, making
+         by generating .dot output that can be rendered by graphviz in various ways (such as SVG, PDF 
+         JPEG Etc). Duplicate relationships are set to be effectively de-duped by the .dot processor, making
          large volumes of data easier to analyse.
          
 Sample code can be found in the ./example_code directory, together with sample data in ./input. This 
