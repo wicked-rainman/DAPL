@@ -29,5 +29,5 @@ which is the start and end IP address for this network range.
 3. Records in asn.csv are stored in numeric order, so find the gap in which this fits, and insert
 the record ensuring commas are placed in the correct place!
 
-4. After performin an update, use the ip2asn utility to check the update was made properly.
+4. After performing an update, use the ip2asn utility to check the update was made properly.
         
