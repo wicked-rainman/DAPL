@@ -54,27 +54,25 @@ Reference files
 
 DAPL functions
 
-     add_asn                  - Local lookup and IP address to obtain ASN 
-     add_attributes.c
-     add_composite.c
-     add_concatenation.c
-     add_country.c
-     add_field.c
-     add_label.c
-     add_quotes.c
-     add_reverse_dns.c
-     add_substring.c
-     array_from_string.c
-     build_target_list.c
-     cidr2ip.c
-     cleanup.c
-     dedupe.c
-     define_csv_tag.c
-     define_input_fieldnames.c
-     draw_attached.c
-     draw_chain.c
-     draw_node.c
-     draw_path.c
+     add_asn                  - Local lookup of an IP address in order to obtain an ASN
+     add_attributes           - Add graphical attributes to a .dot node
+     add_composite            - Add a temporary set of values to a field value in order to make it unique
+     add_concatenation        - Concatenate fields onto an existing field value
+     add_country              - Local lookup of an IP address in order to obtain a country diagraph
+     add_field                - Add a fixed value field to a record
+     add_label                - Add a graphical label to a .dot node
+     add_quotes               - INTERNAL, add quotes to a string
+     add_reverse_dns          - Wrapper for network call to gethostbyaddr. New value added to record as *.rdns
+     add_substring            - Creates a new field based on a substring of an existing field
+     array_from_string        - INTERNAL, creates a 2D array from a string based on delimiters " ,\t\n"
+     build_target_list        - INTERNAL, builds fieldname chain from a base value
+     cleanup                  - INTERNAL, Closing routine for MAIN code block
+     dedupe                   - INTERNAL, dedupes char out of string.
+     define_csv_tag           - Redefines the default csv start tag from being "#Fields:" to something else.
+     define_input_fieldnames  - Defines fieldnames in an input file where there is no CSV tag line
+     draw_chain               - Draws a graphics field chain starting at an anchor field.
+     draw_node                - Draw the relationship between two field values
+     draw_path                - Draw the relationship between a list of field values
      drop_rec.c
      email_handler.c
      email_tester.c
