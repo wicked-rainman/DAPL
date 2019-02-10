@@ -95,26 +95,25 @@ DAPL functions
      match                    - Conditional field value test. See ./src/macro.h
      pattern                  - Conditional field value test. See ./src/macro.h
      processor_email          - INTERNAL Main routine wrapper in ../lib/libeml.a for email processing
-     received_ip.c
-     remchars.c
-     remove_chars.c
-     remove_string.c
+     received_ip              - INTERNAL Email processing. Create chain of IP address fields from mail Receive lines.
+     remchars                 - INTERNAL Remove unwanted characters from a string.
+     remove_chars             - Remove unwanted characters from a field value.
+     remove_string            - Remove a substring from within a field value.
      rename_field             - Rename an existing field.
-     replace_char.c
-     set_delimiter.c
-     set_graphics.c
+     replace_char             - INTERNAL. Replace character in a string with another.
+     set_graphics             - Defines the graphics output file and render engine
      set_input                - Defines the input file(s) to be processed
      set_input_directory      - Defines the input directory where input files reside for processing.
      set_input_fieldnames     - Defines input fieldnames where no CSV tag line is present.
      set_output               - Defines the output file where CSV records will be written
      socketadd_asn            - Use a remote server to look up an IP address to resolve ASN 
      socketadd_country        - Use a remote server to look up an IP address to resolve country diagraph 
-     strpos.c
-     substring.c
+     strpos                   - INTERNAL. Returns the position of a string within a string.
+     substring                - Conditional field value test. See ../src/macro.h
      table                    - Defines the input file that contains lookup values - See function lookup.
-     unescape.c
-     unix_time.c
-     urldecode.c
+     unescape                 - INTERNAL function used inside sslcat utility.
+     unix_time                - Converts a unix time field to a specified format and inserts it as new field *.udtg
+     urldecode                - URL decodes an existing field and replaces value.
      whitelist                - Allows for the conditional testing of an IP address to see if it is whitelisted.
      write_csv_fields         - Routine to write CSV output fields to a file. 
      
