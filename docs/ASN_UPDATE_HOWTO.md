@@ -4,7 +4,7 @@ The asn.csv has the format:
 
     <START_INT>,<END_INT>,<ASN>,<ASN Name>
     
-AS numbers are known to change over time, and the file itself is incomplete (Commercial - up to date versions
+AS numbers are known to change over time, and the file itself is incomplete (Commercial up to date versions
 are available, but at cost). Functions such as add_asn() rely this file in order to resolve IP addresses to ASNs.
 
 More often than not, add_asn() will return no value because the entries are simply just not there..
