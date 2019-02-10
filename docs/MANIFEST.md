@@ -73,8 +73,7 @@ DAPL functions
      draw_chain               - Draws a graphics field chain starting at an anchor field.
      draw_node                - Draw the relationship between two field values
      draw_path                - Draw the relationship between a list of field values
-     drop_rec.c
-     email_handler.c
+     drop_rec                 - Set the drop record flag to halt any processing of the current record.
      email_tester.c
      empty.c
      extract_field_values.c
