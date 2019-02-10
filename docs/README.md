@@ -22,13 +22,18 @@ loop()
     Code within the loop block is executed once for each record contained in each input file identified 
     in setup(). A data structure is created for each record, populated with the fieldname and field value 
     pairs found. All functions within the loop block reference this global structure. Once the record has been 
-    processed, the structure is removed, ready to be populated with the fields in the next record. Other 
-    than maintaining a count of input and output records and maintaining file or memory pointers for any 
+    processed, the structure is removed, ready to be populated with the fields from the next record. 
+    
+    Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
     reference files, there is no state within the code block. This allows for processing of undefinably 
-    large volumes of input. Code within the loop block is generally fault tollerant. For example, function 
+    large volumes of input. 
+    
+    Code within the loop block is generally fault tollerant. For example, function 
     references to field names that are non-existant result in the calling function failing gracefully. 
     This allows for the successful processing of input files that have different fieldnames where not all 
-    fields are present in each file. Loop functions tend to fall into one of three categories:
+    fields are present in each file. 
+    
+    Loop functions tend to fall into one of three categories:
 
          1. Those that Enable the selection or rejection of individual records, based on
          string matching, substring matching or through regular expression pattern matching. 
@@ -47,9 +52,9 @@ loop()
          Duplicate relationships are set to be effectively de-duped by the .dot processor, making
          large volumes of data easier to analyse.
          
-Sample code can be found in the ./example_code directory, with sample data in ./input. This may aid with the
-learning process. A brief description of the utilities/files produced by the Makefile can be found in
-./docs/Manifest.md. See INITIAL INSTALL section.
+Sample code can be found in the ./example_code directory, together with sample data in ./input. This 
+may aid with the learning process. A brief description of the utilities/files produced by the included 
+Makefile can be found in ./docs/Manifest.md. See INITIAL INSTALL section below.
 
 FURTHER READING
 
