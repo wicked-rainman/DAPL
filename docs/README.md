@@ -1,6 +1,6 @@
 OVERVIEW
 
-DAPL is a program language wrapper intended to simplify the process of anlysing files containing large volumes 
+DAPL is a program language wrapper intended to simplify the process of analysing files containing large volumes 
 of single-line records (EG HTTP, SSH, Audit logs Etc). 
 
 Provisions are made for dealing with other forms of data through a conversion process (Currently only one such 
