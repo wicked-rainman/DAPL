@@ -1,3 +1,4 @@
+// Build by linking with ../lib/libeml.a
 #include "externs.h"
 void setup() {
 	set_input_directory(' ',"../data/spam/");
