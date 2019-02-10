@@ -1,4 +1,6 @@
-The file ../Reference/asn.csv has the format:
+How to update ./Reference/asn.csv
+
+asn.csv has the format:
 
     <START_INT>,<END_INT>,<ASN>,<ASN Name>
     
