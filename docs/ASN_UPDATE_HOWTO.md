@@ -14,11 +14,18 @@ More often than not, add_asn() will return no value because the entries are simp
 Rather than this file containing IP addresses, Start and end integers are recorded in order to make lookups quicker.
 This note describes a way of keeping this file up to date:
 
-1. For any given IP address, the CIDR notation can be obtained through Internet searches (E.G, using Hurrican Electric).
-Given a CIDR. Fir example, IP 54.230.8.34 has a network mask of /22. Using cidr2ip:
+1. For any given IP address, the CIDR notation and ASN can be obtained through Internet searches (E.G, using Hurrican Electric).
+For example, IP 54.230.8.34 has a network mask of /22. and an ASN of AS16509 Using cidr2ip:
 
     cidr2ip 54.230.8.34
-    returns -
+    returns 
     54.230.8.0 54.230.11.255
     
-which is the start and end IP address for this network range
+which is the start and end IP address for this network range.
+
+2. Take the two IP addresses returned by cidr2ip, and past them into the command:
+    ip2int 54.230.8.0 54.230.11.255
+    which returns
+    921044992 921046015
+    
+3. Records in asn.csv are stored in numeric order, so find the gap in which this fits    
