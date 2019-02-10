@@ -1,7 +1,13 @@
-DAPL is a program language wrapper intended to simplify the process of analysing files containing large volumes of single-line records (EG HTTP, SSH, Audit logs Etc). 
-Provisions are made for dealing with other forms of data through a conversion process known as imput handling (Currently 
-only one such converter exists - for processing spam E-mail). 
+OVERVIEW
+
+DAPL is a program language wrapper intended to simplify the process of analysing files containing large volumes 
+of single-line records (EG HTTP, SSH, Audit logs Etc). 
+
+Provisions are made for dealing with other forms of data through a conversion process (Currently only one such 
+converter exists - for processing spam E-mail). 
+
 A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are separate (but replicated) from the core DAPL system. 
+
 DAPL makes provisions for two code blocks within any main routine:
 
 setup():
