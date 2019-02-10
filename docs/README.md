@@ -1,4 +1,5 @@
-TO INSTALL:
+
+INITIAL INSTALL:
 
 1.  cd into your $HOME directory
 
