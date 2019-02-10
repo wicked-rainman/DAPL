@@ -23,7 +23,6 @@ Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox,
 
 9.  If the install is using the server functionality, add these variables to $HOME/.bashrc:
 
-        GREFERENCE=/usr/local/Reference; export GREFERENCE
         GDNS_PORT=32481; export GDNS_PORT
         GASN_PORT=32482; export GASN_PORT
         GCOUNTRY_PORT=32483; export GCOUNTRY_PORT
@@ -31,7 +30,7 @@ Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox,
         GHISTORY_PORT=32485; export GHISTORY_PORT
         GSERVER= (IP address of the server); export GSERVER
 
-10. If this is a server install, use systemctl to install edited versions of the provided control files gasnd.service, gdnsd.service, grdnsd.service, gcountryd.service and ghistoryd.service as required.
+10. If this is a server install, use systemctl to install edited versions of the provided control files gasnd.service, gdnsd.service, grdnsd.service, gcountryd.service and ghistoryd.service as required. 
 
 11. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 
