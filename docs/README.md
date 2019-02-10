@@ -1,4 +1,5 @@
-DAPL is intended to simplify the process of analysing large volumes of single-line records (HTTP, SSH, Audit logs Etc). Provisions are made for dealing with other data forms through a conversion process known as imput handling (Currently only E-mail). 
+DAPL is intended to simplify the process of analysing large volumes of single-line records (HTTP, SSH, Audit logs Etc). Provisions are made for dealing with other forms of data through a conversion process known as imput handling (Currently 
+only E-mail). 
 A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are separate (but replicated) from the core DAPL system. 
 The core DAPL wrapper makes provisions for two code blocks within any main routine - setup() and loop().
 
@@ -20,18 +21,7 @@ loop()
     large volumes of input. Code within the loop block is generally fault tollerant. For example, function 
     references to field names that are non-existant result in the calling function failing gracefully. 
     This allows for the successful processing of input files that have different fieldnames where not all 
-    fields are present in each file.
-
-Setup functions.
-
-    Setup functions populate a range of global variables that are made available to functions within the 
-    loop block. For example, the setup function "set_input" populates a file pointer that is read to 
-    provide input data. "set_input_directory" populates an array of input filenames that results in 
-    iterative calls to "set_input".
-
-Loop functions
-
-    Loop functions tend to fall into one of three categories:
+    fields are present in each file. Loop functions tend to fall into one of three categories:
 
          1. Those that Enable the selection or rejection of individual records, based on
          string matching, substring matching or through regular expression pattern matching. 
@@ -48,22 +38,7 @@ Loop functions
          3. Graphical data modeling. Relationships between data fields can be defined and visualised
          by generating .dot output that can be rendered in various ways (such as SVG, PDF JPEG Etc).
          Duplicate relationships are set to be effectively de-duped by the .dot processor, making
-         large volumes of data easier to analyse. 
-
-    Most loop functions have the same startup logic:
-
-         1. Check to see if the drop flag has been set. If it has, return.
-         2. Make a call to "find_fieldname" to see if the target field is present. If it's not, return.
-
-    The function then performs whatever logic is intended, which invariably ends up with a new 
-    fielname/fieldvalue pair being inserted via a call to "insert_new_field". If a modified field value 
-    (rather than new field) is to be replaced, all functions check that the new field value does not 
-    exceed MAX_FIELDVALUE_LENGTH and that MAX_FIELD_COUNT is not exceeded. Both these values have been 
-    arbitrarily set.
-
-    Most loop functions are small and source code can be found in the ./src directory. Using these as a 
-    template should make adding any new functionality simple, but making such additions are not considered 
-    to be a DAPL users job!
+         large volumes of data easier to analyse.
 
 
 INITIAL INSTALL:
