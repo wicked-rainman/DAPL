@@ -39,7 +39,23 @@ loop()
          by generating .dot output that can be rendered in various ways (such as SVG, PDF JPEG Etc).
          Duplicate relationships are set to be effectively de-duped by the .dot processor, making
          large volumes of data easier to analyse.
+         
+Sample code can be found in the ./example_code directory, with sample data in ./input. This may aid with the
+learning process. A brief description of the utilities/files produced by the Makefile can be found in
+./docs/Manifest.md. See INITIAL INSTALL section.
 
+FURTHER READING
+
+        Graphviz        - https://graphviz.org
+        Detox           - detox.sourceforge.net
+        msgconvert      - https://github.com/mvz/email-outlook-message-perl
+        abuseip         - https://www.abuseipdb.com/api.html
+        Reverse DNS     - https://opendata.rapid7.com/sonar.rdns_v2/
+        DNS             - https://opendata.rapid7.com/sonar.fdns_v2/
+        Topology        - http://www.caida.org/data/active/ipv4_routed_24_topology_dataset.xml
+        
+        
+------------------------------------------------------------------------------------------------
 
 INITIAL INSTALL:
 
@@ -84,16 +100,4 @@ Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox,
 
 12a.  For a list and brief description of the utilities/files produced by the Makefile, see ./docs/Manifest.md
 
-14.  Sample code can be found in the ./example_code directory, with sample data in ./input
 
-FURTHER READING
-
-        Graphviz        - https://graphviz.org
-        Detox           - detox.sourceforge.net
-        msgconvert      - https://github.com/mvz/email-outlook-message-perl
-        abuseip         - https://www.abuseipdb.com/api.html
-        Reverse DNS     - https://opendata.rapid7.com/sonar.rdns_v2/
-        DNS             - https://opendata.rapid7.com/sonar.fdns_v2/
-        Topology        - http://www.caida.org/data/active/ipv4_routed_24_topology_dataset.xml
-        
-        
