@@ -39,6 +39,18 @@ Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox,
 
 12. Any additional reference files you make should reside in $HOME/DAPL/Reference. The DNS related files are too big to be stored in a GIT repository, and must all be built from scratch using the DNS related scripts in /usr/local/sbin.
 
-12a.  For a list and brief description of the utilities/files produced by the Makefile, see Manifest.md
+12a.  For a list and brief description of the utilities/files produced by the Makefile, see ./docs/Manifest.md
 
-14.  Sample code can be found in the example_code directory, with sample data in ./input
+14.  Sample code can be found in the ./example_code directory, with sample data in ./input
+
+FURTHER READING
+
+        Graphviz        - https://graphviz.org
+        Detox           - detox.sourceforge.net
+        msgconvert      - https://github.com/mvz/email-outlook-message-perl
+        abuseip         - https://www.abuseipdb.com/api.html
+        Reverse DNS     - https://opendata.rapid7.com/sonar.rdns_v2/
+        DNS             - https://opendata.rapid7.com/sonar.fdns_v2/
+        Topology        - http://www.caida.org/data/active/ipv4_routed_24_topology_dataset.xml
+        
+        
