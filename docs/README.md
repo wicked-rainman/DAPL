@@ -20,7 +20,7 @@ setup():
 loop()
 
     Code within the loop block is executed once for each record contained in each input file identified 
-    in setup(). A data structure is created for each record, populated with each fieldname and field value 
+    in setup(). A data structure is created for each record, populated with the fieldname and field value 
     pairs found. All functions within the loop block reference this global structure. Once the record has been 
     processed, the structure is removed, ready to be populated with the fields in the next record. Other 
     than maintaining a count of input and output records and maintaining file or memory pointers for any 
