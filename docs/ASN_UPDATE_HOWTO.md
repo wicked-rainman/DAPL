@@ -5,7 +5,10 @@ asn.csv has the format:
     <START_INT>,<END_INT>,<ASN>,<ASN Name>
     
 AS numbers are known to change over time, and the file itself is incomplete (Commercial - up to date versions
-are available, but at cost). Functions such as add_asn() reads this file in order to resolve IP addresses to ASNs.
+are available, but at cost). 
+
+Functions such as add_asn() reads this file in order to resolve IP addresses to ASNs.
+
 More often than not, add_asn() will return no value because the entries are simply just not there..
 
 Rather than this file containing IP addresses, Start and end integers are recorded in order to make lookups quicker.
