@@ -258,7 +258,7 @@ Server :
 	mv grdns_server /usr/local/bin
 	mv grdnsd.service /etc/systemd/system
 	mv gasnd /usr/local/sbin
-	chmod 744 /usr/local/gasnd
+	chmod 744 /usr/local/sbin/gasnd
 	mv gasn_server /usr/local/bin
 	mv gasnd.service /etc/systemd/system
 	mv gcountryd /usr/local/sbin
