@@ -249,19 +249,19 @@ Server :
 	mv dns_prune /usr/local/sbin
 	mv gdnsd /usr/local/sbin
 	mv gdns_server /usr/local/bin
-	mv gdnsd.service /etc/systemd/system
+	mv gdnsd.service /usr/lib/systemd/system
 	mv grdnsd /usr/local/sbin
 	mv grdns_server /usr/local/bin
-	mv grdnsd.service /etc/systemd/system
+	mv grdnsd.service /usr/lib/systemd/system
 	mv gasnd /usr/local/sbin
 	mv gasn_server /usr/local/bin
-	mv gasnd.service /etc/systemd/system
+	mv gasnd.service /usr/lib/systemd/system
 	mv gcountryd /usr/local/sbin
 	mv gcountry_server /usr/local/bin
-	mv gcountryd.service /etc/systemd/system
+	mv gcountryd.service /usr/lib/systemd/system
 	mv ghistoryd /usr/local/sbin
 	mv ghistory_server /usr/local/bin
-	mv ghistoryd.service /etc/systemd/system
+	mv ghistoryd.service /usr/lib/systemd/system
 Client :
 	mkdir -p /usr/local/sbin
 	mkdir -p /usr/local/bin
