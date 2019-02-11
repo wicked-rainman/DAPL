@@ -250,24 +250,35 @@ Server :
 	mv rdns_update /usr/local/sbin
 	mv dns_prune /usr/local/sbin/sbin
 	mv gdnsd /usr/local/sbin
+	chmod 744 /usr/local/sbin/gdnsd
 	mv gdns_server /usr/local/bin
 	mv gdnsd.service /etc/systemd/system
 	mv grdnsd /usr/local/sbin
+	chmod 744 /usr/local/sbin/grdnsd
 	mv grdns_server /usr/local/bin
 	mv grdnsd.service /etc/systemd/system
 	mv gasnd /usr/local/sbin
+	chmod 744 /usr/local/gasnd
 	mv gasn_server /usr/local/bin
 	mv gasnd.service /etc/systemd/system
 	mv gcountryd /usr/local/sbin
+	chmod 744 /usr/local/sbin/gcountryd
 	mv gcountry_server /usr/local/bin
 	mv gcountryd.service /etc/systemd/system
 	mv ghistoryd /usr/local/sbin
+	chmod 744 /usr/local/sbin/ghistoryd
 	mv ghistory_server /usr/local/bin
 	mv ghistoryd.service /etc/systemd/system
 	/sbin/restorecon -v /etc/systemd/system/gasnd.service
 	/sbin/restorecon -v /etc/systemd/system/gcountryd.service
+	/sbin/restorecon -v /etc/systemd/system/gdnsd.service
+	/sbin/restorecon -v /etc/systemd/system/grdnsd.service
+	/sbin/restorecon -v /etc/systemd/system/ghistoryd.service 
 	/sbin/restorecon -v /usr/local/sbin/gasnd
 	/sbin/restorecon -v /usr/local/sbin/gcountryd
+	/sbin/restorecon -v /usr/local/sbin/gdnsd
+	/sbin/restorecon -v /usr/local/sbin/grdnsd
+	/sbin/restorecon -v /usr/local/sbin/ghistoryd
 Client :
 	mkdir -p /usr/local/sbin
 	mkdir -p /usr/local/bin
