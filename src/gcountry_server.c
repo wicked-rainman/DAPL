@@ -30,7 +30,7 @@ int main() {
 
    if((country_path = getenv("GREFERENCE"))) {
 	strcpy(countrypath,country_path);
-	strcat(countrypath,"/GeoIPCountry.csv");
+	strcat(countrypath,"/country.csv");
    }
    else {
         syslog (LOG_NOTICE,"$GREFERENCE environment not set.\n");
