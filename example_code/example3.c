@@ -22,7 +22,7 @@
 #include "../src/externs.h"
 void setup() {
 	set_input(' ',"../input_data/input1.csv");
-	set_graphics("../output_data/output3.dot","neato");
+	set_graphics("../graphics/output3.dot","neato");
 }
 void loop() {
 	add_country("source_ip"); add_asn("source_ip");
