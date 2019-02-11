@@ -2,7 +2,7 @@
 
 How to update ./Reference/asn.csv and ./Reference/country.csv files
 
-ASN
+ASN file:
 
 Each record in file asn.csv has the following format:
 
@@ -28,6 +28,11 @@ ensuring commas are placed in the correct place!
 
 5. After performing an update, use the ip2asn utility to check the update was made properly.
 
-COUNTRY
+COUNTRY file:
 
-The country.csv file is similar to the asn.csv file, only it holds country diagraph codes. The update process is much the same as with the asn file. A correct update can be confirmed using the ip2country utility.
+The country.csv file is much the same as the asn.csv file, only it holds country diagraph codes. The 
+validity of the update can be confirmed using the ip2country utility.
+
+NOTE:
+There is minimal checking of the consistency of these files. If you don't get the format right, it's
+highly likely you code will start to return wrong results.
