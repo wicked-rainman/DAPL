@@ -241,6 +241,8 @@ Server :
 	mkdir -p /usr/local/sbin
 	mkdir -p /usr/local/Reference
 	cp ../Reference/* /usr/local/Reference
+	chown root *.service
+	chgrp root *.service
 	chmod 644 *.service
 	mv class_a_update /usr/local/sbin
 	mv reverse_class_a_update /usr/local/sbin
