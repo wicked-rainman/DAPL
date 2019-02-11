@@ -1,5 +1,5 @@
 #!/bin/bash
-GREFERENCE=/xpoint1/Reference
+GREFERENCE=/usr/local/Reference
 export GREFERENCE
 GRDNS_PORT=32484
 export GRDNS_PORT
