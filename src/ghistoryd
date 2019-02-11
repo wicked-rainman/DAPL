@@ -1,5 +1,5 @@
 #!/bin/bash
-GHISTORY=/usr/local/history
+GHISTORY=/usr/local/Reference/history
 export GHISTORY
 GHISTORY_PORT=32485
 export GHISTORY_PORT
