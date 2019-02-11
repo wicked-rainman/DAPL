@@ -4,11 +4,6 @@ CFLAGS = -Ofast -Wall
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
 	ip2country ip2asn cidr2ip whitelist_convert sslcat gdns_server grdns_server \
 	ghistory_server gdns grdns ghistory
-	mkdir -p ../lib
-	mkdir -p ../progs
-	mkdir -p ../tables
-	mkdir -p ../output_data
-	mkdir -p ../graphics
 	rm -f ../input_data/readme.txt
 	rm -f ../example_code/README.md
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
@@ -236,36 +231,52 @@ whitelist_convert : whitelist_convert.c
 	$(CC) $(CFLAGS) -lm whitelist_convert.c -o whitelist_convert 
 write_csv_fields.o : write_csv_fields.c externs.h defaults.h find_fieldname.o array_from_string.o
 	$(CC) $(CFLAGS)  write_csv_fields.c -c -o write_csv_fields.o
-Install : 
+Server :
+	mkdir -p /usr/local/bin
+	mkdir -p /usr/local/sbin
+	mkdir -p /usr/local/Reference
+	cp ../Reference/* /usr/local/Reference
+	mv class_a_update /usr/local/sbin
+	mv reverse_class_a_update /usr/local/sbin
+	mv dns_auth_update /usr/local/sbin
+	mv rdns_update /usr/local/sbin
+	mv dns_prune /usr/local/sbin
+	mv gdnsd /usr/local/sbin
+	mv gdns_server /usr/local/bin
+	mv gdnsd.service /etc/systemd/system
+	mv grdnsd /usr/local/sbin
+	mv grdns_server /usr/local/bin
+	mv grdnsd.service /etc/systemd/system
+	mv gasnd /usr/local/sbin
+	mv gasn_server /usr/local/bin
+	mv gasnd.service /etc/systemd/system
+	mv gcountryd /usr/local/sbin
+	mv gcountry_server /usr/local/bin
+	mv gcountryd.service /etc/systemd/system
+	mv ghistoryd /usr/local/sbin
+	mv ghistory_server /usr/local/bin
+	mv ghistoryd.service /etc/systemd/system
+Client :
+	mkdir -p ../lib
+	mkdir -p ../progs
+	mkdir -p ../tables
+	mkdir -p ../output_data
+	mkdir -p ../graphics
+	mkdir -p /usr/local/sbin
+	mkdir -p /usr/local/bin
 	mv *.a ../lib
 	mv abuseipdb /usr/local/sbin
 	mv convert_emails /usr/local/sbin
-	mv dns_auth_update /usr/local/sbin
-	mv rdns_update /usr/local/sbin
-	mv class_a_update /usr/local/sbin
-	mv reverse_class_a_update /usr/local/sbin
-	mv dns_prune /usr/local/sbin
-	mv gdnsd /usr/local/sbin
-	mv grdnsd /usr/local/sbin
-	mv gcountryd /usr/local/sbin
-	mv gasnd /usr/local/sbin
-	mv ghistoryd /usr/local/sbin
 	mv ip2asn /usr/local/bin
 	mv ip2country /usr/local/bin
 	mv ip2int /usr/local/bin
 	mv int2ip /usr/local/bin
 	mv ghistory /usr/local/bin
-	mv ghistory_server /usr/local/bin
 	mv gcountry /usr/local/bin
-	mv gcountry_server /usr/local/bin
 	mv gasn /usr/local/bin
-	mv gasn_server /usr/local/bin
 	mv grdns /usr/local/bin
-	mv grdns_server /usr/local/bin
 	mv gdns /usr/local/bin
-	mv gdns_server /usr/local/bin
 	mv cidr2ip /usr/local/bin
 	mv whitelist_convert /usr/local/bin
 	mv sslcat /usr/local/bin
-	mv *.service /etc/systemd/system
 	rm *.o
