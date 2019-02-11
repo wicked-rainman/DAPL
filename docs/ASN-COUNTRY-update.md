@@ -8,15 +8,16 @@ Each record in file asn.csv has the format:
 
 Country.csv is similar, but with a country diagraph and country name as the last two fields:
 
-    START_INT,END_INT,Diagrap,name
+    START_INT,END_INT,Diagraph,name
  
 The IP addresses related to AS numbers and country diagraphs are known to change over time, and both of these files 
 are incomplete (Commercial up to date versions are available, but at cost). Functions such as add_asn() and 
-add_country() rely these files being correct.
+add_country() rely on these files being up to date.
 
-Rather than start and end IP addresses, integers are recorded in order to make lookups quicker. This note describes a way of keeping the files up to date:
+Rather than start and end IP addresses, integers are recorded in order to make lookups quicker. This note describes 
+a way of keeping the files up to date:
 
-1. For any given IP address, the CIDR notation country code and ASN can be obtained through Internet searches 
+1. For any given IP address, the CIDR notation,country code and ASN can be obtained through Internet searches 
 (E.G, using Hurrican Electric). For example, IP 54.230.8.34 has a network mask of /22, an ASN of AS16509 and
 is in the US. 
 
