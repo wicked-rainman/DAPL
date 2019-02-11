@@ -106,6 +106,7 @@ names Etc.
         GSERVER= (IP address of the server); export GSERVER
 
 10. If this is a server install, use systemctl to install gasnd.service, gdnsd.service, grdnsd.service, gcountryd.service and ghistoryd.service. Edit the shell variables in gasnd, gdnsd,grdnsd,gcountryd and ghistoryd (/usr/local/sbin) as required.
+Ensure that the required ports are allowed through any firewall.
 
 11. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 
