@@ -19,7 +19,7 @@ The level 2 directories contains files with an "f" or an "r" prefix ("f" = forwa
 followed by a three digit number that represents the third most significant octet (Class C network). 
 
 Each of these files contain records that carry an IP and DNS value pair. Obviously, duplicate IP addresses are 
-present, but with different DNS values. 65025*255*2 (33162750) files. In effect, one inode for each /24 network.
+present, but with different DNS values. 65025 * 255 * 2 (33162750) files. In effect, one inode for each /24 network.
 
 The records in the datastore can be created or updated using the scripts dns_auth_update and rdns_update. Both
 these scripts should be straight forward to understand, but note:
