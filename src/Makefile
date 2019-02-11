@@ -267,6 +267,8 @@ Client :
 	mv *.a ../lib
 	mv abuseipdb /usr/local/sbin
 	mv convert_emails /usr/local/sbin
+	chmod 755 /usr/local/sbin/abuseipdb
+	chmod 755 /usr/local/sbin/convert_emails
 	mv ip2asn /usr/local/bin
 	mv ip2country /usr/local/bin
 	mv ip2int /usr/local/bin
