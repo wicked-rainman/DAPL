@@ -9,8 +9,6 @@ all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip 
 	mkdir -p ../tables
 	mkdir -p ../output_data
 	mkdir -p ../graphics
-	mkdir -p /usr/local/sbin
-	mkdir -p /usr/local/bin
 	rm -f ../input_data/readme.txt
 	rm -f ../example_code/README.md
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
@@ -264,6 +262,8 @@ Server :
 	mv ghistory_server /usr/local/bin
 	mv ghistoryd.service /etc/systemd/system
 Client :
+	mkdir -p /usr/local/sbin
+	mkdir -p /usr/local/bin
 	mv *.a ../lib
 	mv abuseipdb /usr/local/sbin
 	mv convert_emails /usr/local/sbin
