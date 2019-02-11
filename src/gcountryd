@@ -1,5 +1,5 @@
 #!/bin/bash
-GREFERENCE=/fast1/Reference
+GREFERENCE=/usr/local/Reference
 export GREFERENCE
 GCOUNTRY_PORT=32483
 export GCOUNTRY_PORT
