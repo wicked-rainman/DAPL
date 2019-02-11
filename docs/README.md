@@ -81,39 +81,47 @@ INITIAL INSTALL:
 4.  As root, run ./Configure to make sure system dependancies are present. Clang and Graphviz are critical for DAPL. 
 Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox, dos2unix and the perl script msgconvert are needed for any E-mail processing.
 
-5.  exit root and as a user run make.
+5.  exit root and as a user run make. You shouldn't see any errors.
 
-6.  When that has completed, run "sudo make Install". This should copy any binaries into /usr/local/bin, scripts into 
-/usr/local/sbin, create archive libraries in $HOME/DAPL/Lib and place service files in /etc/systemd/system. Check that 
-you understand what the Install block of the Makefile is doing and change it if you would like to use other directory 
-names Etc. 
+6.  DAPL can be run as a client or as a server. For the client install, run:
 
-7.  DAPL can be run in a standalone mode, with backend server support, or as a server. It requires environmental variables to be set, based on the installation use case. These variables are often placed in $HOME/.bashrc, or in the case of a server install, included in the systemd control files.
+        "sudo make Client" 
+      
+or for the server (if you are happy with what it is going to do), run:
 
-8.  In a standalone environment, Edit $HOME/.bashrc, and add the three minimum BASH variables:
+        "sudo make Server".
+
+After a server install, use systemctl to enable and start gasnd.service, gdnsd.service, grdnsd.service, 
+ghistory.service and gcountryd.service as required. Ensure that the TCP ports specified in gasnd, gdnsd, 
+grdnsd, gcountryd and ghistoryd (/usr/local/sbin) are allowed through any firewall.
+
+
+7. In a client install, Edit $HOME/.bashrc, and add these BASH variables:
 
         WHITE_FILE= $HOME/DAPL/Reference/whitelist.csv; export WHITE_FILE
         ASN_FILE= $HOME/DAPL/Reference/asn.csv; export ASN_FILE
         COUNTRY_FILE= $HOME/DAPL/Reference/country.csv; export COUNTRY_FILE
-
-9.  If the install is using the server functionality, add these variables to $HOME/.bashrc:
-
         GDNS_PORT=32481; export GDNS_PORT
         GASN_PORT=32482; export GASN_PORT
         GCOUNTRY_PORT=32483; export GCOUNTRY_PORT
         GRDNS_PORT=32484; export GRDNS_PORT
         GHISTORY_PORT=32485; export GHISTORY_PORT
         GSERVER= (IP address of the server); export GSERVER
+        
+The ASN_FILE, COUNTRY_FILE and WHITE_FILE files are used within DAPL (functions add_asn() and add_country() 
+and whitelist() ) for local resolution and provide non-server related answers. DAPL functions socketadd_asn() 
+and socketadd_country() will resolve answers through the related server ports. DAPL Functions socketadd_dns(), 
+socketadd_history() and socketadd_rdns() have not been written yet, although Standalone utilities (gdns grdns 
+ghistory) reference these other ports. 
 
-10. If this is a server install, use systemctl to install gasnd.service, gdnsd.service, grdnsd.service, gcountryd.service and ghistoryd.service. Edit the shell variables in gasnd, gdnsd,grdnsd,gcountryd and ghistoryd (/usr/local/sbin) as required.
-Ensure that the required ports are allowed through any firewall.
-
-11. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
+8. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 
         "clang -Ofast prog.c ../lib/libdapl.a -o progname" for files conaining single line "CSV" type records, or
         "clang -Ofast prog.c ../lib/libeml.a -o progname" to utilise the E-mail conversion handler
 
-12. Any additional reference files you make should reside in $HOME/DAPL/Reference. The DNS related files are too big to be stored in a GIT repository, and must all be built from scratch using the DNS related scripts in /usr/local/sbin.
+9. On a client, any additional reference files you make should reside in $HOME/DAPL/Reference. On a Server, DNS related 
+files must all be built from scratch using the DNS related scripts in sbin (They represent too much of an overhead for 
+client installs). 
 
 
 
