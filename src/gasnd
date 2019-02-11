@@ -1,5 +1,5 @@
 #!/bin/bash
-GREFERENCE=/fast1/Reference
+GREFERENCE=/usr/local/Reference
 export GREFERENCE
 GASN_PORT=32482
 export GASN_PORT
