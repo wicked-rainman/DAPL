@@ -32,7 +32,7 @@ these scripts should be straight forward to understand, but note:
             which are forked to keep every available processor busy. Expect 100% CPU usage.
 
         3.  From time to time, unwanted DNS records will be collected (You will find randon 
-            DNS entries that are machine generated for temporary use. Script dns_prune can be 
+            DNS entries that are machine generated for temporary use). Script dns_prune can be 
             used to clear out the dross.
 
 NOTE:
