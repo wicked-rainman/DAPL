@@ -1,18 +1,19 @@
 
 
                     How to update ./Reference/asn.csv and ./Reference/country.csv files
+                    -------------------------------------------------------------------
 
-Each record in file asn.csv has the format: 
+Each record in file asn.csv has a 3 field format: 
 
     START_INT,END_INT,"ASN AS_Name" 
 
-Country.csv is similar, but with a country diagraph and country name as the last two fields:
+Country.csv is similar, but with a country diagraph and country name as the last 2 of the 4 fields:
 
     START_INT,END_INT,Diagraph,name
  
 The IP addresses related to AS numbers and country diagraphs are known to change over time, and both of these files 
 are incomplete (Commercial up to date versions are available, but at cost). Functions such as add_asn() and 
-add_country() rely on these files being up to date.
+add_country() rely on these files being right.
 
 Rather than start and end IP addresses, integers are recorded in order to make lookups quicker. This note describes 
 a way of keeping the files up to date:
@@ -27,10 +28,11 @@ end IP address for this network range).
 3 Take the two IP addresses returned by cidr2ip, and past them into the command "ip2int 54.230.8.0 54.230.11.255" 
 which returns 921044992 921046015
 
-4. Records in the asn and country csv files are stored in numeric order, so find the gap in which this fits
-and insert the record, ensuring the new entry is placed in the correct place, and has the right format. Note
-that sometimes you will find overlapping ranges with adjacent entries. If that's the case some further hand
-editing and checking will be required. 
+4. Records in the asn and country csv files are stored in numeric order, so find the gap in which this new 
+record fits, carefully making sure you use the correct format when doing the edit. Note that sometimes you 
+will find adjacent overlapping ranges. This is normal and having to edit the adjacent start or end entries is 
+quite common. The int2ip utility can be used to get a neighbour IP address, and allows you to re-check that 
+values are valid by doing another Internet search. These ranges will change with time! 
 
-5. After performing an update, use the ip2asn/ip2country utilities to check the update was made properly.
+5. After performing an update, use the ip2asn/ip2country utilities to check the update was made correctly.
 
