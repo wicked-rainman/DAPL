@@ -119,11 +119,16 @@ DAPL functions
      
 EXAMPLE CODE
 
-     example1            - Read input file, write output file, add country and asn fields for each IP
-     example2            - Read and write files. Drop record based on field value.
-     example3            - Graphically show the relationship between two fields
-     example4            - Graphically show the relationship between multiple fields
-     example5            - Make fields unique when graphically displaying identical fields
-     example6            - Demonstrate a different view of the data when compared to other examples
+     example1                 - Read input file, write output file, add country and asn fields for each IP
+     example2                 - Read and write files. Drop record based on field value.
+     example3                 - Graphically show the relationship between two fields
+     example4                 - Graphically show the relationship between multiple fields
+     example5                 - Make fields unique when graphically displaying identical fields
+     example6                 - Demonstrate a different view of the data when compared to other examples
+     spam_email_handler       - Dealing with chained field values
+     spam_email_processor     - Selecting specific spam e-mails baed on relay IP addresses
+     ssh-input-handler        - Selecting authorised ssh session records
+     webserver-input-handler  - Selecting successful HTTP requests and xreffing with external lookup records
+     webserver-analysis       - View HTTP exchanges with known hostile IP addresses 
      
      
