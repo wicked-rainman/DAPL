@@ -267,4 +267,5 @@ Install :
 	mv cidr2ip /usr/local/bin
 	mv whitelist_convert /usr/local/bin
 	mv sslcat /usr/local/bin
+	mv *.service /etc/systemd/system
 	rm *.o
