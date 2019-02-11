@@ -3,8 +3,8 @@ HISTORIC DNS
 
 The DAPL DNS/RDNS server programs gdns_server and grdns_server are designed to deliver historic DNS records
 to the gdns and grdns client utllities. The server components both read these records from a turnkey datastore 
-that require regular updates. After an initial DAPL install, these datastores need to be built from scratch (They 
-are too big for a GIT repository). 
+that require regular updates. After an initial DAPL install, the datastore need to be built from scratch (It is 
+too big for a GIT repository). 
 
 DATASTORE FORMAT
 
