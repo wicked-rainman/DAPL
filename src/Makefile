@@ -4,6 +4,13 @@ CFLAGS = -Ofast -Wall
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
 	ip2country ip2asn cidr2ip whitelist_convert sslcat gdns_server grdns_server \
 	ghistory_server gdns grdns ghistory
+	mkdir -p ../lib
+	mkdir -p ../progs
+	mkdir -p ../tables
+	mkdir -p ../output_data
+	mkdir -p ../graphics
+	mkdir -p /usr/local/sbin
+	mkdir -p /usr/local/bin
 	rm -f ../input_data/readme.txt
 	rm -f ../example_code/README.md
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
@@ -257,13 +264,6 @@ Server :
 	mv ghistory_server /usr/local/bin
 	mv ghistoryd.service /etc/systemd/system
 Client :
-	mkdir -p ../lib
-	mkdir -p ../progs
-	mkdir -p ../tables
-	mkdir -p ../output_data
-	mkdir -p ../graphics
-	mkdir -p /usr/local/sbin
-	mkdir -p /usr/local/bin
 	mv *.a ../lib
 	mv abuseipdb /usr/local/sbin
 	mv convert_emails /usr/local/sbin
