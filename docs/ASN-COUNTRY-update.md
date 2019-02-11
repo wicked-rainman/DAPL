@@ -20,7 +20,7 @@ a way of keeping the files up to date:
 
 1. For any given IP address, the CIDR notation,country code and ASN can be obtained through Internet searches 
 (E.G, using Hurrican Electric). For example, IP 54.230.8.34 has a network mask of /22, an ASN of AS16509 and
-is in the US. 
+is located in the US. 
 
 2. Using the cidr2ip utility, 54.230.8.34/22 returns 54.230.8.0 54.230.11.255 (which is the start and 
 end IP address for this network range).
