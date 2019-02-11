@@ -83,7 +83,10 @@ Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox,
 
 5.  exit root and as a user run make.
 
-6.  When that has completed, run "sudo make Install". This should copy any binaries into /usr/local/bin, scripts into /usr/local/sbin and create archive libraries in $HOME/DAPL/Lib
+6.  When that has completed, run "sudo make Install". This should copy any binaries into /usr/local/bin, scripts into 
+/usr/local/sbin, create archive libraries in $HOME/DAPL/Lib and place service files in /etc/systemd/system. Check that 
+you understand what the Install block of the Makefile is doing and change it if you would like to use other directory 
+names Etc. 
 
 7.  DAPL can be run in a standalone mode, with backend server support, or as a server. It requires environmental variables to be set, based on the installation use case. These variables are often placed in $HOME/.bashrc, or in the case of a server install, included in the systemd control files.
 
