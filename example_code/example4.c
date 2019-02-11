@@ -20,7 +20,7 @@
 #include "../src/externs.h"
 void setup() {
 	set_input(' ',"../input_data/input1.csv");
-	set_graphics("../output_data/output4.dot","twopi");
+	set_graphics("../graphics/output4.dot","twopi");
 }
 void loop() {
 	add_country("source_ip"); add_asn("source_ip");
