@@ -117,3 +117,13 @@ DAPL functions
      whitelist                - Allows for the conditional testing of an IP address to see if it is whitelisted.
      write_csv_fields         - Routine to write CSV output fields to a file. 
      
+EXAMPLE CODE
+
+     example1            - Read input file, write output file, add country and asn fields for each IP
+     example2            - Read and write files. Drop record based on field value.
+     example3            - Graphically show the relationship between two fields
+     example4            - Graphically show the relationship between multiple fields
+     example5            - Make fields unique when graphically displaying identical fields
+     example6            - Demonstrate a different view of the data when compared to other examples
+     
+     
