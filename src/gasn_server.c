@@ -30,7 +30,7 @@ int main() {
 
    if((asn_path = getenv("GREFERENCE"))) {
 	strcpy(asnpath,asn_path);
-	strcat(asnpath,"/GeoIPASNum2.csv");
+	strcat(asnpath,"/asn.csv");
    }
    else {
         syslog (LOG_NOTICE,"$GREFERENCE environment not set.\n");
