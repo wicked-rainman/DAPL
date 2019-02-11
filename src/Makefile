@@ -248,7 +248,7 @@ Server :
 	mv reverse_class_a_update /usr/local/sbin
 	mv dns_auth_update /usr/local/sbin
 	mv rdns_update /usr/local/sbin
-	mv dns_prune /usr/local/sbin/sbin
+	mv dns_prune /usr/local/sbin
 	mv gdnsd /usr/local/sbin
 	chmod 744 /usr/local/sbin/gdnsd
 	mv gdns_server /usr/local/bin
