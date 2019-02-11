@@ -248,7 +248,7 @@ Server :
 	mv reverse_class_a_update /usr/local/sbin
 	mv dns_auth_update /usr/local/sbin
 	mv rdns_update /usr/local/sbin
-	mv dns_prune /usr/local/sbin
+	mv dns_prune /usr/local/sbin/sbin
 	mv gdnsd /usr/local/sbin
 	mv gdns_server /usr/local/bin
 	mv gdnsd.service /etc/systemd/system
@@ -264,6 +264,8 @@ Server :
 	mv ghistoryd /usr/local/sbin
 	mv ghistory_server /usr/local/bin
 	mv ghistoryd.service /etc/systemd/system
+	/sbin/restorecon -v /usr/local/sbin/gasnd
+	/sbin/restorecon -v /usr/local/sbin/gcountryd
 Client :
 	mkdir -p /usr/local/sbin
 	mkdir -p /usr/local/bin
