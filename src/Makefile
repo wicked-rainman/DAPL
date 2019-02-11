@@ -264,6 +264,8 @@ Server :
 	mv ghistoryd /usr/local/sbin
 	mv ghistory_server /usr/local/bin
 	mv ghistoryd.service /etc/systemd/system
+	/sbin/restorecon -v /etc/systemd/system/gasnd.service
+	/sbin/restorecon -v /etc/systemd/system/gcountryd.service
 	/sbin/restorecon -v /usr/local/sbin/gasnd
 	/sbin/restorecon -v /usr/local/sbin/gcountryd
 Client :
