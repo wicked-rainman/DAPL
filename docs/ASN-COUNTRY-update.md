@@ -4,9 +4,7 @@ How to update ./Reference/asn.csv and ./Reference/country.csv files
 
 ASN file:
 
-Each record in file asn.csv has the following format:
-
-<START_INT>,<END_INT>,<ASN>,<ASN Name>
+Each record in file asn.csv has the format "START_INT,END_INT,ASN,AS_Name"
 
 AS numbers are known to change over time, and the file itself is incomplete (Commercial up to date versions are available, but at cost). Functions such as add_asn() rely this file in order to resolve IP addresses to ASNs.
 
