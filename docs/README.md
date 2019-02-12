@@ -79,7 +79,7 @@ Makefile can be found in ./docs/Manifest.md. See INITIAL INSTALL section below.
 
 1.  cd into your $HOME directory
 
-2.  Clone the repository using "git clone https://github.com/wicked-rainman/DAPL.git". This should create a 
+2.  Clone the repository using `git clone https://github.com/wicked-rainman/DAPL.git`. This should create a 
 directory named "DAPL".
 
 3.  cd into $HOME/DAPL/src
