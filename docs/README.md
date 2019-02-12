@@ -84,19 +84,19 @@ directory named "DAPL".
 
 3.  cd into $HOME/DAPL/src
 
-4.  As root, run ./Configure to make sure system dependancies are present. Clang and Graphviz are critical for 
+4.  As root, run `./Configure` to make sure system dependancies are present. Clang and Graphviz are critical for 
 DAPL. Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox, dos2unix and the perl 
 script msgconvert are needed for any E-mail processing.
 
-5.  exit root and as a user run make. You shouldn't see any errors.
+5.  exit root and as a user run `make`. You shouldn't see any errors.
 
 6.  DAPL can be run as a client or as a server. For the client install, run:
 
-        sudo make Client 
+        `sudo make Client` 
       
 or for the server (if you are happy with what actions it is going to perform), run:
 
-        sudo make Server
+        `sudo make Server`
 
 7. After a server install, use systemctl to enable and start gasnd.service, gdnsd.service, grdnsd.service, 
 ghistory.service and gcountryd.service as required. Ensure that the TCP ports specified in gasnd, gdnsd, 
@@ -124,8 +124,8 @@ although Standalone utilities gdns grdns reference these other ports.
 
 8. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 
-        "clang -Ofast prog.c ../lib/libdapl.a -o progname" for files conaining single line "CSV" type records, or
-        "clang -Ofast prog.c ../lib/libeml.a -o progname" to utilise the E-mail conversion handler
+        `clang -Ofast prog.c ../lib/libdapl.a -o progname` for files conaining single line "CSV" type records, or
+        `clang -Ofast prog.c ../lib/libeml.a -o progname` to utilise the E-mail conversion handler
 
 9. On a client, any additional reference files you make should reside in $HOME/DAPL/Reference. 
 
