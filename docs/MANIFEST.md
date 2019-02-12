@@ -58,8 +58,8 @@ __whitelist.csv__ - An updatable file where each record represents an IP address
 
 ### DAPL functions
 
-     add_asn                  - Local lookup of an IP address in order to obtain an ASN
-     add_attributes           - Add graphical attributes to a .dot node
+__add_asn__                  - Local lookup of an IP address in order to obtain an ASN
+__add_attributes__           - Add graphical attributes to a .dot node
      add_composite            - Add a temporary set of values to a field value in order to make it unique
      add_concatenation        - Concatenate fields onto an existing field value
      add_country              - Local lookup of an IP address in order to obtain a country diagraph
