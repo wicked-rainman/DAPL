@@ -6,7 +6,8 @@ of single-line records (EG HTTP, SSH and Audit logs, phone or building access lo
 Provisions are made for dealing with other forms of data through a conversion process (Currently only one such 
 converter exists - for processing spam E-mail). 
 
-A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are separate (but replicated) from the core DAPL wrapper. 
+A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are 
+separate (but replicated) from the core DAPL wrapper. 
 
 DAPL makes provisions for two code blocks within any main routine:
 
@@ -21,18 +22,18 @@ setup():
 loop()
 
     Code within the loop block is executed once for each record contained in each input file identified 
-    in setup(). An obscured global data structure is created for each record, populated with the fieldname and field 
-    value pairs found. All functions within the loop block reference this structure. Once the record has been 
-    processed, it is reset to empty, ready to be populated with the fields from the next record. 
+    in setup(). An obscured global data structure is created for each record, populated with the fieldname and 
+    field value pairs found. All functions within the loop block reference this structure. Once the record has 
+    been processed, it is reset to empty, ready to be populated with the fields from the next record. 
     
     Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
     reference files, there is no state within the code block. This allows for processing of undefinably 
     large volumes of input, restricted only by the memory requirements for holding one single record at a time. 
     
     Code within the loop block is generally fault tollerant. For example, function 
-    references to field names that are non-existant result in the calling function failing gracefully 
-    (This allows for the successful processing of input files that have different fieldnames where not all 
-    fields are present in each file). 
+    references to field names that are non-existant in the input result in the calling function failing gracefully 
+    (This allows for the successful processing of files that have different fields - where not all 
+    of the fields in one are present in the other). 
     
     Loop functions tend to fall into one of three categories:
 
