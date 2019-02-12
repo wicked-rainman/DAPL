@@ -33,6 +33,7 @@ been processed it is reset to empty, ready to be populated with the fields from 
 Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
 reference files, there is no state within the code block. This allows for processing of undefinably 
 large volumes of input, restricted only by the memory requirements for holding one single record at a time.  
+
 Code within the loop block is generally fault tollerant. For example, function references to field names 
 that are non-existant in the input result in the calling function failing gracefully (This allows for the 
 successful processing of files that have different fields - where not all of the fields in one are present 
@@ -91,7 +92,7 @@ script msgconvert are needed for any E-mail processing.
 
 6.  DAPL can be run as a client or as a server. For the client install, run:
 
-        __sudo__ make Client 
+        sudo make Client 
       
 or for the server (if you are happy with what actions it is going to perform), run:
 
