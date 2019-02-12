@@ -11,6 +11,7 @@ all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip 
 	mkdir -p ../graphics
 	rm -f ../input_data/readme.txt
 	rm -f ../example_code/README.md
+	mv *.a ../lib
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_asn.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o add_substring.o \
@@ -282,7 +283,6 @@ Server :
 Client :
 	mkdir -p /usr/local/sbin
 	mkdir -p /usr/local/bin
-	mv *.a ../lib
 	mv abuseipdb /usr/local/sbin
 	mv convert_emails /usr/local/sbin
 	chmod 755 /usr/local/sbin/abuseipdb
