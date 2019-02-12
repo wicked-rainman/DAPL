@@ -4,24 +4,24 @@
 
 ### Utilities
 
-- ip2int -  A simple C program that converts a IP address or range of addresses to their respective Integer value.
-- ip2asn -  Resolves the ASN associated with the specified IP address(s). Dependant on $ASN_FILE.
-- ip2country - Resolves country code associated with the specified IP address(s). Dependant on $COUNTRY_FILE.
-- int2ip - Converts an Int to an IP address.
-- cidr2ip - Converts a CIDR to an IP address range. 
-- gasn - Client that resolves the ASN associated with an IP address via a call to $GSERVER
-- gdns - Client that resolves historic DNS entries for an IP address via a call to $GSERVER
-- grdns - Client that resolves historic reverse DNS entries for an IP address via a call to $GSERVER
-- ghistory - Client that queries a $GSERVER for historic records relating to an IP address
-- whitelist_convert - Converts opensource whitelists into a DAPL compatible reference table
-- sslcat - A simplistic version of netcat for SSL.
-- abuseipdb - Client to look up and IP address over the Internet using the AbuseIPdb API
-- convert_emails - Converts saved outlook messages into plain text
-- dns_auth_update - Updates the DNS_INODES database for historic DNS resolution
-- rdns_update - Updates the RDNS_INODES database for historic reverse DNS resolution
-- dns_prune - Utility to remove rogue IP addresses or entries from the DNS_INODES database
-- class_a_update - Internal routine used by dns_auth_update
-- reverse_class_a_update - Internal routine used by rdns_update
+- __ip2int__ A simple C program that converts a IP address or range of addresses to their respective Integer value.
+- __ip2asn__ Resolves the ASN associated with the specified IP address(s). Dependant on $ASN_FILE.
+- __ip2country__ Resolves country code associated with the specified IP address(s). Dependant on $COUNTRY_FILE.
+- __int2ip__ Converts an Int to an IP address.
+- __cidr2ip__ Converts a CIDR to an IP address range. 
+- __gasn__ Client that resolves the ASN associated with an IP address via a call to $GSERVER
+- __gdns__ Client that resolves historic DNS entries for an IP address via a call to $GSERVER
+- __grdns__ Client that resolves historic reverse DNS entries for an IP address via a call to $GSERVER
+- __ghistory__ Client that queries a $GSERVER for historic records relating to an IP address
+- __whitelist_convert__ Converts opensource whitelists into a DAPL compatible reference table
+- __sslcat__ A simplistic version of netcat for SSL.
+- __abuseipdb__ Client to look up and IP address over the Internet using the AbuseIPdb API
+- __convert_emails__ Converts saved outlook messages into plain text
+- __dns_auth_update__ Updates the DNS_INODES database for historic DNS resolution
+- __rdns_update__ Updates the RDNS_INODES database for historic reverse DNS resolution
+- __dns_prune__ Utility to remove rogue IP addresses or entries from the DNS_INODES database
+- __class_a_update__ Internal routine used by dns_auth_update
+- __reverse_class_a_update__ Internal routine used by rdns_update
      
 ### Services
 
