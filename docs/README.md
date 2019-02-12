@@ -63,7 +63,7 @@ Sample code can be found in the ./example_code directory, together with sample d
 may aid with the learning process. A brief description of the utilities/files produced by the included 
 Makefile can be found in ./docs/Manifest.md. See INITIAL INSTALL section below.
 
-FURTHER READING
+## FURTHER READING
 
         Graphviz        - https://graphviz.org
         Detox           - detox.sourceforge.net
@@ -76,7 +76,7 @@ FURTHER READING
         
 ------------------------------------------------------------------------------------------------
 
-INITIAL INSTALL:
+## INITIAL INSTALL:
 
 1.  cd into your $HOME directory
 
