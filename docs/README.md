@@ -93,7 +93,7 @@ script msgconvert are needed for any E-mail processing.
 
 6.  DAPL can be run as a client or as a server. For the client install, run:
 
-        sudo make Client 
+        __sudo__ make Client 
       
 or for the server (if you are happy with what actions it is going to perform), run:
 
