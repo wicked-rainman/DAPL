@@ -33,25 +33,26 @@ been processed it is reset to empty, ready to be populated with the fields from 
 Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
 reference files, there is no state within the code block. This allows for processing of undefinably 
 large volumes of input, restricted only by the memory requirements for holding one single record at a time.  
-Code within the loop block is generally fault tollerant. For example, function 
-references to field names that are non-existant in the input result in the calling function failing 
-gracefully (This allows for the successful processing of files that have different fields - where not all 
-of the fields in one are present in the other).  
+Code within the loop block is generally fault tollerant. For example, function references to field names 
+that are non-existant in the input result in the calling function failing gracefully (This allows for the 
+successful processing of files that have different fields - where not all of the fields in one are present 
+in the other).  
+
 Loop functions tend to fall into one of three categories:
 
-         1. Those that Enable the selection or rejection of individual records, based on
+-        Those that Enable the selection or rejection of individual records, based on
          string matching, substring matching or through regular expression pattern matching. 
          Rejected records are internally assigned a "drop" flag. If a drop flag is 
          present, all sequentially following loop functions will exit without performing their 
          intended actions (I.E, the record is ignored). Early rejection of unwanted records can 
          obviously dramatically improve processing times.
          
-         2. Value editing functions that can replace, sanitse, substring or add to the underlying
+-        Value editing functions that can replace, sanitse, substring or add to the underlying
          data in some way. Field values can be looked up in locally held tables, or from external
          sources via socket calls with suitable APIs. Field values can be combined or added to in order
          to make them unique (such as adding DTGs Etc). 
          
-         3. Graphical data modeling. Relationships between data fields can be defined and visualised
+-        Graphical data modeling. Relationships between data fields can be defined and visualised
          by generating .dot output that can be rendered by graphviz in various ways (such as SVG, PDF 
          JPEG Etc). Duplicate relationships are set to be effectively de-duped by the .dot processor, 
          making large volumes of data easier to analyse.
