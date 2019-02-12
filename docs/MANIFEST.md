@@ -1,6 +1,6 @@
 
 
-## An overview of the utilities and functions provided by this package:
+## Overview of utilities/functions/files provided by this package:
 
 ### Utilities
 
@@ -25,32 +25,32 @@
      
 ### Services
 
-     grdns_server - A service running on $GSERVER port $GRDNS_PORT. Answers historic RDNS queries.
-     gasn_server -  A service running on $GSERVER port $GASN_PORT. Answers ASN queries.
-     ghistory_server - A service running on $GSERVER port $GHISTORY_PORT. Answers IP seen before queries.
-     gcountry_server - A service running on $GSERVER port $GCOUNTRY_PORT. Answers IP country code lookups.
-     gdns_server - A service running on $GSERVER port $GDNS_PORT. Answers historic DNS queries.
-     gasnd - systemd shell for gasn_server
-     gcountryd - systemd shell for gcountry_server
-     gdnsd - systemd shell for gdns_server
-     ghistoryd - systemd shell for ghistory_server
-     grdnsd - systemd shell for grdns_server
-     gasnd.service - systemd service file for gasn_server
-     gcountryd.service - systemd service file for gcountry_server
-     gdnsd.service - systemd service file for gdns_server
-     grdnsd.service - systemd service file for grdns_server
-     ghistoryd.service - systemd service file for ghistory_server
+- __grdns_server__ A service running on $GSERVER port $GRDNS_PORT. Answers historic RDNS queries.
+- __gasn_server__ A service running on $GSERVER port $GASN_PORT. Answers ASN queries.
+- __ghistory_server__ A service running on $GSERVER port $GHISTORY_PORT. Answers IP seen before queries.
+- __gcountry_server__ A service running on $GSERVER port $GCOUNTRY_PORT. Answers IP country code lookups.
+- __gdns_server__ A service running on $GSERVER port $GDNS_PORT. Answers historic DNS queries.
+- __gasnd__ systemd shell for gasn_server
+- __gcountryd__ systemd shell for gcountry_server
+- __gdnsd__ systemd shell for gdns_server
+- __ghistoryd__ systemd shell for ghistory_server
+- __grdnsd__ systemd shell for grdns_server
+- __gasnd.service__ systemd service file for gasn_server
+- __gcountryd.service__ systemd service file for gcountry_server
+- __gdnsd.service__ systemd service file for gdns_server
+- __grdnsd.service__ systemd service file for grdns_server
+- __ghistoryd.service__ systemd service file for ghistory_server
 
 ### DAPL wrapper
 
-      Library libdapl.a - DAPL Main routine wrapper and all associated function calls
-      Library libeml.a - E-Mail handler as Main routine wrapper and all associated DAPL function calls
+Library __libdapl.a__ - DAPL Main routine wrapper and all associated function calls
+Library __libeml.a__ - E-Mail handler as Main routine wrapper and all associated DAPL function calls
 
 ### Reference files
 
-     asn.csv - An updatable file where each record represents an IP address range (as Ints) that relate to an ASN
-     country.csv - An updatable file where each record represents an IP address range (as Ints) that relate to country codes
-     whitelist.csv - An updatable file where each record represents an IP address range (as Ints) of whitelisted IP addresses
+__asn.csv__ - An updatable file where each record represents an IP address range (as Ints) that relate to an ASN
+__country.csv__ - An updatable file where each record represents an IP address range (as Ints) that relate to country codes
+__whitelist.csv__ - An updatable file where each record represents an IP address range (as Ints) of whitelisted IP addresses
 
 ### DAPL functions
 
