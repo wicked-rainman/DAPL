@@ -65,7 +65,7 @@ Makefile can be found in ./docs/Manifest.md. See INITIAL INSTALL section below.
 ## FURTHER READING
 
 - Graphviz        - https://graphviz.org
-- Detox           - detox.sourceforge.net
+- Detox           - http://detox.sourceforge.net
 - msgconvert      - https://github.com/mvz/email-outlook-message-perl
 - abuseip         - https://www.abuseipdb.com/api.html
 - Reverse DNS     - https://opendata.rapid7.com/sonar.rdns_v2/
