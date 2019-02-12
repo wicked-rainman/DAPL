@@ -243,6 +243,7 @@ Server :
 	mkdir -p /usr/local/bin
 	mkdir -p /usr/local/sbin
 	mkdir -p /usr/local/Reference
+	mkdir -p /usr/local/Reference/history
 	cp ../Reference/* /usr/local/Reference
 	chown root *.service
 	chgrp root *.service
