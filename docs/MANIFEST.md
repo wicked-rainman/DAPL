@@ -43,14 +43,18 @@
 
 ### DAPL wrapper
 
-Library __libdapl.a__ - DAPL Main routine wrapper and all associated function calls
-Library __libeml.a__ - E-Mail handler as Main routine wrapper and all associated DAPL function calls
+Library __libdapl.a__ - DAPL Main routine wrapper and all associated function calls  
+
+Library __libeml.a__ - E-Mail handler as Main routine wrapper and all associated DAPL function calls  
 
 ### Reference files
 
-__asn.csv__ - An updatable file where each record represents an IP address range (as Ints) that relate to an ASN
-__country.csv__ - An updatable file where each record represents an IP address range (as Ints) that relate to country codes
-__whitelist.csv__ - An updatable file where each record represents an IP address range (as Ints) of whitelisted IP addresses
+__asn.csv__ - An updatable file where each record represents an IP address range (as Ints) that relate to an ASN  
+
+__country.csv__ - An updatable file where each record represents an IP address range (as Ints) that relate to country codes  
+
+__whitelist.csv__ - An updatable file where each record represents an IP address range (as Ints) of whitelisted IP addresses  
+
 
 ### DAPL functions
 
