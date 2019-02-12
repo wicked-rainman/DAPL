@@ -121,6 +121,7 @@ EXAMPLE CODE
 
      example1                 - Read input file, write output file, add country and asn fields for each IP
      example2                 - Read and write files. Drop record based on field value.
+     example2a                - Read and write files. Keep record based on field value.
      example3                 - Graphically show the relationship between two fields
      example4                 - Graphically show the relationship between multiple fields
      example5                 - Make fields unique when graphically displaying identical fields
