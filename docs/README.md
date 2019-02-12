@@ -6,7 +6,7 @@ of single-line records (EG HTTP, SSH and Audit logs, phone or building access lo
 Provisions are made for dealing with other forms of data through a conversion process (Currently only one such 
 converter exists - for processing spam E-mail). 
 
-A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are separate (but replicated) from the core DAPL system. 
+A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are separate (but replicated) from the core DAPL wrapper. 
 
 DAPL makes provisions for two code blocks within any main routine:
 
