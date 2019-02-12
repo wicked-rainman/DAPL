@@ -53,4 +53,5 @@ FILE *_dfile=NULL;
 //FILE *_whitefile=NULL;
 int _asn_sockfd=0;
 int _country_sockfd;
+int _history_sockfd;
 size_t _input_line_length=0;
