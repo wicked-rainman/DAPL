@@ -5,8 +5,8 @@ single-line records (for example HTTP, SSH and Audit logs, phone or building acc
 The wrapper might be thought of as mysql for CSV files, but without the databases, or perhaps the query language 
 components of Model 204. The underlying language is C, with the primary focus being to keep things simple!
 
-Provisions are made for dealing with other forms of data through a conversion process _(Currently only one such 
-converter exists - for processing spam E-mail)_. 
+Provisions are made for dealing with other forms of data through a conversion process 
+_(Currently only one such converter exists - for processing spam E-mail)_. 
 
 A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are 
 separate (but replicated) from the core DAPL wrapper. Data "fusion" can take place through inbuilt lookup functions
