@@ -117,13 +117,13 @@ DAPL functions socketadd_asn() socketadd_country() and socketadd_history() will 
 the related server ports. DAPL functions socketadd_dns() and socketadd_rdns() have not been written yet, 
 although Standalone utilities gdns grdns reference these other ports. 
 
-8. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
+9. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 `clang -Ofast prog.c ../lib/libdapl.a -o progname` for files conaining single line "CSV" type records, or
 `clang -Ofast prog.c ../lib/libeml.a -o progname` to utilise the E-mail conversion handler
 
-9. On a client, any additional reference files you make should reside in $HOME/DAPL/Reference. 
+10. On a client, any additional reference files you make should reside in $HOME/DAPL/Reference. 
 
-10. On a Server, DNS related files must all be built from scratch using the DNS related scripts in sbin - dns_auth_update() 
+11. On a Server, DNS related files must all be built from scratch using the DNS related scripts in sbin - dns_auth_update() 
 and rdns_update(). 
 
 
