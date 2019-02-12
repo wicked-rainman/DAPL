@@ -64,5 +64,6 @@ extern FILE *_dfile;
 extern size_t _input_line_length;
 extern int _asn_sockfd;
 extern int _country_sockfd;
+extern int _history_sockfd;
 extern size_t _csv_definition_start_length;
 extern int _pseudo_rand_number;
