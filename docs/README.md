@@ -17,30 +17,27 @@ All of this functionality is created using old-fashioned procedural programming 
 DAPL makes provisions for two code blocks within any main routine:
 
 ### setup():
+Code within the setup block is executed once after program initialisation. It's purpose is to 
+allow the user to perform startup functions like opening input and output files, defining input 
+fields, identifying reference files Etc. Any failures within the setup block stops the whole process 
+running. The user is shielded from the complexities of performing these operations through the use
+of high level function calls.  
 
-    Code within the setup block is executed once after program initialisation. It's purpose is to 
-    allow the user to perform startup functions like opening input and output files, defining input 
-    fields, identifying reference files Etc. Any failures within the setup block stops the whole process 
-    running. The user is shielded from the complexities of performing these operations through the use
-    of high level function calls. 
+### loop()  
 
-### loop()
-
-    Code within the loop block is executed once for each record contained in each input file identified 
-    in setup(). An obscured global data structure is created for each record, populated with the fieldname and 
-    field value pairs found. All functions within the loop block reference this structure. Once the record has 
-    been processed it is reset to empty, ready to be populated with the fields from the next record. 
+Code within the loop block is executed once for each record contained in each input file identified 
+in setup(). An obscured global data structure is created for each record, populated with the fieldname and 
+field value pairs found. All functions within the loop block reference this structure. Once the record has 
+been processed it is reset to empty, ready to be populated with the fields from the next record. 
     
-    Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
-    reference files, there is no state within the code block. This allows for processing of undefinably 
-    large volumes of input, restricted only by the memory requirements for holding one single record at a time. 
-    
-    Code within the loop block is generally fault tollerant. For example, function 
-    references to field names that are non-existant in the input result in the calling function failing 
-    gracefully (This allows for the successful processing of files that have different fields - where not all 
-    of the fields in one are present in the other). 
-    
-    Loop functions tend to fall into one of three categories:
+Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
+reference files, there is no state within the code block. This allows for processing of undefinably 
+large volumes of input, restricted only by the memory requirements for holding one single record at a time.  
+Code within the loop block is generally fault tollerant. For example, function 
+references to field names that are non-existant in the input result in the calling function failing 
+gracefully (This allows for the successful processing of files that have different fields - where not all 
+of the fields in one are present in the other).  
+Loop functions tend to fall into one of three categories:
 
          1. Those that Enable the selection or rejection of individual records, based on
          string matching, substring matching or through regular expression pattern matching. 
