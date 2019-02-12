@@ -24,15 +24,15 @@ loop()
     Code within the loop block is executed once for each record contained in each input file identified 
     in setup(). An obscured global data structure is created for each record, populated with the fieldname and 
     field value pairs found. All functions within the loop block reference this structure. Once the record has 
-    been processed, it is reset to empty, ready to be populated with the fields from the next record. 
+    been processed it is reset to empty, ready to be populated with the fields from the next record. 
     
     Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
     reference files, there is no state within the code block. This allows for processing of undefinably 
     large volumes of input, restricted only by the memory requirements for holding one single record at a time. 
     
     Code within the loop block is generally fault tollerant. For example, function 
-    references to field names that are non-existant in the input result in the calling function failing gracefully 
-    (This allows for the successful processing of files that have different fields - where not all 
+    references to field names that are non-existant in the input result in the calling function failing 
+    gracefully (This allows for the successful processing of files that have different fields - where not all 
     of the fields in one are present in the other). 
     
     Loop functions tend to fall into one of three categories:
@@ -51,8 +51,8 @@ loop()
          
          3. Graphical data modeling. Relationships between data fields can be defined and visualised
          by generating .dot output that can be rendered by graphviz in various ways (such as SVG, PDF 
-         JPEG Etc). Duplicate relationships are set to be effectively de-duped by the .dot processor, making
-         large volumes of data easier to analyse.
+         JPEG Etc). Duplicate relationships are set to be effectively de-duped by the .dot processor, 
+         making large volumes of data easier to analyse.
          
 Sample code can be found in the ./example_code directory, together with sample data in ./input. This 
 may aid with the learning process. A brief description of the utilities/files produced by the included 
@@ -75,12 +75,14 @@ INITIAL INSTALL:
 
 1.  cd into your $HOME directory
 
-2.  Clone the repository using "git clone https://github.com/wicked-rainman/DAPL.git". This should create a directory named "DAPL".
+2.  Clone the repository using "git clone https://github.com/wicked-rainman/DAPL.git". This should create a 
+directory named "DAPL".
 
 3.  cd into $HOME/DAPL/src
 
-4.  As root, run ./Configure to make sure system dependancies are present. Clang and Graphviz are critical for DAPL. 
-Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox, dos2unix and the perl script msgconvert are needed for any E-mail processing.
+4.  As root, run ./Configure to make sure system dependancies are present. Clang and Graphviz are critical for 
+DAPL. Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox, dos2unix and the perl 
+script msgconvert are needed for any E-mail processing.
 
 5.  exit root and as a user run make. You shouldn't see any errors.
 
@@ -88,16 +90,16 @@ Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox,
 
         "sudo make Client" 
       
-or for the server (if you are happy with what it is going to do), run:
+or for the server (if you are happy with what actions it is going to perform), run:
 
         "sudo make Server".
 
-After a server install, use systemctl to enable and start gasnd.service, gdnsd.service, grdnsd.service, 
+7. After a server install, use systemctl to enable and start gasnd.service, gdnsd.service, grdnsd.service, 
 ghistory.service and gcountryd.service as required. Ensure that the TCP ports specified in gasnd, gdnsd, 
 grdnsd, gcountryd and ghistoryd (/usr/local/sbin) are allowed through any firewall.
 
 
-7. In a client install, Edit $HOME/.bashrc, and add these BASH variables:
+8. In a client install, Edit $HOME/.bashrc, and add these BASH variables:
 
         WHITE_FILE= $HOME/DAPL/Reference/whitelist.csv; export WHITE_FILE
         ASN_FILE= $HOME/DAPL/Reference/asn.csv; export ASN_FILE
@@ -120,9 +122,9 @@ ghistory) reference these other ports.
         "clang -Ofast prog.c ../lib/libdapl.a -o progname" for files conaining single line "CSV" type records, or
         "clang -Ofast prog.c ../lib/libeml.a -o progname" to utilise the E-mail conversion handler
 
-9. On a client, any additional reference files you make should reside in $HOME/DAPL/Reference. On a Server, DNS related 
-files must all be built from scratch using the DNS related scripts in sbin (They represent too much of an overhead for 
-client installs). 
+9. On a client, any additional reference files you make should reside in $HOME/DAPL/Reference. On a Server, 
+DNS related files must all be built from scratch using the DNS related scripts in sbin (dns_auth_update() 
+and rdns_update() They represent too much of an overhead for client installs). 
 
 
 
