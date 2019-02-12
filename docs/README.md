@@ -16,7 +16,7 @@ All of this functionality is created using old-fashioned procedural programming 
 
 DAPL makes provisions for two code blocks within any main routine:
 
-setup():
+###setup():
 
     Code within the setup block is executed once after program initialisation. It's purpose is to 
     allow the user to perform startup functions like opening input and output files, defining input 
@@ -24,7 +24,7 @@ setup():
     running. The user is shielded from the complexities of performing these operations through the use
     of high level function calls. 
 
-loop()
+###loop()
 
     Code within the loop block is executed once for each record contained in each input file identified 
     in setup(). An obscured global data structure is created for each record, populated with the fieldname and 
