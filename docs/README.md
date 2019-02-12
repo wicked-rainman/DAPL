@@ -75,7 +75,7 @@ Makefile can be found in ./docs/Manifest.md. See INITIAL INSTALL section below.
         
 ------------------------------------------------------------------------------------------------
 
-## INITIAL INSTALL:
+## INSTALL
 
 1.  cd into your $HOME directory
 
