@@ -112,10 +112,11 @@ grdnsd, gcountryd and ghistoryd (/usr/local/sbin) are allowed through any firewa
         GSERVER= (IP address of the server); export GSERVER
         
 The ASN_FILE, COUNTRY_FILE and WHITE_FILE files are used within DAPL (functions add_asn(), add_country() 
-and whitelist() ) for local resolution and provide non-server related answers. DAPL functions socketadd_asn() 
-and socketadd_country() will resolve answers through the related server ports. DAPL functions socketadd_dns(), 
-socketadd_history() and socketadd_rdns() have not been written yet, although Standalone utilities (gdns grdns 
-ghistory) reference these other ports. 
+and whitelist() ) for local resolution and provide non-server related answers. 
+
+DAPL functions socketadd_asn() socketadd_country() and socketadd_history() will resolve answers through 
+the related server ports. DAPL functions socketadd_dns() and socketadd_rdns() have not been written yet, 
+although Standalone utilities gdns grdns reference these other ports. 
 
 8. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 
