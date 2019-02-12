@@ -1,29 +1,29 @@
 
 
-An overview of the utilities and functions provided by this package:
+## An overview of the utilities and functions provided by this package:
 
-Utilities
+### Utilities
 
-     ip2int -  A simple C program that converts a IP address or range of addresses to their respective Integer value.
-     ip2asn -  Resolves the ASN associated with the specified IP address(s). Dependant on $ASN_FILE.
-     ip2country - Resolves country code associated with the specified IP address(s). Dependant on $COUNTRY_FILE.
-     int2ip - Converts an Int to an IP address.
-     cidr2ip - Converts a CIDR to an IP address range. 
-     gasn - Client that resolves the ASN associated with an IP address via a call to $GSERVER
-     gdns - Client that resolves historic DNS entries for an IP address via a call to $GSERVER
-     grdns - Client that resolves historic reverse DNS entries for an IP address via a call to $GSERVER
-     ghistory - Client that queries a $GSERVER for historic records relating to an IP address
-     whitelist_convert - Converts opensource whitelists into a DAPL compatible reference table
-     sslcat - A simplistic version of netcat for SSL.
-     abuseipdb - Client to look up and IP address over the Internet using the AbuseIPdb API
-     convert_emails - Converts saved outlook messages into plain text
-     dns_auth_update - Updates the DNS_INODES database for historic DNS resolution
-     rdns_update - Updates the RDNS_INODES database for historic reverse DNS resolution
-     dns_prune - Utility to remove rogue IP addresses or entries from the DNS_INODES database
-     class_a_update - Internal routine used by dns_auth_update
-     reverse_class_a_update - Internal routine used by rdns_update
+-     ip2int -  A simple C program that converts a IP address or range of addresses to their respective Integer value.
+-     ip2asn -  Resolves the ASN associated with the specified IP address(s). Dependant on $ASN_FILE.
+-     ip2country - Resolves country code associated with the specified IP address(s). Dependant on $COUNTRY_FILE.
+-     int2ip - Converts an Int to an IP address.
+-     cidr2ip - Converts a CIDR to an IP address range. 
+-     gasn - Client that resolves the ASN associated with an IP address via a call to $GSERVER
+-     gdns - Client that resolves historic DNS entries for an IP address via a call to $GSERVER
+-     grdns - Client that resolves historic reverse DNS entries for an IP address via a call to $GSERVER
+-     ghistory - Client that queries a $GSERVER for historic records relating to an IP address
+-     whitelist_convert - Converts opensource whitelists into a DAPL compatible reference table
+-     sslcat - A simplistic version of netcat for SSL.
+-     abuseipdb - Client to look up and IP address over the Internet using the AbuseIPdb API
+-     convert_emails - Converts saved outlook messages into plain text
+-     dns_auth_update - Updates the DNS_INODES database for historic DNS resolution
+-     rdns_update - Updates the RDNS_INODES database for historic reverse DNS resolution
+-     dns_prune - Utility to remove rogue IP addresses or entries from the DNS_INODES database
+-     class_a_update - Internal routine used by dns_auth_update
+-     reverse_class_a_update - Internal routine used by rdns_update
      
-Services
+### Services
 
      grdns_server - A service running on $GSERVER port $GRDNS_PORT. Answers historic RDNS queries.
      gasn_server -  A service running on $GSERVER port $GASN_PORT. Answers ASN queries.
@@ -41,18 +41,18 @@ Services
      grdnsd.service - systemd service file for grdns_server
      ghistoryd.service - systemd service file for ghistory_server
 
-DAPL wrapper
+### DAPL wrapper
 
       Library libdapl.a - DAPL Main routine wrapper and all associated function calls
       Library libeml.a - E-Mail handler as Main routine wrapper and all associated DAPL function calls
 
-Reference files
+### Reference files
 
      asn.csv - An updatable file where each record represents an IP address range (as Ints) that relate to an ASN
      country.csv - An updatable file where each record represents an IP address range (as Ints) that relate to country codes
      whitelist.csv - An updatable file where each record represents an IP address range (as Ints) of whitelisted IP addresses
 
-DAPL functions
+### DAPL functions
 
      add_asn                  - Local lookup of an IP address in order to obtain an ASN
      add_attributes           - Add graphical attributes to a .dot node
@@ -117,7 +117,7 @@ DAPL functions
      whitelist                - Allows for the conditional testing of an IP address to see if it is whitelisted.
      write_csv_fields         - Routine to write CSV output fields to a file. 
      
-EXAMPLE CODE
+### EXAMPLE CODE
 
      example1                 - Read input file, write output file, add country and asn fields for each IP
      example2                 - Read and write files. Drop record based on field value.
@@ -132,6 +132,6 @@ EXAMPLE CODE
      webserver-input-handler  - Selecting successful HTTP requests and xreffing with external lookup records
      webserver-analysis       - View HTTP exchanges with known hostile IP addresses 
      
-INPUT DATA
+### INPUT DATA
 
      input1.csv               - Test input data for ./example_code/example1.c - example6.c
