@@ -9,7 +9,8 @@ Provisions are made for dealing with other forms of data through a conversion pr
 converter exists - for processing spam E-mail). 
 
 A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are 
-separate (but replicated) from the core DAPL wrapper. 
+separate (but replicated) from the core DAPL wrapper. Data "fusion" can take place through inbuilt lookup functions
+that read separate reference files.
 
 DAPL makes provisions for two code blocks within any main routine:
 
