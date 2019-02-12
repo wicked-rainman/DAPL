@@ -10,8 +10,9 @@ converter exists - for processing spam E-mail).
 
 A small range of standalone utilities that aid dealing with IP related data have been included, albeit they are 
 separate (but replicated) from the core DAPL wrapper. Data "fusion" can take place through inbuilt lookup functions
-that read separate reference files. All of this functionality is created using old-fashioned procedural programming
-techniques. There ain't no Rumbaugh here.
+that read separate reference files. 
+
+All of this functionality is created using old-fashioned procedural programmingtechniques. There ain't no Rumbaugh here.
 
 DAPL makes provisions for two code blocks within any main routine:
 
