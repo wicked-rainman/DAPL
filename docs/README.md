@@ -1,8 +1,9 @@
 OVERVIEW Data Analist Programming Language (DAPL)
 
 DAPL is a program language wrapper intended to simplify the process of analysing files containing large volumes 
-of single-line records (EG HTTP, SSH and Audit logs, phone or building access logs, Etc). It might be thought
-of as mysql for CSV files, but without the databases, or perhaps the query language associated with Model 204.
+of single-line records with delimited fields (Maybe HTTP, SSH and Audit logs, phone or building access 
+logs, Etc). The wrapper might be thought of as mysql for CSV files, but without the databases, or perhaps the 
+query language components of Model 204. The primary focus is to keep things simple!
 
 Provisions are made for dealing with other forms of data through a conversion process (Currently only one such 
 converter exists - for processing spam E-mail). 
