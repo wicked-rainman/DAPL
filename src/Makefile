@@ -25,7 +25,7 @@ libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	pattern.o substring.o processor_email.o received_ip.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
-	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
+	set_input.o set_output.o socketadd_asn.o socketadd_country.o socketadd_history.o \
 	strpos.o unescape.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 	ar -rcs libeml.a add_attributes.o add_composite.o add_concatenation.o \
@@ -41,7 +41,7 @@ libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	pattern.o substring.o processor_email.o received_ip.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
-	set_input.o set_output.o socketadd_asn.o socketadd_country.o \
+	set_input.o set_output.o socketadd_asn.o socketadd_country.o socketadd_history.o \
 	strpos.o unescape.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
@@ -56,7 +56,7 @@ libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	main.o match.o pattern.o substring.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
-	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
+	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o socketadd_history.o \
 	strpos.o table.o unescape.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 	ar -rcs libdapl.a add_attributes.o add_composite.o add_concatenation.o \
@@ -71,7 +71,7 @@ libdapl.a : add_attributes.o add_composite.o add_concatenation.o \
 	main.o match.o pattern.o substring.o \
 	remchars.o remove_chars.o remove_string.o rename_field.o \
 	replace_char.o set_graphics.o set_input_directory.o set_input_fieldnames.o \
-	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o \
+	set_input.o extract_hrefs.o set_output.o socketadd_asn.o socketadd_country.o socketadd_history.o \
 	strpos.o table.o unescape.o unix_time.o urldecode.o whitelist.o write_csv_fields.o
 
 add_asn.o : add_asn.c build_target_list.o add_field.o remchars.o externs.h 
@@ -219,6 +219,8 @@ socketadd_asn.o : socketadd_asn.c externs.h defaults.h insert_new_field.o find_f
 	$(CC) $(CFLAGS)  socketadd_asn.c -c -o socketadd_asn.o
 socketadd_country.o : socketadd_country.c externs.h defaults.h insert_new_field.o find_fieldname.o
 	$(CC) $(CFLAGS)  socketadd_country.c -c -o socketadd_country.o
+socketadd_history.o : socketadd_history.c externs.h defaults.h insert_new_field.o find_fieldname.o
+	$(CC) $(CFLAGS) socketadd_history.c -c -o socketadd_history.o
 sslcat : sslcat.c
 	$(CC) $(CFLAGS) sslcat.c -lssl -lcrypto -o sslcat
 strpos.o : strpos.c
