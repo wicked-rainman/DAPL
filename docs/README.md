@@ -65,13 +65,13 @@ Makefile can be found in ./docs/Manifest.md. See INITIAL INSTALL section below.
 
 ## FURTHER READING
 
-        Graphviz        - https://graphviz.org
-        Detox           - detox.sourceforge.net
-        msgconvert      - https://github.com/mvz/email-outlook-message-perl
-        abuseip         - https://www.abuseipdb.com/api.html
-        Reverse DNS     - https://opendata.rapid7.com/sonar.rdns_v2/
-        DNS             - https://opendata.rapid7.com/sonar.fdns_v2/
-        Topology        - http://www.caida.org/data/active/ipv4_routed_24_topology_dataset.xml
+- Graphviz        - https://graphviz.org
+- Detox           - detox.sourceforge.net
+- msgconvert      - https://github.com/mvz/email-outlook-message-perl
+- abuseip         - https://www.abuseipdb.com/api.html
+- Reverse DNS     - https://opendata.rapid7.com/sonar.rdns_v2/
+- DNS             - https://opendata.rapid7.com/sonar.fdns_v2/
+- Topology        - http://www.caida.org/data/active/ipv4_routed_24_topology_dataset.xml
         
         
 ------------------------------------------------------------------------------------------------
