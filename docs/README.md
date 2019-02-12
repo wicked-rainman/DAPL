@@ -27,7 +27,7 @@ loop()
     
     Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
     reference files, there is no state within the code block. This allows for processing of undefinably 
-    large volumes of input, restricted only by the memory requirements for hold one single record at a time. 
+    large volumes of input, restricted only by the memory requirements for holding one single record at a time. 
     
     Code within the loop block is generally fault tollerant. For example, function 
     references to field names that are non-existant result in the calling function failing gracefully 
