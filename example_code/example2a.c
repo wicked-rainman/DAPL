@@ -16,7 +16,6 @@
 // 4/5. For every record containing a "source_ip" field, add the IP country code and IP ASN
 // 6. Write a CSV records that contains the source_ip, country and asn values
 // --------------------------------------------------------------------------------
-
 #include "../src/externs.h"
 void setup() {
 	set_input(' ',"../input_data/input1.csv");
