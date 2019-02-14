@@ -91,11 +91,14 @@ script msgconvert are needed for any E-mail processing.
 5.  exit root and as a user run `make`. You shouldn't see any errors.
 
 6.  DAPL can be run as a client or as a server. For the client install, run`sudo make Client` or for the server 
-(if you are happy with what actions it is going to perform),`sudo make Server`
+(if you are happy with what actions it is going to perform),`sudo make Server`. If you plan to have a complete 
+client and server install, repeat step 5 again before running the next make Server or make Client.
 
 7. After a server install, use systemctl to enable and start gasnd.service, gdnsd.service, grdnsd.service, 
 ghistory.service and gcountryd.service as required. Ensure that the TCP ports specified in gasnd, gdnsd, 
 grdnsd, gcountryd and ghistoryd (/usr/local/sbin) are allowed through any firewall.
+
+    'systemctl start gasnd'
 
 
 8. In a client install, Edit $HOME/.bashrc, and add these BASH variables:
