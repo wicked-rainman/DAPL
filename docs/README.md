@@ -98,7 +98,7 @@ client and server install, repeat step 5 again before running the next make Serv
 ghistory.service and gcountryd.service as required. Ensure that the TCP ports specified in gasnd, gdnsd, 
 grdnsd, gcountryd and ghistoryd (/usr/local/sbin) are allowed through any firewall.
 
-    'systemctl start gasnd'
+ 'systemctl start gasnd'
 
 
 8. In a client install, Edit $HOME/.bashrc, and add these BASH variables:
