@@ -94,23 +94,9 @@ script msgconvert are needed for any E-mail processing.
 (if you are happy with what actions it is going to perform),`sudo make Server`. If you plan to have a complete 
 client and server install, repeat step 5 again before running the next make Server or make Client.
 
-7. After a server install, use systemctl to enable and start gasnd.service, gdnsd.service, grdnsd.service, 
+7. After a server install, use systemctl to start and enable gasnd.service, gdnsd.service, grdnsd.service, 
 ghistory.service and gcountryd.service as required. Ensure that the TCP ports specified in gasnd, gdnsd, 
 grdnsd, gcountryd and ghistoryd (/usr/local/sbin) are allowed through any firewall.
-
-        `sudo bash`
-        `systemctl start gasnd`
-        `systemctl start gdnsd`
-        `systemctl start grdnsd`
-        `systemctl start gcountryd`
-        `systemctl start ghistoryd`
-        `systemctl enable gasnd`
-        `systemctl enable gdnsd`
-        `systemctl enable grdnsd`
-        `systemctl enable gcountryd`
-        `systemctl enable ghistoryd`
-        
-
 
 8. In a client install, Edit $HOME/.bashrc, and add these BASH variables:
 
@@ -138,7 +124,7 @@ the related server ports. DAPL functions socketadd_dns() and socketadd_rdns() ha
 10. On a client, any additional reference files you make should reside in $HOME/DAPL/Reference. 
 
 11. On a Server, DNS related files must all be built from scratch using the DNS related scripts in sbin - dns_auth_update() 
-and rdns_update(). 
+and rdns_update(). Have a look in the ./docs directory for a bit of steerage.
 
 
 
