@@ -7,7 +7,6 @@ all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip 
 	mkdir -p ../lib
 	mkdir -p ../progs
 	mkdir -p ../tables
-	mkdir -p ../output_data
 	mkdir -p ../graphics
 	rm -f ../input_data/readme.txt
 	rm -f ../example_code/README.md
