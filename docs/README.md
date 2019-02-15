@@ -58,9 +58,11 @@ Loop functions tend to fall into one of three categories:
          JPEG Etc). Duplicate relationships are set to be effectively de-duped by the .dot processor, 
          making large volumes of data easier to analyse.
          
-Sample code can be found in the ./example_code directory, together with sample data in ./input. This 
-may aid with the learning process. A brief description of the utilities/files produced by the included 
-Makefile can be found in ./docs/Manifest.md. See INITIAL INSTALL section below.
+Sample code can be found in the ./example_code directory, together with sample data in ./input and results
+in ./output. This may aid with the learning process. 
+
+A brief description of the utilities/files produced by the included Makefile can be found in ./docs/Manifest.md. 
+See INITIAL INSTALL section below.
 
 ## FURTHER READING
 
