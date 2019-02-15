@@ -9,6 +9,7 @@ all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip 
 	mkdir -p ../tables
 	mkdir -p ../graphics
 	rm -f ../input_data/readme.txt
+	rm -f ../output_data/README.md
 	rm -f ../example_code/README.md
 	mv *.a ../lib
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
