@@ -1,0 +1,90 @@
+digraph Susan_Barlow {
+layout=twopi;
+overlap=false;
+center=1;
+concentrate=true;
+"212.58.244.57|09102017|00:23" [color=red,shape=rectangle,label="BBC\n212.58.244.57\n09102017\n00:23"];
+"AS2818" [label="AS2818"];
+"212.58.244.57|09102017|00:23" -> "AS2818"
+"AS2818" [label="AS2818"];
+"GB" [shape=diamond,label="GB"];
+"AS2818" -> "GB"
+"212.58.249.145|09102017|00:23" [color=red,shape=rectangle,label="BBC\n212.58.249.145\n09102017\n00:23"];
+"AS2818" [label="AS2818"];
+"212.58.249.145|09102017|00:23" -> "AS2818"
+"AS2818" [label="AS2818"];
+"GB" [shape=diamond,label="GB"];
+"AS2818" -> "GB"
+"151.101.193.67|09102017|00:28" [color=red,shape=rectangle,label="CNN\n151.101.193.67\n09102017\n00:28"];
+"AS6983" [label="AS6983"];
+"151.101.193.67|09102017|00:28" -> "AS6983"
+"AS6983" [label="AS6983"];
+"US" [shape=diamond,label="US"];
+"AS6983" -> "US"
+"54.230.8.34|04102017|15:22" [color=red,shape=rectangle,label="TELEGRAPH\n54.230.8.34\n04102017\n15:22"];
+"AS16509" [label="AS16509"];
+"54.230.8.34|04102017|15:22" -> "AS16509"
+"AS16509" [label="AS16509"];
+"US" [shape=diamond,label="US"];
+"AS16509" -> "US"
+"151.101.1.67|09102017|00:28" [color=red,shape=rectangle,label="CNN\n151.101.1.67\n09102017\n00:28"];
+"AS6983" [label="AS6983"];
+"151.101.1.67|09102017|00:28" -> "AS6983"
+"AS6983" [label="AS6983"];
+"US" [shape=diamond,label="US"];
+"AS6983" -> "US"
+"151.101.129.67|09102017|00:28" [color=red,shape=rectangle,label="CNN\n151.101.129.67\n09102017\n00:28"];
+"AS6983" [label="AS6983"];
+"151.101.129.67|09102017|00:28" -> "AS6983"
+"AS6983" [label="AS6983"];
+"US" [shape=diamond,label="US"];
+"AS6983" -> "US"
+"54.230.8.209|04102017|15:22" [color=red,shape=rectangle,label="TELEGRAPH\n54.230.8.209\n04102017\n15:22"];
+"AS16509" [label="AS16509"];
+"54.230.8.209|04102017|15:22" -> "AS16509"
+"AS16509" [label="AS16509"];
+"US" [shape=diamond,label="US"];
+"AS16509" -> "US"
+"54.230.8.153|04102017|15:22" [color=red,shape=rectangle,label="TELEGRAPH\n54.230.8.153\n04102017\n15:22"];
+"AS16509" [label="AS16509"];
+"54.230.8.153|04102017|15:22" -> "AS16509"
+"AS16509" [label="AS16509"];
+"US" [shape=diamond,label="US"];
+"AS16509" -> "US"
+"212.58.244.57|09102017|00:23" [color=red,shape=rectangle,label="BBC\n212.58.244.57\n09102017\n00:23"];
+"AS2818" [label="AS2818"];
+"212.58.244.57|09102017|00:23" -> "AS2818"
+"AS2818" [label="AS2818"];
+"GB" [shape=diamond,label="GB"];
+"AS2818" -> "GB"
+"54.230.8.121|04102017|15:22" [color=red,shape=rectangle,label="TELEGRAPH\n54.230.8.121\n04102017\n15:22"];
+"AS16509" [label="AS16509"];
+"54.230.8.121|04102017|15:22" -> "AS16509"
+"AS16509" [label="AS16509"];
+"US" [shape=diamond,label="US"];
+"AS16509" -> "US"
+"151.101.65.67|09102017|00:28" [color=red,shape=rectangle,label="CNN\n151.101.65.67\n09102017\n00:28"];
+"AS6983" [label="AS6983"];
+"151.101.65.67|09102017|00:28" -> "AS6983"
+"AS6983" [label="AS6983"];
+"US" [shape=diamond,label="US"];
+"AS6983" -> "US"
+"54.230.8.121|04102017|15:23" [color=red,shape=rectangle,label="TELEGRAPH\n54.230.8.121\n04102017\n15:23"];
+"AS16509" [label="AS16509"];
+"54.230.8.121|04102017|15:23" -> "AS16509"
+"AS16509" [label="AS16509"];
+"US" [shape=diamond,label="US"];
+"AS16509" -> "US"
+"54.230.8.121|04102017|15:24" [color=red,shape=rectangle,label="TELEGRAPH\n54.230.8.121\n04102017\n15:24"];
+"AS16509" [label="AS16509"];
+"54.230.8.121|04102017|15:24" -> "AS16509"
+"AS16509" [label="AS16509"];
+"US" [shape=diamond,label="US"];
+"AS16509" -> "US"
+"54.230.8.121|04102017|15:25" [color=red,shape=rectangle,label="TELEGRAPH\n54.230.8.121\n04102017\n15:25"];
+"AS16509" [label="AS16509"];
+"54.230.8.121|04102017|15:25" -> "AS16509"
+"AS16509" [label="AS16509"];
+"US" [shape=diamond,label="US"];
+"AS16509" -> "US"
+}
