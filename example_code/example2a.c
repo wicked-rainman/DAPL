@@ -19,7 +19,7 @@
 #include "../src/externs.h"
 void setup() {
 	set_input(' ',"../input_data/input1.csv");
-	set_output("../output_data/output2.csv");
+	set_output("../output_data/output2a.csv");
 }
 void loop() {
 	keep_if_match("name","TELEGRAPH");
