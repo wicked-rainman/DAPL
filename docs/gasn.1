@@ -1,0 +1,27 @@
+.\" Manpage for gasn.
+.\" Contact WR to correct errors or typos.
+.TH man 1 "17 June 2018" "1.0" "gasn man page"
+
+.SH NAME
+gasn \- Look up the ASN for a given IPV4 address 
+
+.SH SYNOPSIS 
+gasn [IPV4]
+
+.SH DESCRIPTION
+.B gasn 
+queries a gasn_server in order to obtain the ASN for a single IPV4 address (Dotted decimal notation only).
+.PP
+Results from a gasn_server are of the form: ASN,AS_NAME 
+.PP
+The gasn_server IP address is determined by the shell variable $GSERVER, and the listening port by 
+the $GASN_PORT variable. If these variables are not set, then the program will exit. 
+
+.SH OPTIONS
+An IPV4 dotted decimal notated IP address
+.SH SEE ALSO
+gasn_server(1),ncat(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+WR 
