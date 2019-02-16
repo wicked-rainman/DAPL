@@ -3,9 +3,7 @@
 
 Each record in file asn.csv has a 3 field format `START_INT,END_INT,"ASN AS_Name"` 
 
-Country.csv is similar, but with a country diagraph and country name as the last 2 of the 4 fields:
-
-    START_INT,END_INT,Diagraph,name
+Country.csv is similar with a country diagraph and country name as the last 2 of the 4 fields: `START_INT,END_INT,Diagraph,name`
  
 The IP addresses related to AS numbers and country diagraphs are known to change over time, and both of these files 
 are incomplete (Commercial up to date versions are available, but at cost). Functions such as add_asn() and 
