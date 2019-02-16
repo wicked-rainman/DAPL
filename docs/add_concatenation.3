@@ -1,0 +1,46 @@
+.\" WR - 2018"
+
+.TH ADD_CONCATENATION 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+add_concatenation - Create a new field based on the values of other fields.
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void add_concatenation(char " "*NEW_FIELDNAME" ,char " "*FIELDNAME_LIST )
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR add_concatenation ()
+function creates a new field value associated with the new fieldname NEW_FIELDNAME.
+The new field value contains a concatenation of all the field values associated with
+the fieldnames specified in FIELDNAME_LIST.
+Initially, the function tests to see if the current record contains a field 
+.BR _DROP 
+with a positive value. If the result is positive, then 
+.BR add_attributes() 
+returns without performing any function.
+The values associated with each of the fieldnames specified in FIELDNAME_LIST are then extracted
+and concatenated together to form a new field value that is stored and associated with NEW_FIELDNAME
+If any of the fields specified in FIELDNAME_LIST are missing, then they are simply ignored. 
+If the new field value exceeds MAX_FIELDVALUE_LENGTH, then it will be truncated.
+.fi
+.SH EXAMPLE:
+If field "year" contains the value 1999, field "month" contains the value 12 and field "day" 
+contains the value 21, then:
+add_concatenation("DTG","year month day")
+would result in a new field "DTG" that contains the value 19991221.
+
+.SH USAGE:
+Loop code block only.
+.fi
+.SH RETURN VALUE: 
+add_concatenation () returns void.
+.fi
+.SH SEE ALSO:
+draw_node draw_chain draw_path 
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
