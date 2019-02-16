@@ -1,0 +1,28 @@
+.\" Manpage for gcountry.
+.\" Contact WR to correct errors or typos.
+.TH man 1 "17 June 2018" "1.0" "gasn man page"
+
+.SH NAME
+gcountry \- Look up the country diagraph for a given IPV4 address 
+
+.SH SYNOPSIS 
+gcountry [IPV4]
+
+.SH DESCRIPTION
+.B gcountry 
+queries a gcountry_server in order to obtain the country diagraph and name for a single IPV4 address 
+(Dotted decimal notation only).
+.PP
+Results from a gcountry_server are of the form: COUNTRY_DIAGRAPH,COUNTRY_NAME 
+.PP
+The gcountry_server IP address is determined by the shell variable $GSERVER, and the listening port 
+by the $GCOUNTRY_PORT variable. If these variables are not set, then the program will exit. 
+
+.SH OPTIONS
+An IPV4 dotted decimal notated IP address
+.SH SEE ALSO
+gcountry_server(1),ncat(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+WR 
