@@ -1,0 +1,38 @@
+.\" WR - 2018"
+
+.TH ADD_COUNTRY 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+add_country - Using an IP address field, Add a country diagraph field
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void add_country(char " "IP_ADDRESS_FIELDNAME" );
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR add_country ()
+function tests to see if the current record contains a field 
+.BR _DROP 
+with a positive value. If the result is positive, then 
+.BR add_asn() 
+returns without performing any function.
+A test is then performed to see if IP_ADDRESS_FIELDNAME exists in the current record structure.
+If the field is found, then the IP_ADDRESS_FIELDNAME value is extracted from the record and is 
+searched for in the file set by the bash variable $COUNTRY_FILE. If the address is found, 
+the country diagraph associated with it is inserted into the record structure as fieldname 
+IP_ADDRESS_FIELDNAME.country.
+.fi
+.SH USAGE:
+Loop code block only.
+.fi
+.SH RETURN VALUE: 
+add_country () returns void.
+.fi
+.SH SEE ALSO:
+add_asn 
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
