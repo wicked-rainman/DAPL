@@ -1,0 +1,78 @@
+.\" Manpage for gasn_server.
+.\" Contact WR to correct errors or typos.
+.TH man 1 "17 June 2018" "1.0" "gasn_server man page"
+
+.SH NAME
+gasn_server \- A daemon service provides an IPV4 ASN lookup
+
+.SH SYNOPSIS 
+gasn_server is intended to be run as a daemon process through systemctl(1)
+
+.SH DESCRIPTION
+.BI gasn_server
+is a front-end sockets server that provides access to a database of AS numbers for the IPV4
+address space.
+.br
+Queries sent to the server should be formatted as a single dotted decimal notated IP address.
+Results are returned as single line record(s) of the form:
+.sp
+.RS
+.BI  AS_NUMBER,AS_NAME
+.RE
+.sp
+The listening port number is defined by the shell variable 
+.BI $GASN_PORT
+.
+.br
+The location of the ASN database is defined by the shell variable 
+.BI $GREFERENCE.
+
+.SH OPTIONS
+The server is normally invoked by systemctl(1). 
+.PP
+Create a controlling BASH script (E.G. /usr/local/sbin/gasnd):
+.sp
+.RS
+#!/bin/bash 
+.br
+GREFERENCE=[Path to ASN database]
+.br
+export GREFERENCE
+.br
+GASN_PORT=[chosen listening port]
+.br
+export GASN_PORT
+.br
+/usr/local/bin/gasn_server
+.RE
+.PP
+then create the service file (E.G /etc/systemd/system/gasnd.service):
+.sp
+.RS
+[Unit]
+.br
+After=sshd.service
+.br
+[Service]
+.br
+ExecStart=/usr/local/sbin/gasnd
+.br
+[Install]
+.br
+WantedBy=multi-user.target
+.RE
+.SH SEE ALSO
+gasn(1), systemctl(1) 
+.SH BUGS
+No known bugs.
+.SH NOTES
+If the
+.BI $GREFERENCE
+directory is mounted on a solid state drive timely responses can be expected. Performance will
+degrade significantly if spinning rust is used.
+.br
+.sp
+The server may be subjected to iterative calls and like all network services, benefits from
+good connectivity.
+.SH AUTHOR
+WR 
