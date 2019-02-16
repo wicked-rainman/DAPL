@@ -3,7 +3,8 @@
 DAPL is a program language wrapper intended to simplify the process of analysing large volumes of structured 
 single-line records (for example HTTP, SSH and Audit logs, phone or building access logs and the like). 
 The wrapper might be thought of as mysql for CSV files, but without the databases, or perhaps the query language 
-components of Model 204. The underlying language is C, with the primary focus being to keep things simple!
+components of Model 204. The underlying language is C and has only been tested on modern versions of Fedora. The primary 
+focus in all this work has been to keep things small, lean and simple.
 
 Provisions are made for dealing with other forms of data through a conversion process 
 _(Currently only one such converter exists - for processing spam E-mail)_. 
