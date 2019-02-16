@@ -1,0 +1,33 @@
+.\" WR - 2018"
+
+.TH DEFINE_INPUT_FIELDNAMES 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+define_input_fieldnames - Describe the delimiter and fieldnames in an input CSV file.
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void define_input_fieldnames(char " "DLM" ,char " "*FIELDNAME_LIST )
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR define_input_fieldnames ()
+function is used to describe the fields in an input file. DLM (such as a comma or space) is a
+single character that indicates what will be used as a field delimiter. FIELDNAME_LIST
+is a string that contains a list of fieldnames, where each fieldname is separated by one
+or more spaces, or at least one comma. The FIELDNAME_LIST cannot describe more that
+MAX_FIELDNAME_COUNT, as defined in defaults.h
+.fi
+.SH USAGE:
+setup code block only.
+.fi
+.SH RETURN VALUE: 
+define_input_fieldnames () returns void.
+.fi
+.SH SEE ALSO:
+ 
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
