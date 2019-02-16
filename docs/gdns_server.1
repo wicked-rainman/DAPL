@@ -1,0 +1,80 @@
+.\" Manpage for gdns_server.
+.\" Contact WRto correct errors or typos.
+.TH man 1 "17 June 2018" "1.0" "gdns_server man page"
+
+.SH NAME
+gdns_server \- A daemon service providing read access to a database of IPV4 hostnames
+
+.SH SYNOPSIS 
+gdns_server is intended to be run as a daemon process through systemctl(1)
+
+.SH DESCRIPTION
+.BI gdns_server
+is a front-end sockets server that provides access to set of stripped historic DNS AUTH queries 
+stored by the Bash script 
+.BI dns_auth_update(1)
+. Queries sent to the server should be formatted as a single dotted decimal notated IP address.
+Results are returned as single line record(s) of the form:
+.sp
+.RS
+.BI  IP_ADDRESS,HOST_NAME,DATE_LAST_NOTED
+.RE
+.sp
+The listening port number is defined by the shell variable 
+.BI $GDNS_PORT
+.
+.br
+The historic DNS database location is defined by the shell variable 
+.BI $GREFERENCE
+.
+.br
+Diagnostic messages are written to Syslog.
+
+.SH OPTIONS
+The server is normally invoked by systemctl(1). 
+.PP
+Create a controlling BASH script (E.G. /usr/local/sbin/gdnsd):
+.sp
+.RS
+#!/bin/bash 
+.br
+GREFERENCE=[Path to DNS database]
+.br
+export GREFERENCE
+.br
+GDNS_PORT=[chosen listening port]
+.br
+export GDNS_PORT
+.br
+.RE
+.PP
+then create the service file (E.G /etc/systemd/system/gdnsd.service):
+.sp
+.RS
+[Unit]
+.br
+After=sshd.service
+.br
+[Service]
+.br
+ExecStart=/usr/local/sbin/gdnsd
+.br
+[Install]
+.br
+WantedBy=multi-user.target
+.RE
+.SH SEE ALSO
+gdns(1), dns_auth_update(1), systemctl(1) 
+.SH BUGS
+No known bugs.
+.SH NOTES
+If the
+.BI $GREFERENCE
+directory is mounted on a solid state drive timely responses can be expected. Performance will
+degrade significantly if spinning rust is used.
+.br
+.sp
+The server may be subjected to iterative calls and like all network services, benefits from
+good connectivity.
+.SH AUTHOR
+WR 
