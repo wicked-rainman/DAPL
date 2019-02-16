@@ -1,0 +1,78 @@
+.\" Manpage for gcountry_server.
+.\" Contact WR to correct errors or typos.
+.TH man 1 "17 June 2018" "1.0" "gcountry_server man page"
+
+.SH NAME
+gcountry_server \- A daemon service provides an IPV4 country diagraph lookup
+
+.SH SYNOPSIS 
+gcountry_server is intended to be run as a daemon process through systemctl(1)
+
+.SH DESCRIPTION
+.BI gcountry_server
+is a front-end sockets server that provides access to a database of country diagraphs for the IPV4
+address space.
+.br
+Queries sent to the server should be formatted as a single dotted decimal notated IP address.
+Results are returned as single line record(s) of the form:
+.sp
+.RS
+.BI  COUNTRY_DIAGRAPH,COUNTRY_NAME
+.RE
+.sp
+The listening port number is defined by the shell variable 
+.BI $GCOUNTRY_PORT
+.
+.br
+The location of the country database is defined by the shell variable 
+.BI $GREFERENCE.
+
+.SH OPTIONS
+The server is normally invoked by systemctl(1). 
+.PP
+Create a controlling BASH script (E.G. /usr/local/sbin/gcountryd):
+.sp
+.RS
+#!/bin/bash 
+.br
+GREFERENCE=[Path to country database]
+.br
+export GREFERENCE
+.br
+GCOUNTRY_PORT=[chosen listening port]
+.br
+export GCOUNTRY_PORT
+.br
+/usr/local/bin/gcountry_server
+.RE
+.PP
+then create the service file (E.G /etc/systemd/system/gcountryd.service):
+.sp
+.RS
+[Unit]
+.br
+After=sshd.service
+.br
+[Service]
+.br
+ExecStart=/usr/local/sbin/gcountryd
+.br
+[Install]
+.br
+WantedBy=multi-user.target
+.RE
+.SH SEE ALSO
+gcountry(1), systemctl(1) 
+.SH BUGS
+No known bugs.
+.SH NOTES
+If the
+.BI $GREFERENCE
+directory is mounted on a solid state drive timely responses can be expected. Performance will
+degrade significantly if spinning rust is used.
+.br
+.sp
+The server may be subjected to iterative calls and like all network services, benefits from
+good connectivity.
+.SH AUTHOR
+WR 
