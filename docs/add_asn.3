@@ -2,7 +2,7 @@
 
 .TH ADD_ASN 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
 .SH NAME
-add_asn - Using an IP address field, Add an ASN field
+add_asn - Using an existing IP address field, Add an ASN field
 .SH SYNOPSIS
 .nf
 .B #include externs.h
@@ -13,15 +13,15 @@ add_asn - Using an IP address field, Add an ASN field
 .sp
 The
 .BR add_asn ()
-function tests to see if the current record contains a field 
+function first tests to see if the current record contains a field 
 .BR _DROP 
 with a positive value. If the result is positive, then 
 .BR add_asn() 
 returns without performing any function.
 A test is then performed to see if IP_ADDRESS_FIELDNAME exists in the current record structure.
-If the field is found, then the IP_ADDRESS_FIELDNAME value is extracted from the record and is 
-searched for in the file set by the bash variable $ASN_FILE. If the address is found, 
-the ASN value associated with it is inserted into the record structure as fieldname 
+If one is present, then the associated value is extracted from the record and 
+searched for in the file set by the bash variable $ASN_FILE. If the IP address is found, then 
+the ASN value is inserted into the record structure as fieldname 
 IP_ADDRESS_FIELDNAME.asn.
 .fi
 .SH USAGE:
