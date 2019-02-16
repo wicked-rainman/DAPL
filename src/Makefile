@@ -12,6 +12,8 @@ all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip 
 	rm -f ../output_data/README.md
 	rm -f ../example_code/README.md
 	mv *.a ../lib
+	ranlib ../lib/libdapl.a
+	ranlib ../lib/libeml.a
 libeml.a : add_attributes.o add_composite.o add_concatenation.o \
 	add_country.o add_asn.o \
 	add_field.o add_label.o add_quotes.o add_reverse_dns.o add_substring.o \
