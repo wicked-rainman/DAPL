@@ -1,0 +1,34 @@
+.\" WR - 2018"
+
+.TH ADD_FIELD 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+add_field - Add a new fieldname fieldvalue pair to the current record.
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void add_field(char " "*NEW_FIELDNAME", char " "*FIELD_VALUE );
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR add_field ()
+function tests to see if the current record contains a field 
+.BR _DROP 
+with a positive value. If the result is positive, then 
+.BR add_field() 
+returns without performing any function.
+The NEW_FIELDNAME and FIELD_VALUE pair are added to the current record.
+If adding the new pair causes MAX_FIELDVALUE_COUNT to be exceeded then
+the function fails.
+.fi
+.SH USAGE:
+Loop code block only.
+.fi
+.SH RETURN VALUE: 
+add_field () returns void.
+.fi
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
