@@ -1,0 +1,39 @@
+.\" WR - 2018"
+
+.TH ADD_SUBSTRING 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+add_substring - Add a substring value for a new field, based on an existing field value.
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void add_substring (char " "*FIELDNAME_TARGET" ,char " "*NEW_FIELDNAME, int start, int end )
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR add_substring ()
+creates a new field based on a substring of the value for FIELDNAME_TARGET. The substring
+is defined by a start and end integer. 
+Initially, the function tests to see if the current record contains a field 
+.BR _DROP 
+with a positive value. If the result is positive, then 
+.BR add_attributes() 
+returns without performing any function. A test is also performed for the presence of 
+FIELDNAME_TARGET, and will also cause return if the field is not present. 
+The value associated with FIELDNAME_TARGET is extracted. The substring function is 
+applied to this value and it is inserted as the value for NEW_FIELDNAME. If either the 
+MAX_FIELDVALUE_COUNT or MAX_FIELDVALUE_LENGTH are exceeded nothing will be added. 
+.fi
+.SH USAGE:
+Loop code block only.
+.fi
+.SH RETURN VALUE: 
+add_substring () returns void.
+.fi
+.SH SEE ALSO:
+ 
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
