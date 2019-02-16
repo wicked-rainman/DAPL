@@ -1,6 +1,5 @@
 
-### Storing the replies to historic DNS requests seems a huge resource-expensive task. 
-### Why would you do this ?
+### Storing the replies to historic DNS requests seems a huge resource-expensive task. Why on earth would you want to do this ?
 
 -   In web-hosting environments, a single machine with 1 IP address may deliver the content for many web sites. Storing historical DNS replies allows you to find out what websites (or other entities with a DNS entry) are being hosted on that single machine.
 
