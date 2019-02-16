@@ -253,6 +253,8 @@ Server :
 	mv class_a_update /usr/local/sbin
 	mv reverse_class_a_update /usr/local/sbin
 	mv dns_auth_update /usr/local/sbin
+	mv dnsreg_update /usr/local/sbin
+	mv dnsgrep /usr/local/sbin
 	mv rdns_update /usr/local/sbin
 	mv dns_prune /usr/local/sbin
 	mv gdnsd /usr/local/sbin
