@@ -1,0 +1,29 @@
+.\" WR - 2018"
+
+.TH DEFINE_CSV_TAG 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+define_csv_tag - Define a start string used to detect a CSV definition line.
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void define_csv_tag(char " "*tag" );
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR define_csv_tag ()
+function defines a start of line string that can be used to detect a
+new CSV definition line in an input file. The TAG string must be no
+larger than CSV_MAX_TAG_LENGTH as defined in defaults.h 
+.fi
+.SH USAGE:
+Intended for use in the setup() code block but could be placed in loop().
+.fi
+.SH RETURN VALUE: 
+define_csv_tag () returns void.
+.fi
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
