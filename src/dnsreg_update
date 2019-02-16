@@ -1,0 +1,18 @@
+#!/bin/bash
+
+export OUTNAME=$(echo $1 | sed 's/-//g' | cut -b 1-8)
+export LC_ALL=C
+mkdir -p $DNS_REG
+mkdir -p $REG_TMP
+mkdir -p $TEMP_SORT
+zcat $DNS_HISTORY/$1 | grep -F ",\"name\":" | grep -F ",\"type\":\"a\"," | sed 's/\"//g; s/:/,/g; s/}//g' |  
+	awk -v DTG=$OUTNAME -F "," '{print $8","$4","DTG}' | gzip  >> $DNS_HISTORY/REGDUMP.gz
+zcat $DNS_HISTORY/REGDUMP.gz | sort -ru -T $TEMP_SORT > $REG_TMP/rsort.txt
+sort -u -t, -k1,2 -T $TEMP_SORT $REG_TMP/rsort.txt | gzip >  $DNS_HISTORY/REGDUMP.gz
+rm -f $REG_TMP/*
+cd $DNS_REG
+rm -f $DNS_REG/*
+zcat $DNS_HISTORY/REGDUMP.gz | split -l 100000000 - $OUTNAME 
+for files in *; do
+	gzip $files
+done 
