@@ -1,0 +1,89 @@
+.\" Manpage for gdns_auth_update.
+.\" Contact WR to correct errors or typos.
+.TH man 1 "17 June 2018" "1.0" "gdns_auth_update man page"
+
+.SH NAME
+gdns_auth_update \- A bash script to populate a database of IPV4 addresses and hostnames
+
+.SH SYNOPSIS 
+gdns_auth_update [url]
+
+.SH DESCRIPTION
+.BI gdns_auth_update
+is a Bash script that populates the stripped DNS_AUTH database used by 
+.BI gdns_server.
+.sp
+.br
+First of all, 
+.BI wget(1)
+is called against the specified URL to retrieve the current JSON dump of passive DNS queries.
+The resultant file is stored in the 
+.BI $DNS_HISTORY 
+directory.  
+(Under normal circumstances, these retrieved files are kept as an archive in case the database ever 
+needs to be rebuilt).
+.br 
+The JSON file is then stripped and sanitised, creating temporary files for each CLASS_A network 
+in the 
+.BI $DNS_TEMP 
+directory.
+.br
+Bash function 
+.BI class_a_update 
+is then repeatedly forked (based on the number of cores on the host system) 
+to read these temporary files and to populate or update each of the  
+CLASS_C files for the IPV4 address space. 
+.br
+The CLASS_C files are held in the directory 
+.BI $DNS_INODES. 
+.sp
+The 
+.BI $DNS_INODES 
+directory has the following structure:
+.sp
+.RS
+$DNS_INODES
+.RS 
+|
+.br
+--> CLASS_A directories
+.RS
+|
+.br
+--> CLASS_B directories
+.RS
+|
+.br
+--> CLASS_C files
+.RE
+.RE
+.RE
+.RE
+.sp
+where each CLASS_C file contains records of the format:
+.sp
+.RS
+.BI  IP_ADDRESS,HOST_NAME,DATE_LAST_NOTED
+.RE
+.sp
+Such a directory layout makes it practical for the gdns_server to perform fast regular expression pattern
+matching against an individual CLASS_C file and to return results within a reasonable time frame. 
+.SH Notes
+The retrieved passive DNS file is often large (12-24Gb) and frequently contains billions of records.
+The sorting, deduping and writing all of the records to the $DNS_INODES directory can take a significant
+amount of time (Typically, 7-30 hours). The script will attempt to utilise 100% of all available cores in
+order to reduce the shell execution time. It is therefore recommended that:
+.sp
+.RS
+1. All directories used by the script are mounted directly off root and that no filesystem links are used.
+.sp
+2. The $DNS_INODES  directory be mounted on a solid state drive capable of dealing with a 
+large volumes of repeated writes without suffering significant wear. 
+.sp
+3. The processors are kept cool!
+.RE
+
+.SH SEE ALSO
+wget(1), gdns_server(1), gdns(1)
+.SH AUTHOR
+WR 
