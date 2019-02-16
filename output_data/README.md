@@ -1,1 +1,1 @@
-Sample output, derived from sample_input and example_code
+Sample output, derived from sample input by the example code held in ../example_code/example*.c
