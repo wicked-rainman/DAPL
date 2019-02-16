@@ -21,7 +21,7 @@
 - __dnsreg_update__ Create split versions of a dns update file to enable __dnsgrep__
 - __rdns_update__ Updates the RDNS_INODES database for historic reverse DNS resolution
 - __dns_prune__ Utility to remove rogue IP addresses or entries from the DNS_INODES database
-- __dnsgep__ Regular expression pattern matching script for domain names
+- __dnsgrep__ Regular expression pattern matching script for domain names
 - __class_a_update__ Internal routine used by dns_auth_update
 - __reverse_class_a_update__ Internal routine used by rdns_update
      
