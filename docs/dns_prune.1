@@ -1,0 +1,35 @@
+.\" Manpage for dns_prune.
+.\" Contact WR to correct errors or typos.
+.TH man 1 "17 June 2018" "1.0" "dns_prune man page"
+
+.SH NAME
+dns_prune \- A simple bash script to remove crud from the dns IPV4 database use by gdns_server
+
+.SH SYNOPSIS 
+gdns_prune [Table name]
+
+.SH DESCRIPTION
+.BI dns_prune
+is a Bash script that uses the regular expressions held in a table to remove crud from the
+IPV4 dns database used by
+.BI gdns_server.
+.sp
+.br
+The table contains lines of the format:
+.BR
+.sp
+.RS
+FULL_PATH_TO_CLASS_C_FILE,REGEXP
+.RE
+.sp
+Each record is read to extract the target filename and the regular expression to be matched.
+The target DNS file is opened, and any matching records removed. The process continues until
+all entries in the table have been actioned.
+.SH OPTIONS
+The script locates the directory for the table files via the shell environment variable $GREFERENCE/Table.
+.br
+Unwanted entries are written to the $DNS_TEMP directory.
+.SH SEE ALSO
+gdns_server(1), dns_auth_update(1), gdns(1)
+.SH AUTHOR
+WR 
