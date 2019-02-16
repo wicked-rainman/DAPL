@@ -1,0 +1,40 @@
+.\" WR - 2018"
+
+.TH ADD_COMPOSITE 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+add_composite - Add hidden composite values to an existing field value.
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void add_composite(char " "*FIELDNAME_TARGET" ,char " "*FIELDNAME_LIST )
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR add_composite ()
+function adds additional field values to those related to the FIELDNAME_TARGET in order to
+make it more unique during any graphics field relationship modeling. 
+Initially, the function tests to see if the current record contains a field 
+.BR _DROP 
+with a positive value. If the result is positive, then 
+.BR add_attributes() 
+returns without performing any function.
+The values associated with each fieldnames specified in FIELDNAME_LIST are then extracted
+and stored within a structure connected to the current record. When the FIELDNAME_TARGET is
+subsequently referenced by any graphics function, the composite value is used rather than 
+the actual FIELDNAME_TARGET field values. If any of the fieldnames identified in the 
+FIELDNAME_LIST are missing, then they are simply ignored. 
+.fi
+.SH USAGE:
+Loop code block only.
+.fi
+.SH RETURN VALUE: 
+add_composite () returns void.
+.fi
+.SH SEE ALSO:
+draw_node draw_chain draw_path 
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
