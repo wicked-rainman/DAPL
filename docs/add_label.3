@@ -1,0 +1,34 @@
+.\" WR - 2018"
+
+.TH ADD_LABEL 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+add_label - Add one or more labels to a field.
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void add_label(char " "*TARGET_FIELDNAME", char " "*FIELDNAME_LIST );
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR add_label ()
+function tests to see if the current record contains a field 
+.BR _DROP 
+with a positive value. If the result is positive, then 
+.BR add_field() 
+returns without performing any function.
+The field names specified in FIELDNAME_LIST are enumerated. For each Fieldname that
+appears in this list, and also in the current record, the field value is extracted. The extracted value 
+(including a <CR>) is added as a label for the TARGET_FIELDNAME. The label will appear on a node that represents that entity when using graphics functions. If MAX_FIELDLABEL_SIZE is exceeded, the label is truncated. 
+.fi
+.SH USAGE:
+Loop code block only.
+.fi
+.SH RETURN VALUE: 
+add_label () returns void.
+.fi
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
