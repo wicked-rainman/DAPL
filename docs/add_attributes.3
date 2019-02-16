@@ -1,0 +1,37 @@
+.\" WR - 2018"
+
+.TH ADD_ATTRIBUTES 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+add_attributes - Add .DOT graphics attributes to an existing field.
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void add_attributes(char " "*FIELDNAME_TARGET" ,char " "*ATTRIBUTES );
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR add_attributes ()
+function adds .DOT graphics attributes that are associated with a target fieldname,
+which must be present within the current record. Initially, the function tests to see if
+the current record contains a field 
+.BR _DROP 
+with a positive value. If the result is positive, then 
+.BR add_attributes() 
+returns without performing any function.
+The graphics attributes are then inserted into the record and will be acted on by any subsequent
+calls to graphics functions.
+.fi
+.SH USAGE:
+Loop code block only.
+.fi
+.SH RETURN VALUE: 
+add_attributes () returns void.
+.fi
+.SH SEE ALSO:
+draw_node draw_chain draw_path 
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
