@@ -1,4 +1,33 @@
 #!/bin/bash
+#############################################################################
+# Bash script: dnsgrep                                                      #
+#                                                                           #
+# PURPOSE:                                                                  #
+# The GNU utility parallel allows you to divide up a task into chunks of    #
+# work in order to reduce user execution time. In multi-processor systems   #
+# it doesn't seem to spread across cores very well. You seem to end up with #
+# one processor running 100%, with the others remaining pretty much idle.   #
+#                                                                           #
+# This script is designed to provide fast answers to long running GREP      #
+# queries by spreading the load across all cores on a machine - in this     #
+# case, running zgrep against historic DNS answer records. The records are  #
+# stored in 100Mb files, all resident in one directory.                     #
+#                                                                           #
+# Method:                                                                   #
+# 1. A pid_array is created allowing for up to 20 cores - adjust as needed  #
+# 2. A trap is enabled so that CTL-C is ignored (prevents orphans)          #
+# 3. All the files in the input directory are enumerated                    #
+# 4. A circular test of the elements in pid array is performed.             #
+# 5. If the element in the pid array is zero, a process is forked to deal   #
+# with the next unprocessed input file.                                     #
+# 6. When all the input files have been exhausted, and the last child has   #
+# finished doing it's zgrep, the script exits.                              #
+#                                                                           #
+# NOTE: Results are not returned in any particular order. In the given use  #
+# case this shouldn't matter...                                             #
+# This will put the machine in a 100% busy state, but delivers promptly.    #
+#############################################################################
+
 cpu_count=$(grep -c ^processor /proc/cpuinfo)
 export LC_ALL=C
 pid_array=( 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 )
