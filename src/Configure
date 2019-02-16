@@ -33,6 +33,12 @@ mkdir -p /usr/local/sbin
 		dnf install dos2unix
 	else echo Package dos2unix - Ok
 	fi
+	if ! rpm -qa | grep -qw perl-CPAN; then
+		echo Package perl-CPAN - Not installed
+		dnf install perl-CPAN
+	else echo Package perl-CPAN - Ok
+	fi
+	
 # Check non-standard packages are installed
 file="/usr/local/bin/msgconvert"
 if [ ! -f "$file" ]; then
