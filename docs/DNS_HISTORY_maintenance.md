@@ -42,6 +42,10 @@ these scripts should be straight forward to understand, but note:
             DNS entries that are machine generated for temporary use). Script dns_prune can be 
             used to clear out the dross.
 
+When these updates have been completed, script dnsreg_update can be run against the input just processed
+by dns_auth_update or rdns_update. This script creates 100Mb chunks of unordered data that can be used 
+by the dnsgrep utility. 
+
 ### NOTE:
 
 The datastore has been designed to provide fast responses to DNS historic queries (The server code
