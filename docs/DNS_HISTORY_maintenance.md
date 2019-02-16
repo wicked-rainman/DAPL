@@ -13,7 +13,7 @@ to the gdns and grdns client utllities. The server components both read these re
 that requires regular updates. After an initial DAPL install, the datastore need to be built from scratch (It is 
 too big for a GIT repository). 
 
-DATASTORE FORMAT
+### DATASTORE FORMAT
 
 Answers to historical DNS queries are stored in dotted decimal IP address order. The records are stored in
 a two depth directory structure:
@@ -42,7 +42,7 @@ these scripts should be straight forward to understand, but note:
             DNS entries that are machine generated for temporary use). Script dns_prune can be 
             used to clear out the dross.
 
-NOTE:
+### NOTE:
 
 The datastore has been designed to provide fast responses to DNS historic queries (The server code
 basically changes to the directory that satisfies an IP address class B value, then just reads the
