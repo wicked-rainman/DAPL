@@ -1,0 +1,26 @@
+.\" Manpage for gdns.
+.\" Contact WR to correct errors or typos.
+.TH man 1 "17 June 2018" "1.0" "gdns man page"
+
+.SH NAME
+gdns \- Find historic host names for a given IPV4 address 
+
+.SH SYNOPSIS 
+gdns [IPV4]
+
+.SH DESCRIPTION
+.B gdns 
+queries a gdns_server in order to obtain a list of historic host names for a single IPV4 address (Dotted decimal notation only).
+.PP
+Results from a gdns_server are of the form: IP_ADDRESS,HOST_NAME,DATE_LAST_NOTED. 
+.PP
+The gdns_server IP address is determined by the shell variable $GSERVER, and the listening port by the $GDNS_PORT variable. If these variables are not set, then the program will exit. 
+
+.SH OPTIONS
+An IPV4 dotted decimal notated IP address
+.SH SEE ALSO
+gdns_server(1), dns_auth_update(1), dns_prune(1) ,ncat(1) 
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+WR 
