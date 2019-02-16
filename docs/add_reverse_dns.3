@@ -1,0 +1,38 @@
+.\" WR - 2018"
+
+.TH ADD_REVERSE_DNS 3  2018-08-08 "DAPL" "DAPL Programmer's Manual"
+.SH NAME
+add_reverse_dns - Using an IP address field, Add a reverse DNS field
+.SH SYNOPSIS
+.nf
+.B #include externs.h
+.sp
+.BI "void add_reverse_dns(char " "IP_ADDRESS_FIELDNAME" );
+.fi
+.SH DESCRIPTION
+.sp
+The
+.BR add_reverse_dns ()
+function tests to see if the current record contains a field 
+.BR _DROP 
+with a positive value. If the result is positive, then 
+.BR add_reverse_dns() 
+returns without performing any function.
+A test is then performed to see if IP_ADDRESS_FIELDNAME exists in the current record structure.
+If the field is found, then the IP_ADDRESS_FIELDNAME value is extracted from the record and is
+passed to function gethostbyaddr which makes an Internet call out to resolve the IP. 
+The reverse dns value returned is inserted into the record structure as fieldname 
+IP_ADDRESS_FIELDNAME.rdns.
+.fi
+.SH USAGE:
+Loop code block only.
+.fi
+.SH RETURN VALUE: 
+add_reverse_dns () returns void.
+.fi
+.SH SEE ALSO:
+add_asn add_country
+.SH BUGS:
+No known bugs.
+.SH AUTHOR:
+WR
