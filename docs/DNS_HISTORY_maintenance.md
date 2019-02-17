@@ -73,9 +73,9 @@ these scripts should be straight forward to understand, but note:
             volume as $GREFERENCE if possible. 
                 
 You can now run dns_auth_update [input file] and when that is completed, rdns_update [input file]. Don't
-be surprised if these scripts take anything from 3 to 27 hours to complete. Stick ear plugs in, and open
-the windows. When the filtering is complete and this really gets going, expect all cores to be running 
-at 100%
+be surprised if these scripts take anything from 3 to 27 hours to complete. Using an I7 (7800x) and 
+three 3dxpoint drives the user time seems to be 7-8 hours. Stick ear plugs in and open the windows. 
+When the filtering is complete and this really gets going, expect all cores to be running at 100%
 
 When updates have completed, script dnsreg_update can be run against the input just processed
 by dns_auth_update. It creates 100Mb chunks of unordered data that can be used by the dnsgrep utility. 
