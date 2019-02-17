@@ -72,15 +72,20 @@ these scripts should be straight forward to understand, but note:
             Again, it is probably a good idea that $DNS_HISTORY and $DNS_TEMP are NOT the same physical
             volume as $GREFERENCE if possible. 
                 
-You can now run dns_auth_update [input file] and when that is completed, rdns_update [input file]
+You can now run dns_auth_update [input file] and when that is completed, rdns_update [input file]. Don't
+be surprised if these scripts take anything from 3 to 27 hours to complete. Stick ear plugs in, and open
+the windows. When the filtering is complete and this really gets going, expect all cores to be running 
+at 100%
 
-When these updates have been completed, script dnsreg_update can be run against the input just processed
+When updates have completed, script dnsreg_update can be run against the input just processed
 by dns_auth_update. It creates 100Mb chunks of unordered data that can be used by the dnsgrep utility. 
 Again, related BASH script variables in this script will need to be modified.
 
 ### NOTE:
 
-The datastore has been designed to provide fast responses to DNS historic queries (The server code
-basically changes to the directory that satisfies an IP address class B value, then just reads the
-dns records for a single class C). It is therefore of significant benefit for the datastore to be
-mounted on modern solid-state storage such as 3dXpoint or Vnand. 
+The datastore has been designed to provide fast responses to queries (The server code basically changes to 
+the directory that satisfies an IP address class B value, then just reads the dns records for a single 
+class C). It is therefore of significant benefit for the datastore to be mounted on 3dXpoint solid-state 
+storage. Vnand will wear out too quickly running this process, so if you can't afford some 3dXpoint drives
+then I would stick with spinning rust. 
+
