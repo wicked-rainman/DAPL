@@ -49,8 +49,8 @@ these scripts should be straight forward to understand, but note:
                 $DNS_TEMP - Used for sorting records and other functions
                 $DNS_INODES - Where the DNS data structure will be held.
 
-            Make sure that these new BASH variables are reflected by the values in the
-            scripts gdnsd and grdnsd.
+            Make sure that these new BASH variables are reflected in the values GREFERENCE in
+            scripts gdnsd and grdnsd - It points to the root storage device directory.
 
 When these updates have been completed, script dnsreg_update can be run against the input just processed
 by dns_auth_update or rdns_update. This script creates 100Mb chunks of unordered data that can be used 
