@@ -251,12 +251,19 @@ Server :
 	chgrp root *.service
 	chmod 644 *.service
 	mv class_a_update /usr/local/sbin
+	chmod 744 /usr/local/sbin/class_a_update
 	mv reverse_class_a_update /usr/local/sbin
+	chmod 744 /usr/local/sbin/reverse_class_a_update
 	mv dns_auth_update /usr/local/sbin
+	chmod 744 /usr/local/sbin/dns_auth_update
 	mv dnsreg_update /usr/local/sbin
+	chmod 744 /usr/local/sbin/dnsreg_update
 	mv dnsgrep /usr/local/sbin
+	chmod 744 /usr/local/sbin/dnsgrep
 	mv rdns_update /usr/local/sbin
+	chmod 744 /usr/local/sbin/rdns_update
 	mv dns_prune /usr/local/sbin
+	chmod 744 /usr/local/sbin/dns_prune
 	mv gdnsd /usr/local/sbin
 	chmod 744 /usr/local/sbin/gdnsd
 	mv gdns_server /usr/local/bin
