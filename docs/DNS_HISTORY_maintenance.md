@@ -84,18 +84,15 @@ Again, related BASH variables in this script will need to be modified.
 
 ### NOTES:
 
-The datastore has been designed to provide fast responses to queries (The server code basically changes to 
-the directory that satisfies an IP address class B value, then just reads the dns records for a single 
-class C). It is therefore of significant benefit for the datastore to be mounted on 3dXpoint solid-state 
-storage. Vnand will wear out too quickly running this process, so if you can't afford some 3dXpoint drives
-then I would stick with spinning rust. 
+-       The datastore has been designed to provide fast responses to queries (The server code basically changes to 
+        the directory that satisfies an IP address class B value, then just reads the dns records for a single 
+        class C). It is therefore of significant benefit for the datastore to be mounted on 3dXpoint solid-state 
+        storage. Vnand will wear out too quickly running this process, so if you can't afford some 3dXpoint drives
+        then I would stick with spinning rust. 
 
-Suitable input for this process can be obtained from:
-
-        https://opendata.rapid7.com/sonar.fdns_v2/ 
-        
+-       Suitable input for this process can be obtained from:
+            https://opendata.rapid7.com/sonar.fdns_v2/ 
         and 
-        
-        https://opendata.rapid7.com/sonar.rdns_v2/
+            https://opendata.rapid7.com/sonar.rdns_v2/
 
 
