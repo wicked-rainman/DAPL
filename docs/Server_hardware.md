@@ -1,4 +1,4 @@
-### System hardware requirements
+### Server hardware requirements
 
 -   Only tested on modern versions of Fedora (last test was on version 29)
 -   Memory not critical. 16Gb-32Gb should be fine.
