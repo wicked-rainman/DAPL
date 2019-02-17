@@ -81,11 +81,15 @@ When updates have completed, script dnsreg_update can be run against the input j
 by dns_auth_update. It creates 100Mb chunks of unordered data that can be used by the dnsgrep utility. 
 Again, related BASH script variables in this script will need to be modified.
 
-### NOTE:
+### NOTES:
 
 The datastore has been designed to provide fast responses to queries (The server code basically changes to 
 the directory that satisfies an IP address class B value, then just reads the dns records for a single 
 class C). It is therefore of significant benefit for the datastore to be mounted on 3dXpoint solid-state 
 storage. Vnand will wear out too quickly running this process, so if you can't afford some 3dXpoint drives
 then I would stick with spinning rust. 
+
+Suitable input for this process can be obtained from https://opendata.rapid7.com/sonar.fdns_v2/ and 
+https://opendata.rapid7.com/sonar.rdns_v2/
+
 
