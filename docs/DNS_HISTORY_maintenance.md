@@ -79,7 +79,7 @@ at 100%
 
 When updates have completed, script dnsreg_update can be run against the input just processed
 by dns_auth_update. It creates 100Mb chunks of unordered data that can be used by the dnsgrep utility. 
-Again, related BASH script variables in this script will need to be modified.
+Again, related BASH variables in this script will need to be modified.
 
 ### NOTES:
 
