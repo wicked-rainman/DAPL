@@ -103,15 +103,15 @@ scripts gasnd, gdnsd, grdnsd, gcountryd and ghistoryd (/usr/local/sbin) are allo
 
 8. In a client install, Edit $HOME/.bashrc, and add these BASH variables:
 
-`WHITE_FILE=$HOME/DAPL/Reference/whitelist.csv; export WHITE_FILE
-ASN_FILE=$HOME/DAPL/Reference/asn.csv; export ASN_FILE
-COUNTRY_FILE=$HOME/DAPL/Reference/country.csv; export COUNTRY_FILE
-GDNS_PORT=32481; export GDNS_PORT
-GASN_PORT=32482; export GASN_PORT
-GCOUNTRY_PORT=32483; export GCOUNTRY_PORT
-GRDNS_PORT=32484; export GRDNS_PORT
-GHISTORY_PORT=32485; export GHISTORY_PORT
-GSERVER=127.0.0.1; export GSERVER`
+    WHITE_FILE=$HOME/DAPL/Reference/whitelist.csv; export WHITE_FILE
+    ASN_FILE=$HOME/DAPL/Reference/asn.csv; export ASN_FILE
+    COUNTRY_FILE=$HOME/DAPL/Reference/country.csv; export COUNTRY_FILE
+    GDNS_PORT=32481; export GDNS_PORT
+    GASN_PORT=32482; export GASN_PORT
+    GCOUNTRY_PORT=32483; export GCOUNTRY_PORT
+    GRDNS_PORT=32484; export GRDNS_PORT
+    GHISTORY_PORT=32485; export GHISTORY_PORT
+    GSERVER=127.0.0.1; export GSERVER
         
 The ASN_FILE, COUNTRY_FILE and WHITE_FILE files are used within DAPL (functions add_asn(), add_country() 
 and whitelist() ) for local resolution and provide non-server related answers. 
