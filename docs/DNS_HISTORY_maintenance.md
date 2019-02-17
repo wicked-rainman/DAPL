@@ -45,12 +45,15 @@ these scripts should be straight forward to understand, but note:
         4.  Before running these scripts you will need to set some BASH shell variables in
             .bashrc that point to the fast storage you are going to use. These variables are:
                 
-                $DNS_HISTORY - Directory ?somewhere/dns_history For storage of new incomming data to parse
-                $DNS_TEMP - Directory ?somewhere/dns_temp Used for sorting records and other functions
-                $DNS_INODES - Directory ?somewhere/dns Where the DNS data structure will be held.
+                $DNS_HISTORY - Directory (somewhere)/dns_history For storage of new incomming data to parse
+                $DNS_TEMP - Directory (somewhere)/dns_temp Used for sorting records and other functions
+                $DNS_INODES - Directory (somewhere)/dns Where the DNS data structure will be held.
 
-            Make sure that these new BASH variables are reflected in the values GREFERENCE in
-            scripts gdnsd and grdnsd - It points to the root storage device directory.
+            Make sure that the BASH variable GREFERENCE in the scripts gdnsd and grdnsd reflect
+            the (somewhere) mount point. For example, if you are using disk /ssd3 for storing
+            dns history, then the GREFERENCE variable in gasnd would be set to '/ssd3' and the
+            GHISTORY bash variable to /ssd3/dns_history Etc. This is because you may choose 
+            (for example) to mount DNS_INODES on it's own drive to reduce latency.
 
 When these updates have been completed, script dnsreg_update can be run against the input just processed
 by dns_auth_update or rdns_update. This script creates 100Mb chunks of unordered data that can be used 
