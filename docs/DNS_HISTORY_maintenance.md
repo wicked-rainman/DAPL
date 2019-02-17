@@ -35,28 +35,47 @@ these scripts should be straight forward to understand, but note:
             Depending on record counts (which might exceed 3 billion), expect the update 
             process to run over a period of 4-20 hours. 
             
-        2.  Both scripts call helper functions (class_a_update and reverse_class_a_update)
-            which are forked to keep every available processor busy. Expect 100% CPU usage.
+        2.  Both scripts call helper functions (class_a_update is called by dns_auth_update and
+            reverse_class_a_update called by rdns_update) which are forked to keep every available 
+            processor busy. Expect 100% CPU usage.
 
-        3.  From time to time, unwanted DNS records will be collected (You will find randon 
+        3.  From time to time, unwanted forward DNS records will be collected (You will find randon 
             DNS entries that are machine generated for temporary use). Script dns_prune can be 
             used to clear out the dross.
 
-        4.  Before running these scripts you will need to set some BASH shell variables in
-            .bashrc that point to the fast storage you are going to use. These variables are:
+        4.  Before running these scripts you will need to set or change some BASH shell variables in
+            both .bashrc and the shell scripts gdnsd and grdnsd (/usr/local/sbin). There are three
+            directories used by this whole process, and sometimes these directories might need to 
+            be on different physical volumes:
+            
+                a.  Somewhere to store incomming raw DNS records (You might want to keep these
+                    files so you can re-build the datastore at any time should you wish) - 
+                    DNS_HISTORY
+
+                b.  Some temporary workspace for efficient sorting and creation of intermediate
+                    files- DNS_TEMP
+
+                c.  Somewhere for the datastore itself - GREFERENCE/dns
+
+            The gdnsd and grdnsd scripts both contain a shell variable $GREFERENCE. This should
+            point to a mount point for a disk volume, eg: GREFERENCE=/xpoint1 (Forward and Reverse
+            DNS entries occupy the same datastore). The gdns_server and grdns_server both expect
+            to access the datastore in a directory $GREFERENCE/dns, so you now need to make that
+            directory. 
+            
+            The dns_auth_update and rdns_update scripts both use .bashrc shell variables:
                 
                 $DNS_HISTORY - Directory (somewhere)/dns_history For storage of new incomming data to parse
                 $DNS_TEMP - Directory (somewhere)/dns_temp Used for sorting records and other functions
-                $DNS_INODES - Directory (somewhere)/dns Where the DNS data structure will be held.
+                $DNS_INODES - Directory (which should be the same as $GREFERENCE/dns).
 
-            Make sure that the BASH variable GREFERENCE in the scripts gdnsd and grdnsd reflect
-            the (somewhere) mount point. For example, if you are using disk /ssd3 for storing
-            dns history, then the GREFERENCE variable in gasnd would be set to '/ssd3' and the
-            GHISTORY bash variable to /ssd3/dns_history Etc. This is because you may choose 
-            (for example) to mount DNS_INODES on it's own drive to reduce latency.
+            Again, it is probably a good idea that $DNS_HISTORY and $DNS_TEMP are NOT the same physical
+            volume as $GREFERENCE if possible. 
+                
+You can now run dns_auth_update [input file] and when that is completed, rdns_update [input file]
 
 When these updates have been completed, script dnsreg_update can be run against the input just processed
-by dns_auth_update or rdns_update. This script creates 100Mb chunks of unordered data that can be used 
+by dns_auth_update. This script creates 100Mb chunks of unordered data that can be used 
 by the dnsgrep utility. Again, related BASH script variables will need to be modified.
 
 ### NOTE:
