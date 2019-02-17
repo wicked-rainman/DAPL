@@ -42,9 +42,16 @@ these scripts should be straight forward to understand, but note:
             DNS entries that are machine generated for temporary use). Script dns_prune can be 
             used to clear out the dross.
 
+        4.  Before running these scripts you will need to set some BASH shell variables in
+            .bashrc that point to the fast storage you are going to use. These variables are:
+                
+                $DNS_HISTORY - For storage of new incomming data to parse
+                $DNS_TEMP - Used for sorting records and other functions
+                $DNS_INODES - Where the DNS data structure will be held.
+
 When these updates have been completed, script dnsreg_update can be run against the input just processed
 by dns_auth_update or rdns_update. This script creates 100Mb chunks of unordered data that can be used 
-by the dnsgrep utility. 
+by the dnsgrep utility. Again, related BASH script variables will need to be modified.
 
 ### NOTE:
 
