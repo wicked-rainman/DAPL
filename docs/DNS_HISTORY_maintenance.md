@@ -91,7 +91,10 @@ then I would stick with spinning rust.
 
 Suitable input for this process can be obtained from:
 
-        https://opendata.rapid7.com/sonar.fdns_v2/ and 
+        https://opendata.rapid7.com/sonar.fdns_v2/ 
+        
+        and 
+        
         https://opendata.rapid7.com/sonar.rdns_v2/
 
 
