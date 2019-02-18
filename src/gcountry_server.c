@@ -91,7 +91,7 @@ int main() {
 
 
 
-void doprocessing (int sock, char* clip) {
+void doprocessing (int sock, /*@unused@*/ char* clip) {
 ssize_t n;
 char buffer[256];
 char ip[50];
@@ -143,7 +143,7 @@ bzero(ip,50);
    		/***********************************************************************************/
 		if(country==NULL) {
 			country = fopen(countrypath,"r");
-			if(country<0) {
+			if(country==NULL) {
 				 exit(EXIT_SUCCESS);
 			}
 		}
