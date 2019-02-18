@@ -1,5 +1,6 @@
-ABUSEIPDB is a small command line script utility that invokes an API call over the Internet
-to host abuseipdb.com (SSL). The script accepts a single parameter - The IP address to check:
+ABUSEIPDB is a small command line script utility. It invokes an HTTPS Get over the Internet
+to host abuseipdb.com to resolve if complaints have been made about a specific IP address. 
+The script accepts a single parameter - The IP address to check:
 
     abuseipdb <ip-address>
     
