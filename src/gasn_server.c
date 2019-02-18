@@ -91,7 +91,7 @@ int main() {
 
 
 
-void doprocessing (int sock, char* clip) {
+void doprocessing (int sock, /*@unused@*/ char* clip) {
    ssize_t n;
    char buffer[256];
    char ip[50];
@@ -145,7 +145,7 @@ void doprocessing (int sock, char* clip) {
    			/***********************************************************************************/
 			if(asn==NULL) {
 				asn = fopen(asnpath,"r");
-				if(asn<0)  {
+				if(asn==NULL)  {
 					exit(EXIT_SUCCESS);
 				}
 			}
