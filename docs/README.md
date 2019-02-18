@@ -65,6 +65,8 @@ in ./output. This may aid with the learning process.
 A brief description of the utilities/files produced by the included Makefile can be found in ./docs/Manifest.md. 
 See INITIAL INSTALL section below.
 
+----------------------------------------------------------------------------------------------
+
 ## FURTHER READING
 
 - Graphviz        - https://graphviz.org
@@ -75,7 +77,6 @@ See INITIAL INSTALL section below.
 - DNS             - https://opendata.rapid7.com/sonar.fdns_v2/
 - Topology        - http://www.caida.org/data/active/ipv4_routed_24_topology_dataset.xml
 - AbuseIPdb       - https://www.abuseipdb.com/
-        
         
 ------------------------------------------------------------------------------------------------
 
