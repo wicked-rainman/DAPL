@@ -98,7 +98,7 @@ char fastpath[100];
 
 
 
-void doprocessing (int sock, char* clip) {
+void doprocessing (int sock, /*@unused@*/ char* clip) {
    ssize_t n;
    char buffer[256];
    char exact[30];
