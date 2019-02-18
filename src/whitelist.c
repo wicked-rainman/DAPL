@@ -2,7 +2,7 @@
 int whitelist(char *tgt) {
 struct in_addr ip;
 static FILE *_whitefile;
-int n,k,buflen,target_count;
+int n,k,target_count;
 char line[500];
 char start_str[50];
 char end_str[50];
@@ -44,7 +44,6 @@ uint32_t ip_int=0;
 			}
 			rewind(_whitefile);
         		while(fgets(line, 500, _whitefile)) {
-                		buflen = strlen(line);
                			k=0;
 				n=0;
 				// *****************************************************
