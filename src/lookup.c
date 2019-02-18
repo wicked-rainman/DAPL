@@ -2,7 +2,7 @@
 int lookup(FILE *table,char* fieldname,char* newfield) {
 int v,match=0;
 size_t t,w;
-int target_count,found,chars_found;
+int target_count,found;
 char new_field[MAX_FIELDNAME_LENGTH];
 char new_value[MAX_FIELDVALUE_LENGTH];
 char needle[MAX_FIELDVALUE_LENGTH];
@@ -19,7 +19,6 @@ char *sptr;
 		found=0;
 		if(strlen(_fieldvalues_array[tlist.position[target_count]])>0) {
 			rewind(table);
-			chars_found=0;
 			new_field[0]='\0';
 			new_value[0]='\0';
 			//
