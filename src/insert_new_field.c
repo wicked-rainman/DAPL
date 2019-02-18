@@ -6,7 +6,7 @@ char temp_fieldname[MAX_FIELDNAME_LENGTH];
 char head[MAX_FIELDNAME_LENGTH];
 char tail[MAX_FIELDNAME_LENGTH];
 int ctr;
-char ctr_str[10];
+char ctr_str[15];
 	if(_drop==1) return;
 	if(_field_count==MAX_FIELD_COUNT-1) {
 		fprintf(stderr,"insert_new_field: Adding [%s]:\"%s\" failed. MAX_FIELD_COUNT reached\n",suggested_fieldname,fieldvalue);
