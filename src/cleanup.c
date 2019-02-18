@@ -1,6 +1,5 @@
 #include "externs.h"
 void cleanup() {
-int k;
 char *hostname;
 char *gasn_port;
 char *gcountry_port;
@@ -26,5 +25,4 @@ char *gcountry_port;
                 (void) write(_country_sockfd,"EXIT\n",5);
                 (void) close(_country_sockfd);
         }
-	k=0;
 }
