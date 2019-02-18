@@ -1,5 +1,5 @@
-CC = clang
-CFLAGS = -Ofast -Wall  
+CC = gcc
+CFLAGS = -Ofast -Wall -Wextra
 .PHONY: all
 all: libdapl.a libeml.a gasn gasn_server gcountry_server gcountry ip2int int2ip \
 	ip2country ip2asn cidr2ip whitelist_convert sslcat gdns_server grdns_server \
