@@ -19,7 +19,7 @@ void build_target_list(char *fld) {
 //
 // ************************************************************************
 int x,y,ctr;
-char ctr_str[10];
+char ctr_str[15];
 char temp_fieldname[MAX_FIELDNAME_LENGTH];
 char fieldname[MAX_FIELDNAME_LENGTH];
 char head[MAX_FIELDNAME_LENGTH];
