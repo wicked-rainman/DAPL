@@ -66,7 +66,8 @@ int main(int argc, char **argv) {
         BIO_get_ssl(bio, & ssl);
         SSL_set_mode(ssl, SSL_MODE_AUTO_RETRY);
         BIO_set_conn_hostname(bio,server_name);
-	if((bio==NULL) || (bio <=0)) {
+	if(bio==NULL) {
+	/*  if((bio==NULL) || (bio <=0)) { */
 		fprintf(stdout,"BIO_new_ssl_connect allocation failed\n");
 		exit(EXIT_FAILURE);
 	}
