@@ -1,8 +1,3 @@
-//
-//
-// This function needs to be converted to produce a chain of fields rather than an array
-//
-//
 #include "externs.h"
 int array_from_string(char *source, char dest[][MAX_FIELDNAME_LENGTH]) {
 char source_str[MAX_INPUT_LINE_LENGTH];
