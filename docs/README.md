@@ -27,9 +27,9 @@ of high level function calls.
 ### loop()  
 
 Code within the loop block is executed once for each record contained in each input file identified 
-in setup(). An obscured global data structure is created for each record, populated with the fieldname and 
-field value pairs found. All functions within the loop block reference this structure. Once the record has 
-been processed it is reset to empty, ready to be populated with the fields from the next record. 
+in setup(). A User-obscured global data structure is created for each record, populated with the fieldname 
+and field value pairs found. All functions within the loop block reference this structure. Once the record 
+has been processed it is reset to empty, ready to be populated with the fields from the next record. 
     
 Other than maintaining a count of input and output records and maintaining file or memory pointers for any 
 reference files, there is no state within the code block. This allows for processing of undefinably 
