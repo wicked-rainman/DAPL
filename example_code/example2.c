@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------------
-// example2.c
+// example2.c - Selective input handler.
 //
 // Read in a small file that contains some IP addresses and other fields.
 // Ignore any records where the name field is "TELEGRAPH"
