@@ -17,7 +17,7 @@
 
 #include "../src/externs.h"
 void setup() {
-	set_input(' ',"../output_data/output1.csv");
+	set_input(',',"../output_data/output1.csv");
 	set_graphics("../output_data/output5.dot","twopi");
 }
 void loop() {
