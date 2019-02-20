@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------------
-// example2a.c
+// example2a.c - Sample input handler
 //
 // Read in a small file that contains some IP addresses and other fields.
 // Keep records where the name field is "TELEGRAPH" (The opposite of example2).
