@@ -8,11 +8,10 @@
 
 #include "../src/externs.h"
 void setup() {
-	set_input(' ',"../input_data/input1.csv");
+	set_input(' ',"../output_data/output1.csv");
 	set_graphics("../output_data/output6.dot","neato");
 }
 void loop() {
-	add_country("source_ip"); add_asn("source_ip");
 	add_composite("time","date");
 	add_composite("source_ip","date time");
 	add_label("source_ip"," *, name,  *.asn  *.country ");
