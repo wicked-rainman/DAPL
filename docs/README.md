@@ -123,8 +123,8 @@ the related server ports. DAPL functions socketadd_dns() and socketadd_rdns() ha
 (see open issues) although Standalone utilities gdns grdns reference these other ports. 
 
 9. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
-`clang -Ofast prog.c ../lib/libdapl.a -o progname` for files conaining single line "CSV" type records, or
-`clang -Ofast prog.c ../lib/libeml.a -o progname` to utilise the E-mail conversion handler
+`gcc -Ofast prog.c ../lib/libdapl.a -o progname` for files conaining single line "CSV" type records, or
+`gcc -Ofast prog.c ../lib/libeml.a -o progname` to utilise the E-mail conversion handler
 
 10. On a client, any additional reference files you make should reside in $HOME/DAPL/Reference. 
 
