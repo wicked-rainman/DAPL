@@ -1,12 +1,11 @@
 // ---------------------------------------------------------------------------------
-// example3.c
+// example3.c - Processing output from example1.c
 //
 // Show the relationship between the IP addresses, countrys and ASNs.
 //
-// 1. Set the input file to be ../input_data/input1.csv
+// 1. Set the input file to be ../output_data/output1.csv
 // 2. Set the graphics output file to be ../output_data/output3.dot and use the
 //    "neato" rendering algorythm.
-//
 // 3. Draw the relationship between source_ip and ASN
 // 4. Draw the relationship between ASN and country
 //
