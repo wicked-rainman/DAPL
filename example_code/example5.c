@@ -17,12 +17,11 @@
 
 #include "../src/externs.h"
 void setup() {
-	set_input(' ',"../input_data/input1.csv");
+	set_input(' ',"../output_data/output1.csv");
 	set_graphics("../output_data/output5.dot","twopi");
 }
 void loop() {
 	add_composite("source_ip","date, time");
-	add_country("source_ip"); add_asn("source_ip");
 	add_label("source_ip", "name * date,time");
 	add_attributes("source_ip","color=red,shape=rectangle");
 	add_attributes("source_ip.country","shape=diamond");
