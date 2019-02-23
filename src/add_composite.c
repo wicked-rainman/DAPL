@@ -13,18 +13,18 @@ char temp_str[MAX_FIELDVALUE_LENGTH];
 		x=0;
 		strcpy(_fieldcomps_array[w],"\"");
 		strcpy(temp_str,_fieldvalues_array[w]);
-		remchars("\"",temp_str);
+		(void) remchars("\"",temp_str);
 		strcat(_fieldcomps_array[w],temp_str);
 		strcat(_fieldcomps_array[w],"|");
 		while(x<field_count) {
 			y=find_fieldname(output_list[x]);
 			if(y>=0) {
-				z=strlen(_fieldcomps_array[w]);
-				v=strlen(_fieldvalues_array[y]);
+				z= (int) strlen(_fieldcomps_array[w]);
+				v= (int) strlen(_fieldvalues_array[y]);
 				if((z+v+2)<MAX_COMPOSITE_LENGTH) {
 					temp_str[0]='\0';
 					strcpy(temp_str,_fieldvalues_array[y]);
-					remchars("\"", temp_str);
+					(void) remchars("\"", temp_str);
 					strcat(_fieldcomps_array[w],temp_str);
 					strcat(_fieldcomps_array[w],"|");
 				}	
