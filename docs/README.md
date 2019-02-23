@@ -104,6 +104,8 @@ client and server install, repeat step 5 again before running the next make Serv
 7. After a server install, use systemctl to start and enable gasnd.service, gdnsd.service, grdnsd.service, 
 ghistory.service and gcountryd.service as required. Ensure that the TCP ports specified in the bash 
 scripts gasnd, gdnsd, grdnsd, gcountryd and ghistoryd (/usr/local/sbin) are allowed through any firewall.
+_(Note that some of these scripts also have BASH variables that point to data reference files - they will almost 
+certainly have to be modified to suit your filesystem)._ 
 
 8. In a client install, Edit $HOME/.bashrc, and add these BASH variables:
 
@@ -122,9 +124,7 @@ and whitelist() ) for local resolution and provide non-server related answers.
 
 DAPL functions socketadd_asn() socketadd_country() and socketadd_history() will resolve answers through 
 the related server ports. DAPL functions socketadd_dns() and socketadd_rdns() have not been written yet, 
-(see open issues) although Standalone utilities gdns grdns reference these other ports. Note that some
-of these scripts also have BASH variables that point to data reference files - they will almost certainly
-have to be modified to suit your filesystem. 
+(see open issues) although Standalone utilities gdns grdns reference these other ports. 
 
 9. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 `gcc -Ofast prog.c ../lib/libdapl.a -o progname` for files conaining single line "CSV" type records, or
