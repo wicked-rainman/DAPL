@@ -93,7 +93,9 @@ directory named "DAPL".
 DAPL. Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox, dos2unix and the perl 
 script msgconvert are needed for any E-mail processing.
 
-5.  exit root and as a user run `make`. You shouldn't see any errors.
+5.  exit root and as a user run `make`. You shouldn't see any errors, but you will see a few warning messages
+about unused variables (These variables have been intentional left for any future debugging purposes and do
+no harm).
 
 6.  DAPL can be run as a client or as a server. For the client install, run`sudo make Client` or for the server 
 (if you are happy with what actions it is going to perform),`sudo make Server`. If you plan to have a complete 
