@@ -89,7 +89,7 @@ directory named "DAPL".
 
 3.  cd into $HOME/DAPL/src
 
-4.  As root, run `./Configure` to make sure system dependancies are present. Clang and Graphviz are critical for 
+4.  As root, run `./Configure` to make sure system dependancies are present. GCC and Graphviz are critical for 
 DAPL. Openssl-dev is needed for the  sslcat and abuseipdb standalone utilities, detox, dos2unix and the perl 
 script msgconvert are needed for any E-mail processing.
 
