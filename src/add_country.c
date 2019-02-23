@@ -46,7 +46,7 @@ char *country_file;
 		}
 		else {
 			strcpy(previous_buffer,buffer);
-			if(inet_aton(buffer,&ip)) {
+			if( (bool) inet_aton(buffer,&ip)) {
 				ip_int=htonl(ip.s_addr);
 				found=0;
         			rewind(_countryfile);
@@ -72,7 +72,7 @@ char *country_file;
                 			k++;
                 			stored_start = atol(start_str);
                 			stored_end = atol(end_str);
-                			if((ip_int >= stored_start) && (ip_int <= stored_end)) {
+                			if((ip_int >= (uint32_t) stored_start) && (ip_int <= (uint32_t) stored_end)) {
 						n=0;
                              			while((k<buflen) && (line[k]!=',')) {                      //Country data
                                         		country_str[n] = line[k++];
