@@ -27,13 +27,13 @@ char temp_str[MAX_FIELDVALUE_LENGTH];
 			}
 			y=find_fieldname(output_list[x]);
 			if(y>=0) {
-				z=strlen(_fieldlabels_array[w]);
-				v=strlen(_fieldvalues_array[y]);
+				z= (int) strlen(_fieldlabels_array[w]);
+				v= (int) strlen(_fieldvalues_array[y]);
 				if(v>0) {
 					if((z+v+2)<MAX_LABEL_LENGTH) {
 						temp_str[0]='\0';
 						strcpy(temp_str,_fieldvalues_array[y]);
-						remchars("\"", temp_str);
+						(void) remchars("\"", temp_str);
 						strcat(_fieldlabels_array[w],temp_str);
 						strcat(_fieldlabels_array[w],"\\n");
 						added=1;
@@ -48,7 +48,7 @@ char temp_str[MAX_FIELDVALUE_LENGTH];
 			x++;
 		}
 		if(added==1) {
-			x=strlen(_fieldlabels_array[w]);
+			x= (int) strlen(_fieldlabels_array[w]);
 			if(x>3) _fieldlabels_array[w][x-2]='\0';
 		}
 		strcat(_fieldlabels_array[w],"\"");
