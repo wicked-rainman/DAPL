@@ -23,7 +23,7 @@ char newname[MAX_FIELDNAME_LENGTH];
 		x= (int) strlen(_fieldvalues_array[tlist.position[target_count]]);
 		if(end>x) end=x;
 		endpos=(end-start)+1;
-		strncpy(newval,&_fieldvalues_array[tlist.position[target_count]][start],endpos);
+		strncpy(newval,&_fieldvalues_array[tlist.position[target_count]][start], (size_t) endpos);
 		newval[endpos]='\0';
 		insert_new_field(newname,newval);
 		target_count++;
