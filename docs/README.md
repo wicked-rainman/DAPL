@@ -122,7 +122,9 @@ and whitelist() ) for local resolution and provide non-server related answers.
 
 DAPL functions socketadd_asn() socketadd_country() and socketadd_history() will resolve answers through 
 the related server ports. DAPL functions socketadd_dns() and socketadd_rdns() have not been written yet, 
-(see open issues) although Standalone utilities gdns grdns reference these other ports. 
+(see open issues) although Standalone utilities gdns grdns reference these other ports. Note that some
+of these scripts also have BASH variables that point to data reference files - they will almost certainly
+have to be modified to suit your filesystem. 
 
 9. Create any user programs in $HOME/DAPL/progs. To compile each program, use the command:
 `gcc -Ofast prog.c ../lib/libdapl.a -o progname` for files conaining single line "CSV" type records, or
