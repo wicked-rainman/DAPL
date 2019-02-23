@@ -20,7 +20,7 @@ char newname[MAX_FIELDNAME_LENGTH];
 			return;
 		}
 		strcat(newname,addfld);
-		x=strlen(_fieldvalues_array[tlist.position[target_count]]);
+		x= (int) strlen(_fieldvalues_array[tlist.position[target_count]]);
 		if(end>x) end=x;
 		endpos=(end-start)+1;
 		strncpy(newval,&_fieldvalues_array[tlist.position[target_count]][start],endpos);
