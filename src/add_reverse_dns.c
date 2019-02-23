@@ -33,7 +33,7 @@ struct hostent *hp;
 			return;
 		}
 		strcpy(stored_val,_fieldvalues_array[tlist.position[target_count]]);
-		remchars("\"",stored_val);
+		(void) remchars("\"",stored_val);
 		if(strcmp(stored_val,previous_stored_val)==0) {
                 	insert_new_field(newname,previous_newval);
 		}
