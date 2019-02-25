@@ -30,7 +30,7 @@ uint32_t ip_int=0;
         if(_asnfile==NULL) {
         	asn_file=getenv("ASN_FILE");
                 if(asn_file==NULL) {
-         	fprintf(stdout,"add_asn : Using file %s\n",asn_file);       	f
+         	fprintf(stdout,"add_asn : Using file %s\n",asn_file);       	
                 	exit(EXIT_FAILURE);
         	}
 		fprintf(stdout,"add_asn : Using file %s\n",asn_file);
