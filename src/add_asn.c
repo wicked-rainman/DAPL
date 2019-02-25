@@ -111,7 +111,7 @@ uint32_t ip_int=0;
 					// and is less than or equal to the end int, then
 					// we have an ASN range that matches
 					// *************************************************
-                			if((ip_int >= (unit32_t) stored_start) && (ip_int <= (uint32_t) stored_end)) {
+                			if((ip_int >= (uint32_t) stored_start) && (ip_int <= (uint32_t) stored_end)) {
                                			n = 0;
                                 		while((k<buflen) && (line[k]!=' ') && (line[k]!='\n')){
                                         		asn_str[n] = line[k++];
