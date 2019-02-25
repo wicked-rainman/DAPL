@@ -7,7 +7,9 @@ char stored_val[MAX_FIELDVALUE_LENGTH];
 static char previous_stored_val[MAX_FIELDVALUE_LENGTH];
 int target_count;
 struct in_addr ip;
-struct hostent *hp;
+struct sockaddr_in sa;
+socklen_t len;
+char hbuf[NI_MAXHOST];
 
         if (_drop==1) return;
         if(_field_count>=MAX_FIELD_COUNT) {
@@ -43,7 +45,7 @@ struct hostent *hp;
 		// If the field value can't be converted
 		// (Not a valid IP address)
 		// *************************************
-		if (!inet_aton(stored_val, &ip)) {
+		if (! (bool) inet_aton(stored_val, &ip)) {
 			newval[0]='\0';
 			previous_newval[0]='\0';
 			insert_new_field(newname,newval);
@@ -53,7 +55,11 @@ struct hostent *hp;
 			// IP converted to an int okay. Try and get a
 			// reverse dns entry for it.
 			// *********************************************
-    			if ((hp = gethostbyaddr((const void *)&ip, sizeof ip, AF_INET)) == NULL) {
+			memset(&sa, 0, sizeof(struct sockaddr_in));
+			sa.sin_family = AF_INET;
+			sa.sin_addr.s_addr = inet_addr(stored_val);
+			len = (socklen_t) sizeof(struct sockaddr_in);
+			if ((bool)getnameinfo((struct sockaddr *) &sa, len, hbuf, (socklen_t) sizeof(hbuf), NULL,0, NI_NAMEREQD)) {
 				// ************************************
 				// No reverse dns entry. Stick in an
 				// empty value
@@ -66,7 +72,7 @@ struct hostent *hp;
 				// ***********************************************
 				// Got there in the end. Stick the rdns value in
 				// ***********************************************
-				strcpy(newval,hp->h_name);
+				strcpy(newval,hbuf);
 				strcpy(previous_newval, newval);
 				insert_new_field(newname,newval);
 			}
