@@ -10,5 +10,5 @@
 #define MAX_REMSTR_LENGTH 100
 #define MAX_COMPOSITE_LENGTH 1600 
 #define CSV_MAX_TAG_LENGTH 20
-#define ASN_FILE_NAME "/home/damian/dev/Reference/GeoIPASNum2.csv"
-#define COUNTRY_FILE_NAME "/home/damian/dev/Reference/ipcountry.csv"
+#define ASN_FILE_NAME "/home/susan/dev/Reference/GeoIPASNum2.csv"
+#define COUNTRY_FILE_NAME "/home/susan/dev/Reference/ipcountry.csv"
