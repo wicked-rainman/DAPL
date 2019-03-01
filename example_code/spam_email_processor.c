@@ -5,7 +5,7 @@ FILE *history;
 void setup() {
         set_input(',',"../output/outfile.csv");
         set_graphics("fred2.dot","neato","svg");
-        history=table("/home/damian/dev/tables/bad_ip.tbl");
+        history=table("/home/dapl/dev/tables/bad_ip.tbl");
 }
 void loop() {
         //if(match_substring("Received*.ip","46.161.42.") ) keep;
