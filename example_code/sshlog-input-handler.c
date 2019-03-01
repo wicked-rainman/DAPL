@@ -11,7 +11,7 @@ void setup() {
 	define_input_fieldnames(' ',"month day time www sshd accepted password for reason from source_ip ");
 	set_input_directory(' ',"/shared/input/security/");
 	set_output("/shared/output/security.csv");
-	history=table("/home/damian/dev/Reference/bad_ip.tbl");
+	history=table("/home/dapl/dev/Reference/bad_ip.tbl");
 
 }
 void loop() {
