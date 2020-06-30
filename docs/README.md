@@ -1,3 +1,4 @@
+<meta name="description" content="Data Analyst Programming Language.">
 ##                        OVERVIEW - Data Analist Programming Language (DAPL)
 
 DAPL is a program language wrapper intended to simplify the process of analysing large volumes of structured 
